@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<decorators defaultdir="/WEB-INF/jsp">
+    <!-- Any urls that are excluded will never be decorated by Sitemesh -->
+    <excludes>
+        <pattern>/myaccount!upload.do</pattern>
+    </excludes>
+
+    <decorator name="home" page="layout/template.jsp?dwzBanner=1&amp;dwzSidebar=1">
+        <pattern>/index!index.do</pattern>
+    </decorator>
+    <decorator name="noSidebar" page="layout/template.jsp">
+        <pattern>/index!login.do</pattern>
+        <pattern>/passport!*.do</pattern>
+    </decorator>
+    <decorator name="hasSidebar" page="layout/template.jsp?dwzSidebar=1">
+        <pattern>/index!*.do</pattern>
+        <pattern>/myaccount/*.do</pattern>
+    </decorator>
+
+<!--
+    <decorator name="velocity" page="velocity.vm">
+        <pattern>/velocity.html</pattern>
+    </decorator>
+
+    <decorator name="freemarker" page="freemarker.ftl">
+        <pattern>/freemarker.html</pattern>
+    </decorator>
+-->
+</decorators>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+     <title>test</title>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <style type="text/css">
+
+@page {
+	size: a4 portrait;
+	margin: 12mm 10mm;
+	padding: 0;
+	
+	@bottom-center{content: "PREVIEW – NOT FOR ISSUE";font-family:Arial,sans-serif;}
+	@bottom-right{content: "Page " counter(page) " of " counter(pages); margin: 0; padding: 0;font-family:Arial,sans-serif;}
+	@footnote { 
+		float: bottom page;width: 100%;
+	}
+	
+}
+
+
+.version{page: version;}
+@page version{
+	@bottom-left{
+		content: "iEnergy v1.0 (SAP 9.83)"; margin: 0; padding: 0; font-size: 8pt;font-style:italic;font-family:Arial,sans-serif;	
+	}
+}
+/*
+@page :first{
+	margin-bottom: 30mm;
+	border-bottom:1pt solid #000;
+}*/
+.notebox {page: notebox;}
+@page notebox{
+	page-break-after:always;
+}
+@media print {
+	.notebox {position: relative;}
+	.notebox .content{margin-bottom: 20mm; width: 100%; }
+	.notebox .footnote {position: absolute; top: 260mm; left: 0; border-top:1pt solid #000; width: 100%}
+}
+
+.pagebreak{page-break-after:always;}
+
+html, body {font-family:Arial,sans-serif;font-size:10.8pt; line-height:100%;}
+body, input, img, p, td{ margin:0; padding:0;}
+.title{font-weight:bold; padding:4pt 0;}
+table{ margin-bottom:3pt; width:100%;}
+.redBox{background-color: #B30337;color:#FFFFFF;}
+
+     </style>
+</head>
+
+<body>
+<div class="pagebreak">Page 1 </div>
+<div class="notebox">
+	<div class="content">Footnote</div>
+	<div class="footnote">¹ For information on approved competent persons schemes enter ‘existing competent person schemes’ into an internet search engine or contact your local Energy Saving Trust advice centre on 0800 512 012.</div>
+</div>
+
+<div class="pagebreak version">
+	Version
+</div>
+
+<div class="notebox">
+	<div class="content">
+		Content
+		<p class="paragraph">If you are a tenant, before undertaking any work you should check the terms of your lease and obtain approval
+		from your landlord if the lease either requires it, or makes no express provision for such work.</p>
+		
+		<p class="title">Lower cost measures (typically up to £500 each)</p>
+		<p>These measures are relatively inexpensive to install and are worth tackling first. Some of them may be installed
+		as DIY projects. DIY is not always straightforward, and sometimes there are health and safety risks, so take
+		advice before carrying out DIY improvements.</p>
+		<div style="page-break-after: avoid;">
+			<p class="title">1 Loft insulation</p>
+			<p>Loft insulation laid in the loft space or between roof rafters to a depth of at least 270 mm will significantly reduce heat loss through the roof; this will improve levels of comfort, reduce energy use and lower fuel bills. Insulation should not be placed below any cold water storage tank, any such tank should also be insulated on its sides and top, and there should be boarding on battens over the insulation to provide safe access between the loft hatch and the cold water tank. The insulation can be installed by professional contractors but also by a capable DIY enthusiast. Loose granules may be used instead of insulation quilt; this form of loft insulation can be blown into place and can be useful where access is difficult. The loft space must have adequate ventilation to prevent dampness; seek advice about this if unsure. Further information about loft insulation and details of local contractors can be obtained from the National Insulation Association (www.nationalinsulationassociation.org.uk).</p>
+		</div>
+		<div></div>
+		<div style="page-break-after: avoid;">
+			<p class="title">2 Cavity wall insulation</p>
+			<p>Cavity wall insulation, to fill the gap between the inner and outer layers of external walls with an insulating material, reduces heat loss; this will improve levels of comfort, reduce energy use and lower fuel bills. The insulation material is pumped into the gap through small holes that are drilled into the outer walls, and the holes are made good afterwards. As specialist machinery is used to fill the cavity, a professional installation company should carry out this work, and they should carry out a thorough survey before commencing work to ensure that this type of insulation is suitable for this home. They should also provide a guarantee for the work and handle any building control issues. Further information about cavity wall insulation and details of local installers can be obtained from the National Insulation Association (www.nationalinsulationassociation.org.uk).</p>
+		</div>
+		<div></div>
+		<div style="page-break-after: avoid;">
+			<p class="title">3 Low energy lighting</p>
+			<p>Replacement of traditional light bulbs with energy saving recommended ones will reduce lighting costs over the lifetime of the bulb, and they last up to 12 times longer than ordinary light bulbs. Also consider selecting low energy light fittings when redecorating; contact the Lighting Association for your nearest stockist of Domestic Energy Efficient Lighting Scheme fittings.</p>
+		</div>
+		<div></div>
+		<div style="page-break-after: avoid;">
+			<p class="title">4 Heating controls (thermostatic radiator valves)</p>
+			<p>Thermostatic radiator valves allow the temperature of each room to be controlled to suit individual needs, adding to comfort and reducing heating bills provided internal doors are kept closed. For example, they can be set to be warmer in the living room and bathroom than in the bedrooms. Ask a competent heating engineer to install thermostatic radiator valves. Thermostatic radiator valves should be fitted to every radiator except the radiator in the same room as the room thermostat. Remember the room thermostat is needed as well as the thermostatic radiator valves, to enable the boiler to switch off when no heat is required.</p>
+		</div>
+		<div></div>
+			
+		
+		<table class="redBox" style="margin-top: 10pt">
+			<tr>
+				<td class="h2">About the further measures to achieve even higher standards</td>
+			</tr>
+		</table>
+		<p class="paragraph">
+		Further measures that could deliver even higher standards for this home.
+		You should check the conditions in any covenants, planning conditions,
+		warranties or sale contracts before undertaking any of these measures.
+		If you are a tenant, before undertaking any work you should check the terms of your lease and obtain approval from your landlord if the lease either requires it,
+		or makes no express provision for such work.
+		</p>
+		<div style="page-break-after: avoid;">
+			<p class="title">5 Solar water heating</p>
+			<p>A solar water heating panel, usually fixed to the roof, uses the sun to pre-heat the hot water supply. This will significantly reduce the demand on the heating system to provide hot water and hence save fuel and money. The Solar Trade Association has up-to-date information on local installers and any grant that may be available.</p>
+		</div>
+		<div></div>
+		<div style="page-break-after: avoid;">
+			<p class="title">6 Internal or external wall insulation</p>
+			<p>Solid wall insulation involves adding a layer of insulation to either the inside or the outside surface of the external walls, which reduces heat loss and lowers fuel bills. As it is more expensive than cavity wall insulation it is only recommended for walls without a cavity, or where for technical reasons a cavity cannot be filled. Internal insulation, known as dry-lining, is where a layer of insulation is fixed to the inside surface of external walls; this type of insulation is best applied when rooms require redecorating and can be installed by a competent DIY enthusiast. External solid wall insulation is the application of an insulant and a weather-protective finish to the outside of the wall. This may improve the look of the home, particularly where existing brickwork or rendering is poor, and will provide long-lasting weather protection. Further information can be obtained from the National Insulation Association (www.nationalinsulationassociation.org.uk). It should be noted that planning permission might be required.</p>
+		</div>
+		<div></div>
+		<div style="page-break-after: avoid;">
+			<p class="title">7 Band A condensing gas boiler</p>
+			<p>Changing the heating to use a mains gas boiler that provides both space and water heating will save money, as mains gas is currently cheaper than the fuel being used at present. A condensing boiler is capable of much higher efficiencies than other types of boiler, meaning it will burn less fuel to heat the property, but there may be exceptional circumstances making this impractical. Condensing boilers need a drain for the condensate which limits their location; remember this when considering remodelling the room containing the existing boiler even if the latter is to be retained for the time being (for example a kitchen makeover). This improvement is most appropriate when the existing heating system needs repair or replacement. Building Regulations apply to this work, so your local authority building control department should be informed, unless the installer is registered with a competent persons scheme¹, and can therefore self-certify the work for Building Regulation compliance. Ask a qualified heating engineer to explain the options.</p>
+		</div>
+		<div></div>
+		<div style="page-break-after: avoid;">
+			<p class="title">8 Solar photovoltaic (PV) panels</p>
+			<p>A solar PV system is one which converts light directly into electricity via panels placed on the roof with no waste and no emissions. This electricity is used throughout the home in the same way as the electricity purchased from an energy supplier. The British Photovoltaic Association has up-to-date information on local installers who are qualified electricians and on any grant that may be available. Planning restrictions may apply in certain neighbourhoods and you should check this with the local authority. Building Regulations apply to this work, so your local authority building control department should be informed, unless the installer is appropriately qualified and registered as such with a competent persons scheme¹, and can therefore self-certify the work for Building Regulation compliance.</p>
+		</div>
+		<div></div>
+	</div>
+	<div class="footnote">¹ For information on approved competent persons schemes enter ‘existing competent person schemes’ into an internet search engine or contact your local Energy Saving Trust advice centre on 0800 512 012.</div>
+</div>
+
+
+</body>
+
+</html>

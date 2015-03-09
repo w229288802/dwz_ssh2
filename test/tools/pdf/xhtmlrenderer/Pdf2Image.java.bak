@@ -1,0 +1,91 @@
+package tools.pdf.xhtmlrenderer;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+
+import javax.swing.SwingUtilities;
+
+import com.sun.jimi.core.Jimi;
+import com.sun.jimi.core.raster.JimiRasterImage;
+import com.sun.pdfview.PDFFile;
+import com.sun.pdfview.PDFPage;
+
+
+public class Pdf2Image {
+
+
+	
+	public static void setup() throws IOException {
+
+
+        // load a pdf from a byte buffer
+		String basePath = System.getProperty("user.dir")
+				+ "/test/tools/pdf/xhtmlrenderer";
+        File file = new File(basePath+"/EPC_EAW_rating.html");
+
+        RandomAccessFile raf = new RandomAccessFile(file, "r");
+        FileChannel channel = raf.getChannel();
+        ByteBuffer buf = channel.map(FileChannel.MapMode.READ_ONLY, 0, channel.size());
+        PDFFile pdffile = new PDFFile(buf);
+
+        // draw the first page to an image
+        PDFPage page = pdffile.getPage(0);
+ 
+        //get the width and height for the doc at the default zoom 
+        Rectangle rect = new Rectangle(0,0,
+                (int)page.getBBox().getWidth(),
+                (int)page.getBBox().getHeight());
+        
+        //generate the image
+        Image img = page.getImage(
+                rect.width, rect.height, //width & height
+                rect, // clip rect
+                null, // null for the ImageObserver
+                true, // fill background with white
+                true  // block until drawing is done
+                );
+        
+        //show the image in a frame
+//        JFrame frame = new JFrame("PDF Test");
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.add(new JLabel(new ImageIcon(img)));
+//        frame.pack();
+//        frame.setVisible(true);
+
+        FileOutputStream fos = null;
+		JimiRasterImage raster = null;
+		try {
+			raster = Jimi.createRasterImage(img.getSource());
+			fos = new FileOutputStream(basePath+"/EPC_EAW_rating.jpg");
+			Jimi.putImage("image/jpeg", raster, fos);
+			fos.flush();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (fos != null) {
+				fos.close();
+				fos = null;
+			}
+		}
+    }
+
+    public static void main(final String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                	Pdf2Image.setup();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+    }
+
+
+}

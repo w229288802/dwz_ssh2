@@ -1,0 +1,11 @@
+document.write('<script src="/styles/www/js/jquery/jquery.js"></script>');
+document.write('<script src="/styles/www/js/core.js"></script>');
+document.write('<script src="/styles/www/js/jEffects.js"></script>');
+document.write('<script src="/styles/www/js/accordion.js"></script>');
+document.write('<script src="/styles/www/js/searchbox.js"></script>');
+document.write('<script src="/styles/www/js/menu.js"></script>');
+document.write('<script src="/styles/www/js/cattree.js"></script>');
+document.write('<script src="/styles/www/js/tab.js"></script>');
+document.write('<script src="/styles/www/js/dialog.js"></script>');
+document.write('<script src="/styles/www/js/pagination.js"></script>');
+document.write('<script src="/styles/www/js/ui.js"></script>');

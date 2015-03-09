@@ -1,0 +1,10 @@
+Spring 事务
+
+ @Transactional(propagation = Propagation.REQUIRED)			//默认
+ @Transactional(propagation = Propagation.REQUIRES_NEW)		//支持方法嵌套事务
+ 
+ @Transactional(rollbackFor = Exception.class)		//支持事务回滚
+ 
+ @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT, rollbackFor = Exception.class)
+ 
+ 

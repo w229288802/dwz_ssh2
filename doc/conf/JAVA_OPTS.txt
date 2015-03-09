@@ -1,0 +1,11 @@
+# JAVA_OPTS常用参数
+
+-Dfile.encoding=UTF-8
+-Dsun.jnu.encoding=UTF-8
+-Djavax.net.debug=ssl
+-Djava.awt.headless=true
+
+-server -Xms256M -Xmx256M -XX:PermSize=128M -XX:MaxNewSize=256M -XX:MaxPermSize=256M 
+
+# openssl test
+openssl s_client -connect www.hcrregister.com:443

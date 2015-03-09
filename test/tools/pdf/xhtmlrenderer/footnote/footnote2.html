@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>footnote</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style type="text/css">
+	@media print {
+		.footnote { 
+			float: footnote;
+			display: footnote;
+			position: footnote;
+			flow: footnote;
+			content: target-move(attr(href, url)) 
+		}
+		.marker { display: none }
+		
+	
+		
+	}
+        
+    </style>
+</head>
+
+<body>
+
+
+	<p>
+		A sentence consists of words
+		<a class="footnote" href="#words"> [3]</a>.
+	</p>
+
+	<p id="words">
+		<span class="marker">[3]</span> Most often.
+	</p>
+
+	<A HREF="#footnote1"><SUP>1</SUP> </A> -- this references the following footnote:
+	
+	<FN id="footnote1"><SUP>1</SUP>
+	if supported clicking on the footnote link will cause a small window
+	to pop up containing the actual footnote.</FN>
+	
+</body>
+
+</html>

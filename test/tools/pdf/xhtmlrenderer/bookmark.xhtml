@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+@page {
+	size: a4 portrait;
+	margin: 20mm 10mm;
+	padding: 1em;
+	@top-left {content: element(header);}
+	@bottom-left{content: element(footer);}
+	@bottom-center{content: counter(page) " / " counter(pages);}
+	@bottom-right{content: "www.quidos.co.uk";}           
+}
+
+@page blank {
+	size: a4 portrait;
+	margin: 20mm 10mm;
+	padding: 1em;
+	@top-left { content: normal } 
+	@bottom-left { content: normal } 
+	@top-right { content: normal }   
+	@bottom-right {content: normal }
+	@bottom-center{content: normal }
+} 
+
+/*header as footer will automatically icluded in each pdf printed page*/
+#header { position: running(header);}
+#footer { display: block; position: running(footer);}
+
+#pagenumber:before {content: counter(page);}
+#pagecount:before {content: counter(pages);}
+
+/* Used for generating Table of content */
+#toc a::after { content: leader('.') target-counter(attr(href), page); }
+
+/* Use this class for first level titles */
+.page_break_before{ page-break-before: always; }
+
+/* Use this class for forcing page break inside pdf */
+.page_breaker{page-break-after:always;}
+.blank { page : blank; }
+</style>
+
+<bookmarks>
+	<bookmark name="Sommaire" href="#Sommaire" />
+	<bookmark name="{$node.name}" href="#{$node.node_id}">
+		{if gt($node.children_count,0)}
+		{foreach $node.children as $c1}
+		<bookmark name="{$c1.name}" href="#{$c1.node_id}">
+		</bookmark>
+		{if gt($c1.children_count,0)}
+		{foreach $node.children as $c2}
+		<bookmark name="{$c2.name}" href="#{$c2.node_id}">
+		</bookmark>
+		{/foreach}
+		{/if}
+		{/foreach}
+		{/if}
+	</bookmark>
+</bookmarks>
+</head>
+
+<body>
+<div id="header">
+	{$node.name}
+</div>
+<div id="footer">
+	&copy; Quidos Inc 2009
+</div>
+{def
+$home_node_id = ezini('Nodes_Root_MFE', 'nid_MFE', 'mfe.ini')
+$home_node = fetch('content', 'node', hash('node_id', $home_node_id))
+}
+<div class="blank">
+	<div id="gabaritHeader" style="background: #104e89 url({$home_node.data_map.header_banner.content.original.url|ezroot(no)}) left top no-repeat;">
+		<div id="logoMinistere">
+			<a href="http://example.com/" title="Lien vers le Ministère des Affaires étrangères" target="_blank"><img border="0" src='{"logomae.jpg"|ezimage()}'/></a>
+		</div><div id="bandeauPub" />
+		<div id="logoMFE">
+			<a href="http://example.com/" title="Lien vers la Maison des français de l'étranger"><img src='{"/images/header"|ezimage()}' alt="Logo de la Maison des français de l'étranger" /></a>
+		</div>
+	</div>
+	<div class='title'>
+		<div>
+			Maison des Français
+		</div>
+		<div>
+			de l'Etranger
+		</div>
+	</div>
+	<div class='subtitle'>
+		<h2>{$node.name}</h2>
+	</div>
+	<div class='home_footer'>
+		{def $cdate=currentdate()}
+		<table align='center'>
+			<tr>
+				<td>
+					Ministère des affaires étrangères
+				</td>
+				<td>
+					Maison des Français de l'étranger
+				</td>
+			</tr>
+			<tr>
+				<td align='left'>
+					Téléphone: xxxxx
+				</td>
+				<td align='left'>
+					Téléphone: xxxxxx
+				</td>
+			</tr>
+			<tr>
+				<td align='left'>
+					Courriel: my@example.com/
+				</td>
+				<td align='left'>
+					Courriel: my@example.com/
+				</td>
+			</tr>
+			<tr>
+				<td align='left'>
+					Internet:example.com
+				</td>
+				<td>
+					&nbsp;
+				</td>
+			</tr>
+		</table>
+		<div>
+			Fichier généré le {$cdate|l10n( 'shortdatetime' )}
+		</div>
+	</div>
+</div>
+{undef $home_node}
+<p aligh="center">
+	Les Dossiers Pays de la MFE: {$node.name}
+</p>
+<h2 aligh="center"><a name="Sommaire">Sommaire</a></h2>
+<ol id="toc">
+	<li>
+		<a href="#{$node.node_id}">{$node.name}</a>
+		<ol>
+			{if gt($node.children_count,0)}
+			{foreach $node.children as $c1}
+			<li>
+				<a href="#{$c1.node_id}">{$c1.name}</a>
+			</li>
+			{if gt($c1.children_count,0)}
+			<ol>
+				{foreach $c1.children as $c2}
+				<li>
+					<a href="#{$c2.node_id}">{$c2.name}</a>
+				</li>
+				{/foreach}
+			</ol>
+			{/if} 
+			{/foreach}  
+			{/if} 
+		</ol>
+	</li>
+</ol>
+<h2 class='page_break_before' style="color: #91AED0"><a name="{$node.node_id}">{$node.name}</a></h2>
+{attribute_view_gui attribute=$node.object.data_map.main_informations}
+<br/>
+<br/>
+{attribute_view_gui attribute=$node.object.data_map.description}
+<p>
+	<em>Dernière mise à jour de cette rubrique&nbsp;: {$node.object.modified|l10n(shortdate)}</em>
+</p>
+{attribute_view_gui attribute=$node.object.data_map.map image_class=original href=true()}
+{if gt($node.children_count,0)}
+{foreach $node.children as $c1}<h2 class='yellow'><a name="{$c1.node_id}">{$c1.name}</a></h2>
+{if gt($c1.children_count,0)}
+{foreach $c1.children as $c2}<h3 class='blue'><a name="{$c2.node_id}">{$c2.name}</a></h3>
+{attribute_view_gui attribute=$c2.data_map.article_body}
+<p>
+	<em>Dernière mise à jour : {$c2.object.modified|l10n(shortdate)}</em>
+</p>
+{/foreach}
+{/if} 
+{/foreach} 
+{/if}
+</body>
+</html>

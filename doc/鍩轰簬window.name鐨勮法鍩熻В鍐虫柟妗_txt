@@ -1,0 +1,7 @@
+基于window.name的跨域解决方案 http://www.cnblogs.com/zhenn/archive/2011/02/20/1959190.html
+
+原理：
+iframe在加载新页面时，name值是保持不变的，由此可以重定向iframe的引用地址，由外域转到本域。
+
+方法：
+设置请求目标域页面的window.name，通过iframe引用至本域，由于js受到浏览器同源策略限制，无法跨域通信，取不到iframe中传过来的window.name设置值，所以需要在本域设置一个代理页面（空文件即可），监听iframe的load事件，一旦加载完成，设置iframe指向本域下的代理页面，此时就不存在跨域问题了，同时js可以取得iframe传输过来的跨域数据，即window.name值。

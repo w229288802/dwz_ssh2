@@ -1,0 +1,916 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PDF</title>
+<style>
+.version{page: version;}
+@page {
+	size: a4 portrait;
+	margin: 12mm 10mm;
+	padding: 0;
+		@bottom-center{content: "PREVIEW – NOT FOR ISSUE";font-family:Arial,sans-serif;}
+	@bottom-right{content: "Page " counter(page) " of " counter(pages); margin: 0; padding: 0;font-family:Arial,sans-serif;}
+}
+@page :first{}
+@page version{
+	@bottom-left{content: "iEnergy v1.0 (SAP 9.83)"; margin: 0; padding: 0; font-size: 8pt;font-style:italic;font-family:Arial,sans-serif;}
+}
+
+html, body {font-family:"Liberation Sans",Arial,sans-serif;font-size:10.8pt; line-height:100%;}
+body, input, img, p, td{ margin:0; padding:0;}
+table{ margin-bottom:3pt; width:100%;}
+.redBox{background-color: #B30337;color:#FFFFFF;}
+.h1{font-size:15.72pt; font-weight:bold;padding:5pt; line-height:16pt;}
+.h2{font-size:11.76pt; font-weight:bold;padding:5pt;line-height: 100%}
+.h3{font-weight:bold; margin-bottom:2pt; background-color:#0073BB;padding:5pt;color:#FFFFFF; font-size:11.76pt;}
+.h4{font-weight:bold; margin-bottom:2pt;padding:5pt; color:#FFFFFF; font-size:9.72pt;}
+.listBlue { border-left:1pt solid #211E73; border-top:1pt solid #211E73;}
+.listBlue td{border-bottom:1pt solid #211E73; border-right:1pt solid #211E73; padding:2pt; font-size:9.72pt;}
+.listBlue .onerow td{border-bottom:none;}
+.listBlue .border td{border-right: none; border-bottom: 1pt solid #211E73; height: 0; padding: 0; margin: 0}
+.list{ border-left:1pt solid #000; border-top:1pt solid #000;}
+.list td{border-bottom:1pt solid #000; border-right:1pt solid #000;}
+.list .th{ font-size:7.8pt; font-weight:bold; text-align:center;}
+.list td span{ font-size:6.84pt; float:left; margin-left:5pt;}
+.innerTable {margin: 0}
+.innerTable td{margin: 0; padding: 0; border: none;}
+.A, .B, .C, .D, .E, .F, .G{ position:relative; height:18pt; color:#fff; font-weight:bold; display:block; text-align:right; padding-right:5pt; font-size:15.72pt; line-height:18pt;margin:2pt;}
+img{ vertical-align:middle;}
+.small{ font-size:6.6pt; font-style:italic; margin: 0 5pt}
+.A .black, .B .black, .C .black, .D .black, .E .black, .F .black, .G .black{ font-weight:bold; position:absolute; z-index:1; color:#000;right:3pt; font-size:15.72pt;}
+.A .white, .B .white, .C .white, .D .white, .E .white, .F .white, .G .white{ font-weight:bold; position:absolute; z-index:2; cplor:#fff;right:3pt; font-size:15.72pt;}
+
+.smallBg{float:right; height:25pt;vertical-align:middle;}
+.smallBg p{font-size:8.76pt;text-align:right;}
+.list .bold{ font-weight:bold; font-size:13.68pt; margin:6pt 0 6pt 6pt; }
+.SAP{height:18pt; font-weight:bold;color:#fff; text-align:right; font-size:16pt; line-height:18pt; width:28pt; padding-right:4pt; position:absolute; top:0pt; left: 2pt; }
+.SAP_A{ background:url(images/A.bmp) no-repeat left;}
+.SAP_B{ background:url(images/B.bmp) no-repeat left;}
+.SAP_C{ background:url(images/C.bmp) no-repeat left;}
+.SAP_D{ background:url(images/D.bmp) no-repeat left;}
+.SAP_E{ background:url(images/E.bmp) no-repeat left;}
+.SAP_F{ background:url(images/F.bmp) no-repeat left;}
+.SAP_G{ background:url(images/G.bmp) no-repeat left;}
+.SAP .black{ font-weight:bold; position:absolute; z-index:1; color:#000;right:3pt;}
+.SAP .white{ font-weight:bold; position:absolute; z-index:2; cplor:#fff;right:3pt;}
+.EI{ height:18pt; color:#fff; text-align:right; font-weight:bold; font-size:16pt; line-height:18pt;width:28pt; padding-right:4pt; position:absolute; top:0pt; left: 2pt}
+.EI_A{ background:url(images/r_A.bmp) no-repeat left;}
+.EI_B{ background:url(images/r_B.bmp) no-repeat left;}
+.EI_C{ background:url(images/r_C.bmp) no-repeat left;}
+.EI_D{ background:url(images/r_D.bmp) no-repeat left;}
+.EI_E{ background:url(images/r_E.bmp) no-repeat left;}
+.EI_F{ background:url(images/r_F.bmp) no-repeat left;}
+.EI_G{ background:url(images/r_G.bmp) no-repeat left;}
+.EI .black{ font-weight:bold; position:absolute; z-index:1; color:#000;right:3pt;}
+.EI .white{ font-weight:bold; position:absolute; z-index:2; cplor:#fff;right:3pt;}
+.title{font-weight:bold; padding:4pt 0;}
+.A{ width:45.07pt; background-color:#007F3D;}
+.B{ width:63.73pt;background-color:#2C9F29}
+.C{ width:82.39pt;background-color:#9DCB3C}
+.D{ width:101.05pt;background-color:#FFF200}
+.E{ width:119.71pt;background-color:#F7AF1D}
+.F{ width:138.37pt;background-color:#ED6823}
+.G{ width:157.03pt;background-color:#E31D23}
+
+.right .A{ width:45.07pt; background-color:#CDE2F5;}
+.right .B{ width:63.73pt;background-color:#97c0ef}
+.right .C{ width:82.39pt;background-color:#73A2D6}
+.right .D{ width:101.05pt;background-color:#4E84C4}
+.right .E{ width:119.71pt;background-color:#A8A8A8}
+.right .F{ width:138.37pt;background-color:#868686}
+.right .G{ width:157.03pt;background-color:#686868}
+.paragraph{ padding:3pt 0; line-height: 100%;}
+.redLi{ color:#B30337;}
+.redLi div {color:#000000}
+.yellow td{ padding:0 3pt;}
+
+.colorA, .colorB, .colorC, .colorD, .colorE, .colorF, .colorG{height:20pt; line-height:20pt;}
+.colorA{background-color:#007F3D;}
+.colorB{background-color:#2C9F29;}
+.colorC{background-color:#9DCB3C;}
+.colorD{background-color:#FFF200;}
+.colorE{background-color:#F7AF1D;}
+.colorF{background-color:#ED6823;}
+.colorG{background-color:#E31D23;}
+
+.grayA, .grayB, .grayC, .grayD, .grayE, .grayF, .grayG{height:20pt; line-height:20pt;} 
+.grayA{background-color:#CDE2F5;}
+.grayB{background-color:#97C0EF;}
+.grayC{background-color:#73A2D6;}
+.grayD{background-color:#4E84C4;}
+.grayE{background-color:#A8A8A8;}
+.grayF{background-color:#868686;}
+.grayG{background-color:#686868;}
+
+sup,sub {height: 0;line-height: 1;vertical-align: baseline;_vertical-align: bottom;position: relative;}
+sup {bottom: 1ex;}
+sub {top: .5ex;}
+</style>
+
+</head>
+
+<body>
+<table class="redBox">
+	<tr>
+		<td valign="top" class="h1"><p>Tystysgrif Perfformiad Ynni</p></td>
+		<td class="h1" style="width:150pt">
+		<p align="center">PREVIEW</p><p align="center">NOT FOR ISSUE</p>
+		</td>
+		<td style="width:50pt"></td>
+		<td width="96"><img src="images/SAP_red.bmp" width="96"/></td>
+	</tr>
+</table>
+<table width="100%" cellspacing="0">
+	<tr>
+		<td style="padding:0" valign="top">
+			<table cellspacing="0">
+			<tr><td>4 Princess Street</td></tr>
+			<tr><td>Collyhurst</td></tr>
+			<tr><td></td></tr>
+			<tr><td>Manchester</td></tr>
+			<tr><td>M60 4TT</td></tr>
+			</table>
+		</td>
+		<td style="padding:0; width:11cm" valign="top">
+			<table cellspacing="0">
+			<tr>
+				<td style="width:5.5cm">Math o annedd:</td>
+				<td style="width:5.5cm">Tŷ pâr</td>
+			</tr>
+			<tr>
+				<td>Dyddiad yr asesiad:</td>
+				<td>21 Hydref 2009</td>
+			</tr>
+			<tr>
+				<td>Dyddiad y dystysgrif:</td>
+				<td>30 Tachwedd 2009</td>
+			</tr>
+			<tr>
+				<td>Cyfeirnod:</td>
+				<td>0896-9995-2220-3520-8013</td>
+			</tr>
+			<tr>
+				<td>Math o asesiad:</td>
+				<td>RdSAP, annedd presennol</td>
+			</tr>
+			<tr>
+				<td>Cyfanswm yr arwynebedd llawr:</td>
+				<td>230 m²</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+	
+</table>
+
+<table>
+	<tr>
+	<td>Mae perfformiad y cartref hwn wedi’i raddio yn nhermau’r defnydd o ynni fesul metr sgwâr o’r arwynebedd llawr,
+effeithlonrwydd ynni yn seiliedig ar gostau tanwydd ac effaith amgylcheddol yn seiliedig ar allyriadau carbon
+deuocsid (CO<sub>2</sub>).</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+	   <td class="h3">Cyfraddiad Effeithlonrwydd Ynni</td>
+		<td style=" width:27.8pt">&nbsp;</td>
+		<td class="h3">Cyfraddiad Effaith Amgylcheddol (CO<sub>2</sub>)</td>
+	</tr>
+	<tr>
+	  <td width="47%">
+			<table class="list blank" cellspacing="0">
+				<tr>
+					<td>&nbsp;</td>
+					<td class="th" style="width:42pt">Cyfredol</td>
+					<td class="th" style="width:40pt">Potensial</td>
+				</tr>
+				<tr>
+					<td><div class="small">Effeithlon iawn o ran ynni - costau rhedeg is</div>
+					<div class="A"><span >(92 plus)</span>
+					<div class="white">A</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">A</div> <div class="black" style="top:-0.375pt; right:2.5pt">A</div> <div class="black" style="top:-0.25pt; right:2.5pt">A</div> <div class="black" style="top:-0.125pt; right:2.5pt">A</div> <div class="black" style="top:0pt; right:2.5pt">A</div> <div class="black" style="top:0.125pt; right:2.5pt">A</div> <div class="black" style="top:0.25pt; right:2.5pt">A</div> <div class="black" style="top:0.375pt; right:2.5pt">A</div> <div class="black" style="top:0.5pt; right:2.5pt">A</div> <div class="black" style="top:-0.5pt; right:3.5pt">A</div> <div class="black" style="top:-0.375pt; right:3.5pt">A</div> <div class="black" style="top:-0.25pt; right:3.5pt">A</div> <div class="black" style="top:-0.125pt; right:3.5pt">A</div> <div class="black" style="top:0pt; right:3.5pt">A</div> <div class="black" style="top:0.125pt; right:3.5pt">A</div> <div class="black" style="top:0.25pt; right:3.5pt">A</div> <div class="black" style="top:0.375pt; right:3.5pt">A</div> <div class="black" style="top:0.5pt; right:3.5pt">A</div> <div class="black" style="top:-0.5pt; right:2.5pt">A</div> <div class="black" style="top:-0.5pt; right:2.625pt">A</div> <div class="black" style="top:-0.5pt; right:2.75pt">A</div> <div class="black" style="top:-0.5pt; right:2.875pt">A</div> <div class="black" style="top:-0.5pt; right:3pt">A</div> <div class="black" style="top:-0.5pt; right:3.125pt">A</div> <div class="black" style="top:-0.5pt; right:3.25pt">A</div> <div class="black" style="top:-0.5pt; right:3.375pt">A</div> <div class="black" style="top:-0.5pt; right:3.5pt">A</div> <div class="black" style="top:0.5pt; right:2.5pt">A</div> <div class="black" style="top:0.5pt; right:2.625pt">A</div> <div class="black" style="top:0.5pt; right:2.75pt">A</div> <div class="black" style="top:0.5pt; right:2.875pt">A</div> <div class="black" style="top:0.5pt; right:3pt">A</div> <div class="black" style="top:0.5pt; right:3.125pt">A</div> <div class="black" style="top:0.5pt; right:3.25pt">A</div> <div class="black" style="top:0.5pt; right:3.375pt">A</div> <div class="black" style="top:0.5pt; right:3.5pt">A</div>
+					</div>
+					<div class="B"><span >(81-91)</span>
+					<div class="white">B</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">B</div> <div class="black" style="top:-0.375pt; right:2.5pt">B</div> <div class="black" style="top:-0.25pt; right:2.5pt">B</div> <div class="black" style="top:-0.125pt; right:2.5pt">B</div> <div class="black" style="top:0pt; right:2.5pt">B</div> <div class="black" style="top:0.125pt; right:2.5pt">B</div> <div class="black" style="top:0.25pt; right:2.5pt">B</div> <div class="black" style="top:0.375pt; right:2.5pt">B</div> <div class="black" style="top:0.5pt; right:2.5pt">B</div> <div class="black" style="top:-0.5pt; right:3.5pt">B</div> <div class="black" style="top:-0.375pt; right:3.5pt">B</div> <div class="black" style="top:-0.25pt; right:3.5pt">B</div> <div class="black" style="top:-0.125pt; right:3.5pt">B</div> <div class="black" style="top:0pt; right:3.5pt">B</div> <div class="black" style="top:0.125pt; right:3.5pt">B</div> <div class="black" style="top:0.25pt; right:3.5pt">B</div> <div class="black" style="top:0.375pt; right:3.5pt">B</div> <div class="black" style="top:0.5pt; right:3.5pt">B</div> <div class="black" style="top:-0.5pt; right:2.5pt">B</div> <div class="black" style="top:-0.5pt; right:2.625pt">B</div> <div class="black" style="top:-0.5pt; right:2.75pt">B</div> <div class="black" style="top:-0.5pt; right:2.875pt">B</div> <div class="black" style="top:-0.5pt; right:3pt">B</div> <div class="black" style="top:-0.5pt; right:3.125pt">B</div> <div class="black" style="top:-0.5pt; right:3.25pt">B</div> <div class="black" style="top:-0.5pt; right:3.375pt">B</div> <div class="black" style="top:-0.5pt; right:3.5pt">B</div> <div class="black" style="top:0.5pt; right:2.5pt">B</div> <div class="black" style="top:0.5pt; right:2.625pt">B</div> <div class="black" style="top:0.5pt; right:2.75pt">B</div> <div class="black" style="top:0.5pt; right:2.875pt">B</div> <div class="black" style="top:0.5pt; right:3pt">B</div> <div class="black" style="top:0.5pt; right:3.125pt">B</div> <div class="black" style="top:0.5pt; right:3.25pt">B</div> <div class="black" style="top:0.5pt; right:3.375pt">B</div> <div class="black" style="top:0.5pt; right:3.5pt">B</div>
+					</div>
+					<div class="C"><span style="color:#000;">(69-80)</span>
+					<div class="white">C</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">C</div> <div class="black" style="top:-0.375pt; right:2.5pt">C</div> <div class="black" style="top:-0.25pt; right:2.5pt">C</div> <div class="black" style="top:-0.125pt; right:2.5pt">C</div> <div class="black" style="top:0pt; right:2.5pt">C</div> <div class="black" style="top:0.125pt; right:2.5pt">C</div> <div class="black" style="top:0.25pt; right:2.5pt">C</div> <div class="black" style="top:0.375pt; right:2.5pt">C</div> <div class="black" style="top:0.5pt; right:2.5pt">C</div> <div class="black" style="top:-0.5pt; right:3.5pt">C</div> <div class="black" style="top:-0.375pt; right:3.5pt">C</div> <div class="black" style="top:-0.25pt; right:3.5pt">C</div> <div class="black" style="top:-0.125pt; right:3.5pt">C</div> <div class="black" style="top:0pt; right:3.5pt">C</div> <div class="black" style="top:0.125pt; right:3.5pt">C</div> <div class="black" style="top:0.25pt; right:3.5pt">C</div> <div class="black" style="top:0.375pt; right:3.5pt">C</div> <div class="black" style="top:0.5pt; right:3.5pt">C</div> <div class="black" style="top:-0.5pt; right:2.5pt">C</div> <div class="black" style="top:-0.5pt; right:2.625pt">C</div> <div class="black" style="top:-0.5pt; right:2.75pt">C</div> <div class="black" style="top:-0.5pt; right:2.875pt">C</div> <div class="black" style="top:-0.5pt; right:3pt">C</div> <div class="black" style="top:-0.5pt; right:3.125pt">C</div> <div class="black" style="top:-0.5pt; right:3.25pt">C</div> <div class="black" style="top:-0.5pt; right:3.375pt">C</div> <div class="black" style="top:-0.5pt; right:3.5pt">C</div> <div class="black" style="top:0.5pt; right:2.5pt">C</div> <div class="black" style="top:0.5pt; right:2.625pt">C</div> <div class="black" style="top:0.5pt; right:2.75pt">C</div> <div class="black" style="top:0.5pt; right:2.875pt">C</div> <div class="black" style="top:0.5pt; right:3pt">C</div> <div class="black" style="top:0.5pt; right:3.125pt">C</div> <div class="black" style="top:0.5pt; right:3.25pt">C</div> <div class="black" style="top:0.5pt; right:3.375pt">C</div> <div class="black" style="top:0.5pt; right:3.5pt">C</div>
+					</div>
+					<div class="D"><span style="color:#000;">(55-68)</span>
+					<div class="white">D</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">D</div> <div class="black" style="top:-0.375pt; right:2.5pt">D</div> <div class="black" style="top:-0.25pt; right:2.5pt">D</div> <div class="black" style="top:-0.125pt; right:2.5pt">D</div> <div class="black" style="top:0pt; right:2.5pt">D</div> <div class="black" style="top:0.125pt; right:2.5pt">D</div> <div class="black" style="top:0.25pt; right:2.5pt">D</div> <div class="black" style="top:0.375pt; right:2.5pt">D</div> <div class="black" style="top:0.5pt; right:2.5pt">D</div> <div class="black" style="top:-0.5pt; right:3.5pt">D</div> <div class="black" style="top:-0.375pt; right:3.5pt">D</div> <div class="black" style="top:-0.25pt; right:3.5pt">D</div> <div class="black" style="top:-0.125pt; right:3.5pt">D</div> <div class="black" style="top:0pt; right:3.5pt">D</div> <div class="black" style="top:0.125pt; right:3.5pt">D</div> <div class="black" style="top:0.25pt; right:3.5pt">D</div> <div class="black" style="top:0.375pt; right:3.5pt">D</div> <div class="black" style="top:0.5pt; right:3.5pt">D</div> <div class="black" style="top:-0.5pt; right:2.5pt">D</div> <div class="black" style="top:-0.5pt; right:2.625pt">D</div> <div class="black" style="top:-0.5pt; right:2.75pt">D</div> <div class="black" style="top:-0.5pt; right:2.875pt">D</div> <div class="black" style="top:-0.5pt; right:3pt">D</div> <div class="black" style="top:-0.5pt; right:3.125pt">D</div> <div class="black" style="top:-0.5pt; right:3.25pt">D</div> <div class="black" style="top:-0.5pt; right:3.375pt">D</div> <div class="black" style="top:-0.5pt; right:3.5pt">D</div> <div class="black" style="top:0.5pt; right:2.5pt">D</div> <div class="black" style="top:0.5pt; right:2.625pt">D</div> <div class="black" style="top:0.5pt; right:2.75pt">D</div> <div class="black" style="top:0.5pt; right:2.875pt">D</div> <div class="black" style="top:0.5pt; right:3pt">D</div> <div class="black" style="top:0.5pt; right:3.125pt">D</div> <div class="black" style="top:0.5pt; right:3.25pt">D</div> <div class="black" style="top:0.5pt; right:3.375pt">D</div> <div class="black" style="top:0.5pt; right:3.5pt">D</div>
+					</div>
+					<div class="E"><span style="color:#000;">(39-54)</span>
+					<div class="white">E</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">E</div> <div class="black" style="top:-0.375pt; right:2.5pt">E</div> <div class="black" style="top:-0.25pt; right:2.5pt">E</div> <div class="black" style="top:-0.125pt; right:2.5pt">E</div> <div class="black" style="top:0pt; right:2.5pt">E</div> <div class="black" style="top:0.125pt; right:2.5pt">E</div> <div class="black" style="top:0.25pt; right:2.5pt">E</div> <div class="black" style="top:0.375pt; right:2.5pt">E</div> <div class="black" style="top:0.5pt; right:2.5pt">E</div> <div class="black" style="top:-0.5pt; right:3.5pt">E</div> <div class="black" style="top:-0.375pt; right:3.5pt">E</div> <div class="black" style="top:-0.25pt; right:3.5pt">E</div> <div class="black" style="top:-0.125pt; right:3.5pt">E</div> <div class="black" style="top:0pt; right:3.5pt">E</div> <div class="black" style="top:0.125pt; right:3.5pt">E</div> <div class="black" style="top:0.25pt; right:3.5pt">E</div> <div class="black" style="top:0.375pt; right:3.5pt">E</div> <div class="black" style="top:0.5pt; right:3.5pt">E</div> <div class="black" style="top:-0.5pt; right:2.5pt">E</div> <div class="black" style="top:-0.5pt; right:2.625pt">E</div> <div class="black" style="top:-0.5pt; right:2.75pt">E</div> <div class="black" style="top:-0.5pt; right:2.875pt">E</div> <div class="black" style="top:-0.5pt; right:3pt">E</div> <div class="black" style="top:-0.5pt; right:3.125pt">E</div> <div class="black" style="top:-0.5pt; right:3.25pt">E</div> <div class="black" style="top:-0.5pt; right:3.375pt">E</div> <div class="black" style="top:-0.5pt; right:3.5pt">E</div> <div class="black" style="top:0.5pt; right:2.5pt">E</div> <div class="black" style="top:0.5pt; right:2.625pt">E</div> <div class="black" style="top:0.5pt; right:2.75pt">E</div> <div class="black" style="top:0.5pt; right:2.875pt">E</div> <div class="black" style="top:0.5pt; right:3pt">E</div> <div class="black" style="top:0.5pt; right:3.125pt">E</div> <div class="black" style="top:0.5pt; right:3.25pt">E</div> <div class="black" style="top:0.5pt; right:3.375pt">E</div> <div class="black" style="top:0.5pt; right:3.5pt">E</div>
+					</div>
+					<div class="F"><span style="color:#000;">(21-38)</span>
+					<div class="white">F</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">F</div> <div class="black" style="top:-0.375pt; right:2.5pt">F</div> <div class="black" style="top:-0.25pt; right:2.5pt">F</div> <div class="black" style="top:-0.125pt; right:2.5pt">F</div> <div class="black" style="top:0pt; right:2.5pt">F</div> <div class="black" style="top:0.125pt; right:2.5pt">F</div> <div class="black" style="top:0.25pt; right:2.5pt">F</div> <div class="black" style="top:0.375pt; right:2.5pt">F</div> <div class="black" style="top:0.5pt; right:2.5pt">F</div> <div class="black" style="top:-0.5pt; right:3.5pt">F</div> <div class="black" style="top:-0.375pt; right:3.5pt">F</div> <div class="black" style="top:-0.25pt; right:3.5pt">F</div> <div class="black" style="top:-0.125pt; right:3.5pt">F</div> <div class="black" style="top:0pt; right:3.5pt">F</div> <div class="black" style="top:0.125pt; right:3.5pt">F</div> <div class="black" style="top:0.25pt; right:3.5pt">F</div> <div class="black" style="top:0.375pt; right:3.5pt">F</div> <div class="black" style="top:0.5pt; right:3.5pt">F</div> <div class="black" style="top:-0.5pt; right:2.5pt">F</div> <div class="black" style="top:-0.5pt; right:2.625pt">F</div> <div class="black" style="top:-0.5pt; right:2.75pt">F</div> <div class="black" style="top:-0.5pt; right:2.875pt">F</div> <div class="black" style="top:-0.5pt; right:3pt">F</div> <div class="black" style="top:-0.5pt; right:3.125pt">F</div> <div class="black" style="top:-0.5pt; right:3.25pt">F</div> <div class="black" style="top:-0.5pt; right:3.375pt">F</div> <div class="black" style="top:-0.5pt; right:3.5pt">F</div> <div class="black" style="top:0.5pt; right:2.5pt">F</div> <div class="black" style="top:0.5pt; right:2.625pt">F</div> <div class="black" style="top:0.5pt; right:2.75pt">F</div> <div class="black" style="top:0.5pt; right:2.875pt">F</div> <div class="black" style="top:0.5pt; right:3pt">F</div> <div class="black" style="top:0.5pt; right:3.125pt">F</div> <div class="black" style="top:0.5pt; right:3.25pt">F</div> <div class="black" style="top:0.5pt; right:3.375pt">F</div> <div class="black" style="top:0.5pt; right:3.5pt">F</div>
+					</div>
+					<div class="G"><span style="color:#000;">(1-20)</span>
+					<div class="white">G</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">G</div> <div class="black" style="top:-0.375pt; right:2.5pt">G</div> <div class="black" style="top:-0.25pt; right:2.5pt">G</div> <div class="black" style="top:-0.125pt; right:2.5pt">G</div> <div class="black" style="top:0pt; right:2.5pt">G</div> <div class="black" style="top:0.125pt; right:2.5pt">G</div> <div class="black" style="top:0.25pt; right:2.5pt">G</div> <div class="black" style="top:0.375pt; right:2.5pt">G</div> <div class="black" style="top:0.5pt; right:2.5pt">G</div> <div class="black" style="top:-0.5pt; right:3.5pt">G</div> <div class="black" style="top:-0.375pt; right:3.5pt">G</div> <div class="black" style="top:-0.25pt; right:3.5pt">G</div> <div class="black" style="top:-0.125pt; right:3.5pt">G</div> <div class="black" style="top:0pt; right:3.5pt">G</div> <div class="black" style="top:0.125pt; right:3.5pt">G</div> <div class="black" style="top:0.25pt; right:3.5pt">G</div> <div class="black" style="top:0.375pt; right:3.5pt">G</div> <div class="black" style="top:0.5pt; right:3.5pt">G</div> <div class="black" style="top:-0.5pt; right:2.5pt">G</div> <div class="black" style="top:-0.5pt; right:2.625pt">G</div> <div class="black" style="top:-0.5pt; right:2.75pt">G</div> <div class="black" style="top:-0.5pt; right:2.875pt">G</div> <div class="black" style="top:-0.5pt; right:3pt">G</div> <div class="black" style="top:-0.5pt; right:3.125pt">G</div> <div class="black" style="top:-0.5pt; right:3.25pt">G</div> <div class="black" style="top:-0.5pt; right:3.375pt">G</div> <div class="black" style="top:-0.5pt; right:3.5pt">G</div> <div class="black" style="top:0.5pt; right:2.5pt">G</div> <div class="black" style="top:0.5pt; right:2.625pt">G</div> <div class="black" style="top:0.5pt; right:2.75pt">G</div> <div class="black" style="top:0.5pt; right:2.875pt">G</div> <div class="black" style="top:0.5pt; right:3pt">G</div> <div class="black" style="top:0.5pt; right:3.125pt">G</div> <div class="black" style="top:0.5pt; right:3.25pt">G</div> <div class="black" style="top:0.5pt; right:3.375pt">G</div> <div class="black" style="top:0.5pt; right:3.5pt">G</div>
+					</div>
+					<div class="small">Not energy efficient - higher running costs</div></td>
+					<td>
+					<div style="position:relative; height:130pt" >
+					<div class="SAP SAP_F" style="top:85.2pt">
+					<div class="white">29</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">29</div> <div class="black" style="top:-0.375pt; right:2.5pt">29</div> <div class="black" style="top:-0.25pt; right:2.5pt">29</div> <div class="black" style="top:-0.125pt; right:2.5pt">29</div> <div class="black" style="top:0pt; right:2.5pt">29</div> <div class="black" style="top:0.125pt; right:2.5pt">29</div> <div class="black" style="top:0.25pt; right:2.5pt">29</div> <div class="black" style="top:0.375pt; right:2.5pt">29</div> <div class="black" style="top:0.5pt; right:2.5pt">29</div> <div class="black" style="top:-0.5pt; right:3.5pt">29</div> <div class="black" style="top:-0.375pt; right:3.5pt">29</div> <div class="black" style="top:-0.25pt; right:3.5pt">29</div> <div class="black" style="top:-0.125pt; right:3.5pt">29</div> <div class="black" style="top:0pt; right:3.5pt">29</div> <div class="black" style="top:0.125pt; right:3.5pt">29</div> <div class="black" style="top:0.25pt; right:3.5pt">29</div> <div class="black" style="top:0.375pt; right:3.5pt">29</div> <div class="black" style="top:0.5pt; right:3.5pt">29</div> <div class="black" style="top:-0.5pt; right:2.5pt">29</div> <div class="black" style="top:-0.5pt; right:2.625pt">29</div> <div class="black" style="top:-0.5pt; right:2.75pt">29</div> <div class="black" style="top:-0.5pt; right:2.875pt">29</div> <div class="black" style="top:-0.5pt; right:3pt">29</div> <div class="black" style="top:-0.5pt; right:3.125pt">29</div> <div class="black" style="top:-0.5pt; right:3.25pt">29</div> <div class="black" style="top:-0.5pt; right:3.375pt">29</div> <div class="black" style="top:-0.5pt; right:3.5pt">29</div> <div class="black" style="top:0.5pt; right:2.5pt">29</div> <div class="black" style="top:0.5pt; right:2.625pt">29</div> <div class="black" style="top:0.5pt; right:2.75pt">29</div> <div class="black" style="top:0.5pt; right:2.875pt">29</div> <div class="black" style="top:0.5pt; right:3pt">29</div> <div class="black" style="top:0.5pt; right:3.125pt">29</div> <div class="black" style="top:0.5pt; right:3.25pt">29</div> <div class="black" style="top:0.5pt; right:3.375pt">29</div> <div class="black" style="top:0.5pt; right:3.5pt">29</div>
+					</div>
+					</div></td>
+					<td>
+					<div style="position:relative; height:130pt">
+						<div class="SAP SAP_F" style="top:78pt">
+			  			<div class="white">35</div>
+			  			 <div class="black" style="top:-0.5pt; right:2.5pt">35</div> <div class="black" style="top:-0.375pt; right:2.5pt">35</div> <div class="black" style="top:-0.25pt; right:2.5pt">35</div> <div class="black" style="top:-0.125pt; right:2.5pt">35</div> <div class="black" style="top:0pt; right:2.5pt">35</div> <div class="black" style="top:0.125pt; right:2.5pt">35</div> <div class="black" style="top:0.25pt; right:2.5pt">35</div> <div class="black" style="top:0.375pt; right:2.5pt">35</div> <div class="black" style="top:0.5pt; right:2.5pt">35</div> <div class="black" style="top:-0.5pt; right:3.5pt">35</div> <div class="black" style="top:-0.375pt; right:3.5pt">35</div> <div class="black" style="top:-0.25pt; right:3.5pt">35</div> <div class="black" style="top:-0.125pt; right:3.5pt">35</div> <div class="black" style="top:0pt; right:3.5pt">35</div> <div class="black" style="top:0.125pt; right:3.5pt">35</div> <div class="black" style="top:0.25pt; right:3.5pt">35</div> <div class="black" style="top:0.375pt; right:3.5pt">35</div> <div class="black" style="top:0.5pt; right:3.5pt">35</div> <div class="black" style="top:-0.5pt; right:2.5pt">35</div> <div class="black" style="top:-0.5pt; right:2.625pt">35</div> <div class="black" style="top:-0.5pt; right:2.75pt">35</div> <div class="black" style="top:-0.5pt; right:2.875pt">35</div> <div class="black" style="top:-0.5pt; right:3pt">35</div> <div class="black" style="top:-0.5pt; right:3.125pt">35</div> <div class="black" style="top:-0.5pt; right:3.25pt">35</div> <div class="black" style="top:-0.5pt; right:3.375pt">35</div> <div class="black" style="top:-0.5pt; right:3.5pt">35</div> <div class="black" style="top:0.5pt; right:2.5pt">35</div> <div class="black" style="top:0.5pt; right:2.625pt">35</div> <div class="black" style="top:0.5pt; right:2.75pt">35</div> <div class="black" style="top:0.5pt; right:2.875pt">35</div> <div class="black" style="top:0.5pt; right:3pt">35</div> <div class="black" style="top:0.5pt; right:3.125pt">35</div> <div class="black" style="top:0.5pt; right:3.25pt">35</div> <div class="black" style="top:0.5pt; right:3.375pt">35</div> <div class="black" style="top:0.5pt; right:3.5pt">35</div>
+			  			</div>
+		  			</div>
+				</td>
+				</tr>
+				<tr>
+					<td colspan="2" valign="middle" style="border-right:0"><span class="bold">Cymru a Lloegr</span><div class="smallBg"><p>Cyfarwyddeb 2002/91/EC</p><p>yr Undeb Ewropeaidd</p></div></td><td style="text-align:center;"><img height="28" width="40" src="images/EU.bmp" /></td>
+				</tr>
+		  </table>
+				<div>Mae’r cyfraddiad effeithlonrwydd ynni yn fesur o effeithlonrwydd cyffredinol y cartref. Po uchaf yw’r cyfraddiad, y mwyaf effeithlon yw’r cartref o ran ynni, a’r isaf y mae’r biliau tanwydd yn debyg o fod.</div>		</td>
+		<td></td>
+		<td width="47%">
+			<table class="list right" cellspacing="0">
+				<tr>
+					<td>&nbsp;</td>
+					<td class="th" style="width:42pt">Cyfredol</td>
+					<td class="th" style="width:40pt">Potensial</td>
+				</tr>
+				<tr>
+					<td>
+					<div class="small">Amgylcheddol gyfeillgar iawn - allyriadau CO<sub>2</sub> is</div>
+					<div class="A"><span style="color:#000;">(92 plus)</span>
+					<div class="white">A</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">A</div> <div class="black" style="top:-0.375pt; right:2.5pt">A</div> <div class="black" style="top:-0.25pt; right:2.5pt">A</div> <div class="black" style="top:-0.125pt; right:2.5pt">A</div> <div class="black" style="top:0pt; right:2.5pt">A</div> <div class="black" style="top:0.125pt; right:2.5pt">A</div> <div class="black" style="top:0.25pt; right:2.5pt">A</div> <div class="black" style="top:0.375pt; right:2.5pt">A</div> <div class="black" style="top:0.5pt; right:2.5pt">A</div> <div class="black" style="top:-0.5pt; right:3.5pt">A</div> <div class="black" style="top:-0.375pt; right:3.5pt">A</div> <div class="black" style="top:-0.25pt; right:3.5pt">A</div> <div class="black" style="top:-0.125pt; right:3.5pt">A</div> <div class="black" style="top:0pt; right:3.5pt">A</div> <div class="black" style="top:0.125pt; right:3.5pt">A</div> <div class="black" style="top:0.25pt; right:3.5pt">A</div> <div class="black" style="top:0.375pt; right:3.5pt">A</div> <div class="black" style="top:0.5pt; right:3.5pt">A</div> <div class="black" style="top:-0.5pt; right:2.5pt">A</div> <div class="black" style="top:-0.5pt; right:2.625pt">A</div> <div class="black" style="top:-0.5pt; right:2.75pt">A</div> <div class="black" style="top:-0.5pt; right:2.875pt">A</div> <div class="black" style="top:-0.5pt; right:3pt">A</div> <div class="black" style="top:-0.5pt; right:3.125pt">A</div> <div class="black" style="top:-0.5pt; right:3.25pt">A</div> <div class="black" style="top:-0.5pt; right:3.375pt">A</div> <div class="black" style="top:-0.5pt; right:3.5pt">A</div> <div class="black" style="top:0.5pt; right:2.5pt">A</div> <div class="black" style="top:0.5pt; right:2.625pt">A</div> <div class="black" style="top:0.5pt; right:2.75pt">A</div> <div class="black" style="top:0.5pt; right:2.875pt">A</div> <div class="black" style="top:0.5pt; right:3pt">A</div> <div class="black" style="top:0.5pt; right:3.125pt">A</div> <div class="black" style="top:0.5pt; right:3.25pt">A</div> <div class="black" style="top:0.5pt; right:3.375pt">A</div> <div class="black" style="top:0.5pt; right:3.5pt">A</div>
+					</div>
+					<div class="B"><span style="color:#000;">(81-91)</span>
+					<div class="white">B</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">B</div> <div class="black" style="top:-0.375pt; right:2.5pt">B</div> <div class="black" style="top:-0.25pt; right:2.5pt">B</div> <div class="black" style="top:-0.125pt; right:2.5pt">B</div> <div class="black" style="top:0pt; right:2.5pt">B</div> <div class="black" style="top:0.125pt; right:2.5pt">B</div> <div class="black" style="top:0.25pt; right:2.5pt">B</div> <div class="black" style="top:0.375pt; right:2.5pt">B</div> <div class="black" style="top:0.5pt; right:2.5pt">B</div> <div class="black" style="top:-0.5pt; right:3.5pt">B</div> <div class="black" style="top:-0.375pt; right:3.5pt">B</div> <div class="black" style="top:-0.25pt; right:3.5pt">B</div> <div class="black" style="top:-0.125pt; right:3.5pt">B</div> <div class="black" style="top:0pt; right:3.5pt">B</div> <div class="black" style="top:0.125pt; right:3.5pt">B</div> <div class="black" style="top:0.25pt; right:3.5pt">B</div> <div class="black" style="top:0.375pt; right:3.5pt">B</div> <div class="black" style="top:0.5pt; right:3.5pt">B</div> <div class="black" style="top:-0.5pt; right:2.5pt">B</div> <div class="black" style="top:-0.5pt; right:2.625pt">B</div> <div class="black" style="top:-0.5pt; right:2.75pt">B</div> <div class="black" style="top:-0.5pt; right:2.875pt">B</div> <div class="black" style="top:-0.5pt; right:3pt">B</div> <div class="black" style="top:-0.5pt; right:3.125pt">B</div> <div class="black" style="top:-0.5pt; right:3.25pt">B</div> <div class="black" style="top:-0.5pt; right:3.375pt">B</div> <div class="black" style="top:-0.5pt; right:3.5pt">B</div> <div class="black" style="top:0.5pt; right:2.5pt">B</div> <div class="black" style="top:0.5pt; right:2.625pt">B</div> <div class="black" style="top:0.5pt; right:2.75pt">B</div> <div class="black" style="top:0.5pt; right:2.875pt">B</div> <div class="black" style="top:0.5pt; right:3pt">B</div> <div class="black" style="top:0.5pt; right:3.125pt">B</div> <div class="black" style="top:0.5pt; right:3.25pt">B</div> <div class="black" style="top:0.5pt; right:3.375pt">B</div> <div class="black" style="top:0.5pt; right:3.5pt">B</div>
+					</div>
+					<div class="C"><span style="color:#000;">(69-80)</span>
+					<div class="white">C</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">C</div> <div class="black" style="top:-0.375pt; right:2.5pt">C</div> <div class="black" style="top:-0.25pt; right:2.5pt">C</div> <div class="black" style="top:-0.125pt; right:2.5pt">C</div> <div class="black" style="top:0pt; right:2.5pt">C</div> <div class="black" style="top:0.125pt; right:2.5pt">C</div> <div class="black" style="top:0.25pt; right:2.5pt">C</div> <div class="black" style="top:0.375pt; right:2.5pt">C</div> <div class="black" style="top:0.5pt; right:2.5pt">C</div> <div class="black" style="top:-0.5pt; right:3.5pt">C</div> <div class="black" style="top:-0.375pt; right:3.5pt">C</div> <div class="black" style="top:-0.25pt; right:3.5pt">C</div> <div class="black" style="top:-0.125pt; right:3.5pt">C</div> <div class="black" style="top:0pt; right:3.5pt">C</div> <div class="black" style="top:0.125pt; right:3.5pt">C</div> <div class="black" style="top:0.25pt; right:3.5pt">C</div> <div class="black" style="top:0.375pt; right:3.5pt">C</div> <div class="black" style="top:0.5pt; right:3.5pt">C</div> <div class="black" style="top:-0.5pt; right:2.5pt">C</div> <div class="black" style="top:-0.5pt; right:2.625pt">C</div> <div class="black" style="top:-0.5pt; right:2.75pt">C</div> <div class="black" style="top:-0.5pt; right:2.875pt">C</div> <div class="black" style="top:-0.5pt; right:3pt">C</div> <div class="black" style="top:-0.5pt; right:3.125pt">C</div> <div class="black" style="top:-0.5pt; right:3.25pt">C</div> <div class="black" style="top:-0.5pt; right:3.375pt">C</div> <div class="black" style="top:-0.5pt; right:3.5pt">C</div> <div class="black" style="top:0.5pt; right:2.5pt">C</div> <div class="black" style="top:0.5pt; right:2.625pt">C</div> <div class="black" style="top:0.5pt; right:2.75pt">C</div> <div class="black" style="top:0.5pt; right:2.875pt">C</div> <div class="black" style="top:0.5pt; right:3pt">C</div> <div class="black" style="top:0.5pt; right:3.125pt">C</div> <div class="black" style="top:0.5pt; right:3.25pt">C</div> <div class="black" style="top:0.5pt; right:3.375pt">C</div> <div class="black" style="top:0.5pt; right:3.5pt">C</div>
+					</div>
+					<div class="D"><span style="color:#000;">(55-68)</span>
+					<div class="white">D</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">D</div> <div class="black" style="top:-0.375pt; right:2.5pt">D</div> <div class="black" style="top:-0.25pt; right:2.5pt">D</div> <div class="black" style="top:-0.125pt; right:2.5pt">D</div> <div class="black" style="top:0pt; right:2.5pt">D</div> <div class="black" style="top:0.125pt; right:2.5pt">D</div> <div class="black" style="top:0.25pt; right:2.5pt">D</div> <div class="black" style="top:0.375pt; right:2.5pt">D</div> <div class="black" style="top:0.5pt; right:2.5pt">D</div> <div class="black" style="top:-0.5pt; right:3.5pt">D</div> <div class="black" style="top:-0.375pt; right:3.5pt">D</div> <div class="black" style="top:-0.25pt; right:3.5pt">D</div> <div class="black" style="top:-0.125pt; right:3.5pt">D</div> <div class="black" style="top:0pt; right:3.5pt">D</div> <div class="black" style="top:0.125pt; right:3.5pt">D</div> <div class="black" style="top:0.25pt; right:3.5pt">D</div> <div class="black" style="top:0.375pt; right:3.5pt">D</div> <div class="black" style="top:0.5pt; right:3.5pt">D</div> <div class="black" style="top:-0.5pt; right:2.5pt">D</div> <div class="black" style="top:-0.5pt; right:2.625pt">D</div> <div class="black" style="top:-0.5pt; right:2.75pt">D</div> <div class="black" style="top:-0.5pt; right:2.875pt">D</div> <div class="black" style="top:-0.5pt; right:3pt">D</div> <div class="black" style="top:-0.5pt; right:3.125pt">D</div> <div class="black" style="top:-0.5pt; right:3.25pt">D</div> <div class="black" style="top:-0.5pt; right:3.375pt">D</div> <div class="black" style="top:-0.5pt; right:3.5pt">D</div> <div class="black" style="top:0.5pt; right:2.5pt">D</div> <div class="black" style="top:0.5pt; right:2.625pt">D</div> <div class="black" style="top:0.5pt; right:2.75pt">D</div> <div class="black" style="top:0.5pt; right:2.875pt">D</div> <div class="black" style="top:0.5pt; right:3pt">D</div> <div class="black" style="top:0.5pt; right:3.125pt">D</div> <div class="black" style="top:0.5pt; right:3.25pt">D</div> <div class="black" style="top:0.5pt; right:3.375pt">D</div> <div class="black" style="top:0.5pt; right:3.5pt">D</div>
+					</div>
+					<div class="E"><span style="color:#000;">(39-54)</span>
+					<div class="white">E</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">E</div> <div class="black" style="top:-0.375pt; right:2.5pt">E</div> <div class="black" style="top:-0.25pt; right:2.5pt">E</div> <div class="black" style="top:-0.125pt; right:2.5pt">E</div> <div class="black" style="top:0pt; right:2.5pt">E</div> <div class="black" style="top:0.125pt; right:2.5pt">E</div> <div class="black" style="top:0.25pt; right:2.5pt">E</div> <div class="black" style="top:0.375pt; right:2.5pt">E</div> <div class="black" style="top:0.5pt; right:2.5pt">E</div> <div class="black" style="top:-0.5pt; right:3.5pt">E</div> <div class="black" style="top:-0.375pt; right:3.5pt">E</div> <div class="black" style="top:-0.25pt; right:3.5pt">E</div> <div class="black" style="top:-0.125pt; right:3.5pt">E</div> <div class="black" style="top:0pt; right:3.5pt">E</div> <div class="black" style="top:0.125pt; right:3.5pt">E</div> <div class="black" style="top:0.25pt; right:3.5pt">E</div> <div class="black" style="top:0.375pt; right:3.5pt">E</div> <div class="black" style="top:0.5pt; right:3.5pt">E</div> <div class="black" style="top:-0.5pt; right:2.5pt">E</div> <div class="black" style="top:-0.5pt; right:2.625pt">E</div> <div class="black" style="top:-0.5pt; right:2.75pt">E</div> <div class="black" style="top:-0.5pt; right:2.875pt">E</div> <div class="black" style="top:-0.5pt; right:3pt">E</div> <div class="black" style="top:-0.5pt; right:3.125pt">E</div> <div class="black" style="top:-0.5pt; right:3.25pt">E</div> <div class="black" style="top:-0.5pt; right:3.375pt">E</div> <div class="black" style="top:-0.5pt; right:3.5pt">E</div> <div class="black" style="top:0.5pt; right:2.5pt">E</div> <div class="black" style="top:0.5pt; right:2.625pt">E</div> <div class="black" style="top:0.5pt; right:2.75pt">E</div> <div class="black" style="top:0.5pt; right:2.875pt">E</div> <div class="black" style="top:0.5pt; right:3pt">E</div> <div class="black" style="top:0.5pt; right:3.125pt">E</div> <div class="black" style="top:0.5pt; right:3.25pt">E</div> <div class="black" style="top:0.5pt; right:3.375pt">E</div> <div class="black" style="top:0.5pt; right:3.5pt">E</div>
+					</div>
+					<div class="F"><span style="color:#fff;">(21-38)</span>
+					<div class="white">F</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">F</div> <div class="black" style="top:-0.375pt; right:2.5pt">F</div> <div class="black" style="top:-0.25pt; right:2.5pt">F</div> <div class="black" style="top:-0.125pt; right:2.5pt">F</div> <div class="black" style="top:0pt; right:2.5pt">F</div> <div class="black" style="top:0.125pt; right:2.5pt">F</div> <div class="black" style="top:0.25pt; right:2.5pt">F</div> <div class="black" style="top:0.375pt; right:2.5pt">F</div> <div class="black" style="top:0.5pt; right:2.5pt">F</div> <div class="black" style="top:-0.5pt; right:3.5pt">F</div> <div class="black" style="top:-0.375pt; right:3.5pt">F</div> <div class="black" style="top:-0.25pt; right:3.5pt">F</div> <div class="black" style="top:-0.125pt; right:3.5pt">F</div> <div class="black" style="top:0pt; right:3.5pt">F</div> <div class="black" style="top:0.125pt; right:3.5pt">F</div> <div class="black" style="top:0.25pt; right:3.5pt">F</div> <div class="black" style="top:0.375pt; right:3.5pt">F</div> <div class="black" style="top:0.5pt; right:3.5pt">F</div> <div class="black" style="top:-0.5pt; right:2.5pt">F</div> <div class="black" style="top:-0.5pt; right:2.625pt">F</div> <div class="black" style="top:-0.5pt; right:2.75pt">F</div> <div class="black" style="top:-0.5pt; right:2.875pt">F</div> <div class="black" style="top:-0.5pt; right:3pt">F</div> <div class="black" style="top:-0.5pt; right:3.125pt">F</div> <div class="black" style="top:-0.5pt; right:3.25pt">F</div> <div class="black" style="top:-0.5pt; right:3.375pt">F</div> <div class="black" style="top:-0.5pt; right:3.5pt">F</div> <div class="black" style="top:0.5pt; right:2.5pt">F</div> <div class="black" style="top:0.5pt; right:2.625pt">F</div> <div class="black" style="top:0.5pt; right:2.75pt">F</div> <div class="black" style="top:0.5pt; right:2.875pt">F</div> <div class="black" style="top:0.5pt; right:3pt">F</div> <div class="black" style="top:0.5pt; right:3.125pt">F</div> <div class="black" style="top:0.5pt; right:3.25pt">F</div> <div class="black" style="top:0.5pt; right:3.375pt">F</div> <div class="black" style="top:0.5pt; right:3.5pt">F</div>
+					</div>
+					<div class="G"><span style="color:#fff;">(1-20)</span>
+					<div class="white">G</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">G</div> <div class="black" style="top:-0.375pt; right:2.5pt">G</div> <div class="black" style="top:-0.25pt; right:2.5pt">G</div> <div class="black" style="top:-0.125pt; right:2.5pt">G</div> <div class="black" style="top:0pt; right:2.5pt">G</div> <div class="black" style="top:0.125pt; right:2.5pt">G</div> <div class="black" style="top:0.25pt; right:2.5pt">G</div> <div class="black" style="top:0.375pt; right:2.5pt">G</div> <div class="black" style="top:0.5pt; right:2.5pt">G</div> <div class="black" style="top:-0.5pt; right:3.5pt">G</div> <div class="black" style="top:-0.375pt; right:3.5pt">G</div> <div class="black" style="top:-0.25pt; right:3.5pt">G</div> <div class="black" style="top:-0.125pt; right:3.5pt">G</div> <div class="black" style="top:0pt; right:3.5pt">G</div> <div class="black" style="top:0.125pt; right:3.5pt">G</div> <div class="black" style="top:0.25pt; right:3.5pt">G</div> <div class="black" style="top:0.375pt; right:3.5pt">G</div> <div class="black" style="top:0.5pt; right:3.5pt">G</div> <div class="black" style="top:-0.5pt; right:2.5pt">G</div> <div class="black" style="top:-0.5pt; right:2.625pt">G</div> <div class="black" style="top:-0.5pt; right:2.75pt">G</div> <div class="black" style="top:-0.5pt; right:2.875pt">G</div> <div class="black" style="top:-0.5pt; right:3pt">G</div> <div class="black" style="top:-0.5pt; right:3.125pt">G</div> <div class="black" style="top:-0.5pt; right:3.25pt">G</div> <div class="black" style="top:-0.5pt; right:3.375pt">G</div> <div class="black" style="top:-0.5pt; right:3.5pt">G</div> <div class="black" style="top:0.5pt; right:2.5pt">G</div> <div class="black" style="top:0.5pt; right:2.625pt">G</div> <div class="black" style="top:0.5pt; right:2.75pt">G</div> <div class="black" style="top:0.5pt; right:2.875pt">G</div> <div class="black" style="top:0.5pt; right:3pt">G</div> <div class="black" style="top:0.5pt; right:3.125pt">G</div> <div class="black" style="top:0.5pt; right:3.25pt">G</div> <div class="black" style="top:0.5pt; right:3.375pt">G</div> <div class="black" style="top:0.5pt; right:3.5pt">G</div>
+					</div>
+					<div class="small">Not environmentally friendly-higher CO<sub>2</sub> emissions</div></td>
+					<td><div style="position:relative; height:130pt">
+					<div class="EI EI_G" style="top:99.6pt">
+					<div class="white">17</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">17</div> <div class="black" style="top:-0.375pt; right:2.5pt">17</div> <div class="black" style="top:-0.25pt; right:2.5pt">17</div> <div class="black" style="top:-0.125pt; right:2.5pt">17</div> <div class="black" style="top:0pt; right:2.5pt">17</div> <div class="black" style="top:0.125pt; right:2.5pt">17</div> <div class="black" style="top:0.25pt; right:2.5pt">17</div> <div class="black" style="top:0.375pt; right:2.5pt">17</div> <div class="black" style="top:0.5pt; right:2.5pt">17</div> <div class="black" style="top:-0.5pt; right:3.5pt">17</div> <div class="black" style="top:-0.375pt; right:3.5pt">17</div> <div class="black" style="top:-0.25pt; right:3.5pt">17</div> <div class="black" style="top:-0.125pt; right:3.5pt">17</div> <div class="black" style="top:0pt; right:3.5pt">17</div> <div class="black" style="top:0.125pt; right:3.5pt">17</div> <div class="black" style="top:0.25pt; right:3.5pt">17</div> <div class="black" style="top:0.375pt; right:3.5pt">17</div> <div class="black" style="top:0.5pt; right:3.5pt">17</div> <div class="black" style="top:-0.5pt; right:2.5pt">17</div> <div class="black" style="top:-0.5pt; right:2.625pt">17</div> <div class="black" style="top:-0.5pt; right:2.75pt">17</div> <div class="black" style="top:-0.5pt; right:2.875pt">17</div> <div class="black" style="top:-0.5pt; right:3pt">17</div> <div class="black" style="top:-0.5pt; right:3.125pt">17</div> <div class="black" style="top:-0.5pt; right:3.25pt">17</div> <div class="black" style="top:-0.5pt; right:3.375pt">17</div> <div class="black" style="top:-0.5pt; right:3.5pt">17</div> <div class="black" style="top:0.5pt; right:2.5pt">17</div> <div class="black" style="top:0.5pt; right:2.625pt">17</div> <div class="black" style="top:0.5pt; right:2.75pt">17</div> <div class="black" style="top:0.5pt; right:2.875pt">17</div> <div class="black" style="top:0.5pt; right:3pt">17</div> <div class="black" style="top:0.5pt; right:3.125pt">17</div> <div class="black" style="top:0.5pt; right:3.25pt">17</div> <div class="black" style="top:0.5pt; right:3.375pt">17</div> <div class="black" style="top:0.5pt; right:3.5pt">17</div>
+					</div></div></td>
+					<td>
+					<div style="position:relative; height:130pt">
+					<div class="EI EI_F" style="top:94.8pt">
+					<div class="white">21</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">21</div> <div class="black" style="top:-0.375pt; right:2.5pt">21</div> <div class="black" style="top:-0.25pt; right:2.5pt">21</div> <div class="black" style="top:-0.125pt; right:2.5pt">21</div> <div class="black" style="top:0pt; right:2.5pt">21</div> <div class="black" style="top:0.125pt; right:2.5pt">21</div> <div class="black" style="top:0.25pt; right:2.5pt">21</div> <div class="black" style="top:0.375pt; right:2.5pt">21</div> <div class="black" style="top:0.5pt; right:2.5pt">21</div> <div class="black" style="top:-0.5pt; right:3.5pt">21</div> <div class="black" style="top:-0.375pt; right:3.5pt">21</div> <div class="black" style="top:-0.25pt; right:3.5pt">21</div> <div class="black" style="top:-0.125pt; right:3.5pt">21</div> <div class="black" style="top:0pt; right:3.5pt">21</div> <div class="black" style="top:0.125pt; right:3.5pt">21</div> <div class="black" style="top:0.25pt; right:3.5pt">21</div> <div class="black" style="top:0.375pt; right:3.5pt">21</div> <div class="black" style="top:0.5pt; right:3.5pt">21</div> <div class="black" style="top:-0.5pt; right:2.5pt">21</div> <div class="black" style="top:-0.5pt; right:2.625pt">21</div> <div class="black" style="top:-0.5pt; right:2.75pt">21</div> <div class="black" style="top:-0.5pt; right:2.875pt">21</div> <div class="black" style="top:-0.5pt; right:3pt">21</div> <div class="black" style="top:-0.5pt; right:3.125pt">21</div> <div class="black" style="top:-0.5pt; right:3.25pt">21</div> <div class="black" style="top:-0.5pt; right:3.375pt">21</div> <div class="black" style="top:-0.5pt; right:3.5pt">21</div> <div class="black" style="top:0.5pt; right:2.5pt">21</div> <div class="black" style="top:0.5pt; right:2.625pt">21</div> <div class="black" style="top:0.5pt; right:2.75pt">21</div> <div class="black" style="top:0.5pt; right:2.875pt">21</div> <div class="black" style="top:0.5pt; right:3pt">21</div> <div class="black" style="top:0.5pt; right:3.125pt">21</div> <div class="black" style="top:0.5pt; right:3.25pt">21</div> <div class="black" style="top:0.5pt; right:3.375pt">21</div> <div class="black" style="top:0.5pt; right:3.5pt">21</div>
+					</div></div></td>
+				</tr>
+				<tr>
+					<td colspan="2" valign="middle" style=" border-right:0"><span class="bold">Cymru a Lloegr</span><div class="smallBg"><p>Cyfarwyddeb 2002/91/EC</p><p>yr Undeb Ewropeaidd</p></div></td><td style="text-align:center;"><img height="28" width="40" src="images/EU.bmp" /></td>
+				</tr>
+		  </table>
+		<div>Mae’r cyfraddiad effaith amgylcheddol yn fesur o
+effaith y cartref yn nhermau allyriadau carbon
+deuocsid (CO2). Po uchaf yw’r cyfraddiad, y lleiaf o
+effaith y mae’n ei gael ar yr amgylchedd.</div>	  </td>
+	</tr>
+</table>
+<table width="100%" class="redBox">
+	<tr>
+		<td  class="h2">Amcangyfrif o ddefnydd ynni, allyriadau carbon deuocsid (CO2) a chostau tanwydd y cartref hwn</td>
+	</tr>
+</table>
+<table class="listBlue" cellspacing="0" width="100%">
+	<tr>
+		<td bgcolor="#DAE4EF">&nbsp;</td>
+		<td bgcolor="#DAE4EF" align="center">Cyfredol</td>
+		<td bgcolor="#DAE4EF" align="center">Potensial</td>
+	</tr>
+	<tr>
+		<td>Defnydd o ynni</td>
+		<td align="center">372 kWh/m&sup2; y flwyddyn</td>
+		<td align="center">303 kWh/m&sup2; y flwyddyn</td>
+	</tr>
+	<tr>
+		<td>Allyriadau carbon deuocsid </td>
+		<td align="center">23 tunnell y flwyddyn</td>
+		<td align="center">19 tunnell y flwyddyn</td>
+	</tr>
+	<tr>
+		<td>Golau</td>
+		<td align="center">&pound;228 y flwyddyn</td>
+		<td align="center">&pound;114 y flwyddyn</td>
+	</tr>
+	<tr>
+		<td>Gwres</td>
+		<td align="center">&pound;1770 y flwyddyn</td>
+		<td align="center">&pound;1561 y flwyddyn</td>
+	</tr>
+	<tr>
+		<td>Dŵr poeth</td>
+		<td align="center">&pound;379 y flwyddyn</td>
+		<td align="center">&pound;238 y flwyddyn</td>
+	</tr>
+</table>
+<table style="font-size:10.44pt">
+	<tr>
+		<td><p class="paragraph">Darparwyd ffigurau’r tabl uchod i alluogi darpar-brynwyr a thenantiaid i gymharu costau tanwydd ac gollyngiad carbon un
+cartref â’r llall. I hyrwyddo’r gymhariaeth hon, bwriwyd cyfrif o’r ffigurau trwy ddefnyddio amodau rhedeg safonedig
+(cyfnodau gwresogi, tymheredd ystafell etc) sydd yr un fath ar gyfer pob cartref. O ganlyniad, maen nhw’n annhebygol o
+gyfateb i filiau tanwydd gwirioneddol y deiliad a’r gollyngiad carbon ymarferol. Dydy’r ffigurau ddim yn cynnwys ardrawiad y
+tanwyddau a gaiff eu defnyddio wrth goginio neu redeg cyfarpar, megis teledu, rhewgell etc.; dydyn nhw ddim chwaith yn
+adlewyrchu’r costau sy’n gysylltiedig ag archwiliadau gwasanaethu, cynnal a chadw neu ddiogelwch. Gofalwch bob amser
+wirio dyddiad y dystysgrif, gan y gall prisau tanwydd amrywio gydag amser ac y bydd yr argymhellion arbed ynni’n esblygu.</p>
+		  <p class="paragraph">I weld sut all y cartref hwn gyflawni ei gyfraddiad potensial, gweler y mesurau a argymhellir.</p>
+		</td>
+	</tr>
+</table>
+<table width="100%" class="redBox yellow">
+	<tr>
+		<td width="10%"><img src="images/eer_red.bmp" width="90"/></td>
+		<td width="90%" class="h4"><p class="paragraph">Cofiwch edrych am y logo argymell arbed ynni wrth brynu cynhyrchion effeithlon o ran ynni. Mae’n
+ffordd gyflym a hawdd o adnabod y cynhyrchion mwyaf effeithlon sydd ar y farchnad.</p>
+		<p class="paragraph">Gall yr EPC a’r adroddiad argymhellion hwn gael eu rhoi i’r Ymddiriedolaeth Arbed Ynni er mwyn ichi
+gael gwybodaeth am wella perfformiad ynni’ch anheddiad.</p>
+	  </td>
+	</tr>
+</table>
+
+<div style="page-break-after:always;"></div>
+<div class="version">
+	<table width="100%" class="redBox">
+		<tr>
+			<td class="h2">Ynghylch y ddogfen hon
+			</td>
+		</tr>
+	</table>
+	<table width="100%">
+		<tr>
+			<td>Cynhyrchwyd y Dystysgrif Perfformiad Ynni ar gyfer yr annedd hon yn dilyn asesiad ynni gan asesydd cymwys, sydd
+wedi’i achredu gan Quidos, yn ôl cynllun a awdurdodwyd gan y Llywodraeth. Cynhyrchwyd y dystysgrif hon
+gan ddefnyddio methodoleg asesu RdSAP 2005 a chynhyrchwyd hi o dan y Energy Performance of Buildings
+(Certificates and Inspections) (England and Wales) Regulations 2007 fel y’u diwygiwyd. Mae copi o’r dystysgrif wedi’i
+leoli ar gofrestr genedlaethol.
+			</td>
+		</tr>
+	</table>
+	<table width="100%">
+		<tr>
+			<td style="width:6.3cm">Rhif Achrediad yr Asesydd:</td>
+			<td>QUID0001</td>
+		</tr>
+		<tr>
+			<td>Enw’r Asesydd:</td>
+			<td>huihua zhang</td>
+		</tr>
+		<tr>
+			<td>Enw’r cwmni/enw masnachu:</td>
+			<td>Quidos</td>
+		</tr>
+		<tr>
+			<td>Cyfeiriad:</td>
+			<td>10 Argyle Street</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Rhif ffôn:</td>
+			<td>01225 318 400</td>
+		</tr>
+		<tr>
+			<td>Rhif ffacs:</td>
+			<td>01225 466 661</td>
+		</tr>
+		<tr>
+			<td>Cyfeiriad e-bost:</td>
+			<td>huihua.zhang@quidos.co.uk</td>
+		</tr>
+		<tr>
+			<td>Dadleniad partïon perthnasol:</td>
+			<td>Buddiant ariannol yn yr eiddo</td>
+		</tr>
+	</table>
+	<table width="100%" class="redBox">
+		<tr>
+			<td class="h2">Os oes cwyn gennych neu os ydych yn dymuno cadarnhau bod y dystysgrif yn ddilys
+			</td>
+		</tr>
+	</table>
+	<table width="100%">
+		<tr>
+			<td>Mae manylion yr asesydd a’r cynllun achredu perthnasol fel uchod. Gallwch ddod o hyd i fanylion cyswllt y cynllun
+achredu ar ein gwefan ar www.quidos.co.uk ynghyd â manylion am eu gweithdrefnau ar gyfer cadarnhau dilysrwydd
+y dystysgrif ac ar gyfer cwyno.
+			</td>
+		</tr>
+	</table>
+	<table width="100%" class="redBox">
+		<tr>
+			<td class="h2">Ynghylch cyfraddiadau perfformiad yr adeilad
+			</td>
+		</tr>
+	</table>
+<p class="paragraph">Mae’r cyfraddiadau ar y dystysgrif yn darparu mesur o effeithlonrwydd ynni cyffredinol yr adeilad a’i effaith
+amgylcheddol, wedi eu cyfrif yn unol â methodoleg genedlaethol sy’n cymryd i ystyriaeth ffactorau megis inswleiddio,
+systemau gwres a dŵr poeth, awyru a’r defnydd o danwydd. Ar gyfartaledd band E (cyfraddiad 46) yw’r Cyfraddiad
+Effeithlonrwydd Ynni ar gyfer annedd yng Nghymru a Lloegr.</p>
+<p class="paragraph">Ni chaiff pob adeilad ei ddefnyddio yn yr un ffordd, felly bydd cyfraddiadau ynni’n defnyddio tybiaethau ‘meddiannaeth safonol‘, a fydd o bosib yn wahanol i’r ffordd benodol y byddwch chi’n defnyddio’ch cartref. Mae dulliau cyfrifo gwahanol yn cael eu defnyddio ar gyfer cartrefi ac ar gyfer adeiladau eraill. Gellir dod o hyd i’r manylion ar www.communities.gov.uk/epbd.</p>
+<p class="paragraph">Mae adeiladau sy’n fwy effeithlon o ran ynni yn defnyddio llai o ynni, yn costio   llai i’w rhedeg, ac yn helpu i warchod yr amgylchedd. 
+Byddai adeilad gyda graddfa o 100 yn costio fawr ddim i’w wresogi a’i oleuo ac felly’n achosi fawr ddim o allyriadau carbon. 
+Mae’r cyfraddiadau potensial yn y dystysgrif yn disgrifio pa mor agos y gallai’r adeilad hwn ddod at 100 pe rhoddid y gwelliannau cost effeithiol a argymhellwyd ar waith.
+</p>
+	<table width="100%" class="redBox">
+		<tr>
+			<td class="h2">Ynghylch effaith adeiladau ar yr amgylchedd
+			</td>
+		</tr>
+	</table>
+<p class="paragraph">Un o’r cyfranwyr mwyaf at gynhesu byd eang yw carbon deuocsid. Mae’r ffordd y defnyddiwn ynni mewn adeiladau
+yn cynhyrchu allyriadau carbon. Mae’r ynni a ddefnyddiwn ar gyfer gwresogi, goleuo a thrydan mewn cartrefi yn
+cynhyrchu dros chwarter o allyriadau carbon deuocsid y DU ac mae adeiladau eraill yn cynhyrchu chweched ran
+arall.</p>
+<p class="paragraph">Mae’r cartref cyffredin yn cynhyrchu tua 6 thunnell o garbon deuocsid bob blwyddyn. Drwy fabwysiadu’r argymhellion
+yn yr adroddiad hwn gellir lleihau’r allyriadau a gwarchod yr amgylchedd. Gallech leihau allyriadau hyd yn oed yn fwy
+drwy newid i ffynonellau ynni adnewyddadwy. Yn ogystal mae llawer o fesurau syml bob dydd a fydd yn arbed arian,
+yn gwella esmwythdra a lleihau’r effaith ar yr amgylchedd. Mae enghreifftiau wedi’u rhoi ar ddiwedd yr adroddiad
+hwn.</p>
+	<table class="list" width="100%" cellspacing="0">
+		<tr>
+		<td style="padding:5px;">
+		<p style="text-align:center;"><img src="images/DG_Logo.jpg" width="220" /></p>
+		<p style="text-align:center; margin: 10pt 0; font-weight:bold;">Cliciwch <font style="color:blue;">www.epcadviser.direct.gov.uk</font> ein hofferyn ar-lein sy’n defnyddio gwybodaeth o’r EPC yma i ddangos sut i arbed arian ar eich biliau tanwydd.</p>
+		<p style=" text-align:center; margin: 10pt 0; ">Mae gwybodaeth bellach am Dystysgrifau Perfformiad Ynni i’w chael o dan Frequently Asked Questions yn www.epcregister.com</p>
+		</td>
+		</tr>
+	</table>
+</div>
+<div style="page-break-after:always"></div>
+
+<table class="redBox">
+	<tr>
+		<td valign="top" style=" height:40pt; font-size:14.64pt; padding:5px;"><p>Recommended measures to improve this home’s energy performance</p></td>
+	</tr>
+</table>
+<table width="100%" cellspacing="0">
+	<tr>
+		<td style="padding:0" valign="top">
+			<table cellspacing="0">
+			<tr><td>4 Princess Street</td></tr>
+			<tr><td>Collyhurst</td></tr>
+			<tr><td></td></tr>
+			<tr><td>Manchester</td></tr>
+			<tr><td>M60 4TT</td></tr>
+			</table>
+		</td>
+		<td style="padding:0; width:10.5cm" valign="top">
+			<table cellspacing="0">
+			<tr>
+				<td style="width:4cm">Dyddiad y dystysgrif:</td>
+				<td style="width:6.5cm">30 Tachwedd 2009</td>
+			</tr>
+			<tr>
+				<td>Cyfeirnod:</td>
+				<td>0896-9995-2220-3520-8013</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+	
+</table>
+<table width="100%" class="redBox">
+	<tr>
+		<td class="h2">Crynodeb o nodweddion y cartref hwn sy’n gysylltiedig â’i berfformiad ynni</td>
+	</tr>
+</table>
+<p class="paragraph">Mae’r tabl isod yn rhoi asesiad o’r elfennau unigol allweddol sy’n effeithio ar berfformiad ynni ac amgylcheddol y
+cartref hwn. Caiff pob elfen ei hasesu trwy’r dull bwrw-cyfrif cenedlaethol yn ôl y raddfa ganlynol: Gwael iawn /
+Gwael / Cyfartalog / Da / Da iawn. Dydy’r asesiad ddim yn cymryd i ystyriaeth gyflwr ffisegol unrhyw elfen. Ystyr
+“tybiedig” yw na fu modd archwilio’r inswleiddio ac y gwnaed rhagdybiaeth o fewn y fethodoleg ar sail oed a
+math yr adeilad.</p>
+<table class="listBlue" cellspacing="0" style="margin-bottom:0">
+<tr class="onerow">
+<td rowspan="3" bgcolor="#DAE4EF" style="width: 3.4cm">Elfennau</td>
+<td rowspan="3" bgcolor="#DAE4EF">Disgrifiad</td>
+<td colspan="2" bgcolor="#DAE4EF" align="center">Perfformiad cyfredol</td>
+</tr>
+<tr class="border"><td colspan="2"></td></tr>
+<tr class="onerow">
+<td bgcolor="#DAE4EF" align="center" style="width: 3.2cm">Effeithlonrwydd ynni</td>
+<td bgcolor="#DAE4EF" align="center" style="width: 3cm">Amgylcheddol</td>
+</tr>
+<tr class="border"><td colspan="4"></td></tr>
+<tr class="onerow">
+	<td valign="top">Waliau</td>
+	<td valign="top">Waliau ceudod, fel y’u hadeiladwyd, dim inswleiddio (rhagdybiaeth)</td>
+	<td align="center" valign="top">Gwael</td>
+	<td align="center" valign="top">Gwael</td>
+</tr>
+
+<tr class="onerow">
+	<td valign="top"></td>
+	<td valign="top">Briciau solet, fel y’u hadeiladwyd, inswleiddio rhannol (rhagdybiaeth)</td>
+	<td align="center" valign="top">Cymedrol</td>
+	<td align="center" valign="top">Cymedrol</td>
+</tr>
+
+<tr class="onerow">
+	<td valign="top"></td>
+	<td valign="top">Ffrâm bren, fel y’u hadeiladwyd, inswleiddio rhannol (rhagdybiaeth)</td>
+	<td align="center" valign="top">Cymedrol</td>
+	<td align="center" valign="top">Cymedrol</td>
+</tr>
+<tr class="border"><td colspan="4"></td></tr>
+<tr class="onerow">
+	<td valign="top">To</td>
+	<td valign="top">Ystafell(oedd) to, inswleiddio cyfyngedig (rhagdybiaeth)</td>
+	<td align="center" valign="top">Gwael</td>
+	<td align="center" valign="top">Gwael</td>
+</tr>
+
+<tr class="onerow">
+	<td valign="top"></td>
+	<td valign="top">Ystafell(oedd) to, wedi’i inswleiddio (rhagdybiaeth)</td>
+	<td align="center" valign="top">Da</td>
+	<td align="center" valign="top">Da</td>
+</tr>
+
+<tr class="onerow">
+	<td valign="top"></td>
+	<td valign="top">Ystafell(oedd) to, wedi’i inswleiddio</td>
+	<td align="center" valign="top">Da</td>
+	<td align="center" valign="top">Da</td>
+</tr>
+<tr class="border"><td colspan="4"></td></tr>
+<tr class="onerow">
+	<td valign="top">Llawr</td>
+	<td valign="top">Solet, dim inswleiddio (rhagdybiaeth)</td>
+	<td align="center" valign="top">-</td>
+	<td align="center" valign="top">-</td>
+</tr>
+<tr class="border"><td colspan="4"></td></tr>
+<tr class="onerow">
+	<td valign="top">Ffenestri</td>
+	<td valign="top">Gwydrau sengl</td>
+	<td align="center" valign="top">Cymedrol</td>
+	<td align="center" valign="top">Cymedrol</td>
+</tr>
+<tr class="border"><td colspan="4"></td></tr>
+<tr class="onerow">
+	<td valign="top">Prif ddull o wresogi</td>
+	<td valign="top">Bwyler a gwres dan y llawr, 0</td>
+	<td align="center" valign="top">Gwael</td>
+	<td align="center" valign="top">Gwael iawn</td>
+</tr>
+<tr class="border"><td colspan="4"></td></tr>
+<tr class="onerow">
+	<td valign="top">Prif offer rheoli gwres</td>
+	<td valign="top">Rhaglennydd a thermostat ystafell</td>
+	<td align="center" valign="top">Cymedrol</td>
+	<td align="center" valign="top">Cymedrol</td>
+</tr>
+<tr class="border"><td colspan="4"></td></tr>
+<tr class="onerow">
+	<td valign="top">Gwres eilaidd</td>
+	<td valign="top">Dim</td>
+	<td align="center" valign="top">-</td>
+	<td align="center" valign="top">-</td>
+</tr>
+<tr class="border"><td colspan="4"></td></tr>
+<tr class="onerow">
+	<td valign="top">Dŵr poeth</td>
+	<td valign="top">O'r brif system, dim thermostat ar y silindr, 0</td>
+	<td align="center" valign="top">Gwael</td>
+	<td align="center" valign="top">Gwael iawn</td>
+</tr>
+<tr class="border"><td colspan="4"></td></tr>
+<tr class="onerow">
+	<td valign="top">Goleuo</td>
+	<td valign="top">Dim goleuadau ynni-isel</td>
+	<td align="center" valign="top">Gwael iawn</td>
+	<td align="center" valign="top">Gwael iawn</td>
+</tr>
+<tr class="border"><td colspan="4"></td></tr>
+</table>
+
+<table cellspacing="0" class="yellow" style="font-size:11.76pt;">
+<tr class="colorD">
+<td colspan="2">Cyfraddiad effeithlonrwydd ynni cyfredol</td>
+<td style="width:3.2cm" align="center">E 41</td>
+<td style="width:3cm"></td>
+</tr>
+<tr class="grayE">
+<td colspan="2">Cyfraddiad effaith amgylcheddol(CO<sub>2</sub>)cyfredol</td>
+<td></td>
+<td align="center">F 35</td>
+</tr>
+</table>
+
+
+<table class="redBox" style="margin-top: 10pt">
+	<tr>
+		<td class="h2">Ffynonellau ynni carbon isel a dim carbon</td>
+	</tr>
+</table>
+
+<p class="paragraph">Dim</p>
+
+<div style="page-break-after:always"></div>
+
+<table class="redBox">
+	<tr>
+		<td class="h2">Argymhellion</td>
+	</tr>
+</table>
+<table>
+	<tr>
+		<td>Mae’r mesurau isod yn gost effeithiol. Mae’r cyfraddiadau perfformiad yn dilyn y gwelliannau sy’n cael eu rhestruisod yn gronnol, hynny yw, maent yn rhagdybio bod y gwelliannau wedi digwydd yn y drefn yr ymddangosant yny tabl.</td>
+	</tr>
+</table>
+<table class="listBlue" cellspacing="0" style=" margin-bottom:0">
+	<tr>
+	<td rowspan="2" bgcolor="#DAE4EF"><strong>Mesurau costau is (hyd at £500)</strong></td>
+	<td rowspan="2" bgcolor="#DAE4EF" align="center" style="width: 100pt">Arbedion arferoly flwyddyn</td>
+	<td colspan="2" bgcolor="#DAE4EF" align="center">Cyfraddiadau perfformiad yn dilyn y gwelliannau</td>
+	</tr>
+	<tr>
+	<td bgcolor="#DAE4EF" align="center" style="width: 100pt">Effeithlonrwydd ynni</td>
+	<td bgcolor="#DAE4EF" align="center" style="width: 100pt">Effaith amgylcheddol</td>
+	</tr>
+	<tr>
+	<td>
+		<table class="innerTable">
+		<tr>
+			<td style="width: 10pt; text-align: right; vertical-align:top; padding-right: 3pt;">1</td>
+			<td>Cynyddu inswleiddiad croglofft i 270 mm</td>
+		</tr>
+		</table>
+	</td>
+	<td align="center">£48</td>
+	<td align="center">F 30</td>
+	<td align="center">G 18</td>
+	</tr>
+	<tr>
+	<td>
+		<table class="innerTable">
+		<tr>
+			<td style="width: 10pt; text-align: right; vertical-align:top; padding-right: 3pt;">2</td>
+			<td>Inswleiddiad wal geudod</td>
+		</tr>
+		</table>
+	</td>
+	<td align="center">£68</td>
+	<td align="center">F 31</td>
+	<td align="center">G 19</td>
+	</tr>
+	<tr>
+	<td>
+		<table class="innerTable">
+		<tr>
+			<td style="width: 10pt; text-align: right; vertical-align:top; padding-right: 3pt;">3</td>
+			<td>Goleuo ynni isel ar gyfer yr holl osodiadau sefydlog</td>
+		</tr>
+		</table>
+	</td>
+	<td align="center">£78</td>
+	<td align="center">F 33</td>
+	<td align="center">G 19</td>
+	</tr>
+	<tr>
+	<td>
+		<table class="innerTable">
+		<tr>
+			<td style="width: 10pt; text-align: right; vertical-align:top; padding-right: 3pt;">4</td>
+			<td>Uwchraddio rheolyddion gwresogi</td>
+		</tr>
+		</table>
+	</td>
+	<td align="center">£86</td>
+	<td align="center">F 35</td>
+	<td align="center">F 21</td>
+	</tr>
+	<tr>
+	<td>
+		<div align="right" style=" padding-right:5pt;">
+		Cyfanswm
+		</div>
+	</td>
+	<td align="center">£280</td>
+	<td></td>
+	<td></td>
+	</tr>
+	
+</table>
+<table cellspacing="0" class="yellow" style="font-size:11.76pt;">
+<tr class="colorF">
+<td colspan="2">Cyfraddiad effeithlonrwydd ynni potensial</td>
+<td style="width: 100pt" align="center">F 35</td>
+<td style="width: 100pt"></td>
+</tr>
+<tr class="grayF">
+<td colspan="2">Cyfraddiad effaith amgylcheddol (CO<sub>2</sub>) potensial</td>
+<td></td>
+<td align="center">F 21</td>
+</tr>
+</table>
+
+<table class="redBox" style="margin-top: 10pt">
+	<tr>
+		<td class="h2">Mesurau pellach er mwyn cyrraedd safonau hyd yn oed yn uwch</td>
+	</tr>
+</table>
+	<p class="paragraph">
+	Dylid ystyried y mesurau pellach a restrir isod yn ogystal â’r rheini a nodwyd eisoes os ydych yn anelu am y safonau uchaf posibl ar gyfer y cartref hwn. 
+	Er hynny, dylech wirio’r amodau mewn unrhyw gyfamodau, amodau cyn lunio, 
+	gwarantiadau neu gontractau gwerthu.</p>
+	<table class="listBlue" cellspacing="0" style=" margin-bottom:0">
+		<tr>
+		<td>
+			<table class="innerTable">
+			<tr>
+				<td style="width: 10pt; text-align: right; vertical-align:top; padding-right: 3pt;">5</td>
+				<td>Gwresogi dŵr solar</td>
+			</tr>
+			</table>
+		</td>
+		<td align="center" style="width: 100pt">£59</td>
+		<td align="center" style="width: 100pt">F 36</td>
+		<td align="center" style="width: 100pt">F 22</td>
+		</tr>
+		<tr>
+		<td>
+			<table class="innerTable">
+			<tr>
+				<td style="width: 10pt; text-align: right; vertical-align:top; padding-right: 3pt;">6</td>
+				<td>Inswleiddiad wal fewnol neu allanol o 50 mm</td>
+			</tr>
+			</table>
+		</td>
+		<td align="center" style="width: 100pt">£51</td>
+		<td align="center" style="width: 100pt">F 38</td>
+		<td align="center" style="width: 100pt">F 23</td>
+		</tr>
+		<tr>
+		<td>
+			<table class="innerTable">
+			<tr>
+				<td style="width: 10pt; text-align: right; vertical-align:top; padding-right: 3pt;">7</td>
+				<td>Newid system wresogi i fwyler cyddwyso nwy Band A</td>
+			</tr>
+			</table>
+		</td>
+		<td align="center" style="width: 100pt">£420</td>
+		<td align="center" style="width: 100pt">D 60</td>
+		<td align="center" style="width: 100pt">D 59</td>
+		</tr>
+		<tr>
+		<td>
+			<table class="innerTable">
+			<tr>
+				<td style="width: 10pt; text-align: right; vertical-align:top; padding-right: 3pt;">8</td>
+				<td>Paneli solar ffotofoltäig, 2.5 kWp</td>
+			</tr>
+			</table>
+		</td>
+		<td align="center" style="width: 100pt">£167</td>
+		<td align="center" style="width: 100pt">D 65</td>
+		<td align="center" style="width: 100pt">D 64</td>
+		</tr>
+	</table>
+	<table cellspacing="0" class="yellow" style="font-size:11.76pt;">
+	<tr class="colorD">
+	<td colspan="2">Enhanced energy efficiency rating</td>
+	<td style="width: 100pt" align="center">D 65</td>
+	<td style="width: 100pt" align="center"></td>
+	</tr>
+	<tr class="grayD">
+	<td colspan="2">Enhanced environmental impact (CO<sub>2</sub>) rating</td>
+	<td></td>
+	<td align="center">D 64</td>
+	</tr>
+	</table>
+<p class="paragraph">Bydd gwelliannau i’r cyfraddiadau effeithlonrwydd ynni ac effaith amgylcheddol fel arfer yn dod yn sgil ei gilydd.Serch hynny, gallant weithiau ddargyfeirio gan nad yw costau ynni is bob amser yn cynhyrchu llai o allyriadaucarbon deuocsid (CO<sub>2</sub>).</p>
+
+
+<div style="page-break-after:always"></div>
+
+<table class="redBox">
+	<tr>
+		<td class="h2">Ynghylch y mesurau cost effeithiol i wella ar gyfraddiadau perfformiad y cartref hwn</td>
+	</tr>
+</table>
+<p class="paragraph">Os ydych yn denant, cyn gwneud unrhyw waith dylech edrych ar delerau’ch prydles a sicrhau cymeradwyaetheich landlord os yw’r brydles yn dweud bod rhaid ichi ei chael neu os nad yw’r brydles yn darparu’n unswydd argyfer gwaith o’r fath.</p>
+
+
+<p class="title">Mesurau costau is (fel arfer hyd at £500 yr un)</p>
+<p class="paragraph">Mae’r mesurau hyn yn gymharol rad i’w gosod ac mae’n werth mynd i’r afael â hwy yn gyntaf. Mae’n bosib ybydd rhai ohonynt yn cael eu gosod fel prosiectau DIY. Nid yw hynny bob amser yn syml ac weithiau maeperyglon iechyd a diogelwch, felly cymerwch gyngor cyn mynd ati i wneud y gwelliannau hyn eich hun.</p>
+<div style="page-break-after: avoid;">
+	<p class="title">1 Inswleiddiad croglofft</p>
+	<p>Bydd gosod inswleiddiad yn y gofod croglofft neu rhwng trawstiau pren nenfwd i drwch o 270 mm o leiaf yn lleihau’r gwres a gollir trwy’r to yn arwyddocaol; bydd hyn yn gwella’r cysur, yn lleihau defnydd ynni ac yn gostwng biliau tanwydd. Ni ddylid gosod inswleiddiad o dan unrhyw danc storio dŵr oer, a dylai unrhyw danc o’r fath gael ei inswleiddio ar ei ochrau a’i ben, a dylid gosod byrddau ar fatonau dros yr inswleiddiad i ddarparu mynediad diogel rhwng yr agoriad i’r groglofft a’r tanc dŵr oer. Gall yr inswleiddiad yma gael ei osod gan gontractwyr proffesiynol ond hefyd gan berson DIY brwdfrydig medrus. Gellir defnyddio gronynnau rhydd yn hytrach na chwilt inswleiddio, gellir chwythu’r math yma o inswleiddiad i’w le a gall fod yn ddefnyddiol lle mae’r mynediad yn anodd. Rhaid i’r gofod yn y groglofft fod â gwyntylliad digonol i osgoi lleithder; mynnwch gyngor am hyn os ydych yn ansicr. Mae rhagor o wybodaeth am inswleiddio croglofftydd a manylion contractwyr lleol ar gael gan y National Insulation Association (www.nationalinsulationassociation.org.uk).</p>
+</div>
+<div></div>
+<div style="page-break-after: avoid;">
+	<p class="title">2 Inswleiddiad wal geudod</p>
+	<p>Mae inswleiddiad wal geudod, i lenwi’r twll rhwng yr haenau mewnol ac allanol o waliau allanol gyda deunydd inswleiddio, yn gostwng colledion gwres: bydd hyn yn gwella’r cysur, yn lleihau defnydd ynni ac yn gostwng biliau tanwydd. Pwmpir y deunydd inswleiddio i fewn i’r bylchau drwy dyllau bychan sydd yn cael eu drilio i mewn i’r waliau allanol, ac fe atgyweirir y tyllau wedyn. Gan y defnyddir peiriannau arbennig i lenwi’r ceudod, dylai cwmni proffesiynol wneud y gwaith yma, a dylent wneud arolwg manwl cyn cychwyn ar y gwaith i wneud yn sicr bod y math yma o inswleiddiad yn addas i’r cartref yma. Dylasent hefyd warantu’r gwaith a delio gydag unrhyw faterion rheoli adeiladu. Gellir cael gwybodaeth bellach am inswleiddio waliau ceudod a manylion gosodwyr lleol gan y National Insulation Association (www.nationalinsulationassociation.org.uk).</p>
+</div>
+<div></div>
+<div style="page-break-after: avoid;">
+	<p class="title">3 Goleuo ynni isel</p>
+	<p>Mae cyfnewid bylbiau golau traddodiadol am fylbiau a argymhellir am arbed ynni yn lleihau costau dros hyd oes y bwlb, ac maent yn para hyd at 12 gwaith yn fwy na bylbiau cyffredin. Ystyriwch hefyd ddewis ffitiadau golau ynni isel wrth ailaddurno; cysylltwch â’r Lighting Association er mwyn cael gwybod am eich siop leol sydd yn gwerthu ffitiadau Cynllun Goleuo Domestig Ynni Effeithlon.</p>
+</div>
+<div></div>
+<div style="page-break-after: avoid;">
+	<p class="title">4 Rheolyddion gwresogi (falfiau rheiddiadur thermostatig)</p>
+	<p>Mae falfiau rheiddiadur thermostatig yn galluogi tymheredd pob ystafell i gael ei reoli i gwrdd ag anghenion unigol, gan ychwanegu at gysur a lleihau biliau gwresogi os bydd drysau mewnol yn cael eu cadw ar gau. Er enghraifft, gallant gael eu gosod i fod yn gynhesach yn y lolfa a’r ystafell ymolchi nag yn yr ystafelloedd gwely. Gofynnwch i beiriannydd gwresogi cymwys osod falfiau rheiddiadur thermostatig. Dylai falfiau rheiddiadur thermostatig gael eu ffitio ar bob rheiddiadur heblaw’r rheiddiadur yn yr un ystafell â’r thermostat ystafell. Cofiwch fod angen y thermostat ystafell ynghyd â’r falfiau rheiddiadur thermostatig, i alluogi’r bwyler i ddiffodd pan nad oes angen gwres.</p>
+</div>
+<div></div>
+
+
+<table class="redBox" style="margin-top: 10pt">
+	<tr>
+		<td class="h2">Ynghylch y mesurau pellach i gyrraedd safonau hyd yn oed yn uwch</td>
+	</tr>
+</table>
+<p class="paragraph">
+Mesurau pellach a allai olygu safonau hyd yn oed yn uwch ar gyfer y cartref hwn. 
+Dylech wirio’r amodau mewn unrhyw gyfamodau, amodau cynllunio, 
+gwarantiadau neu gontractau gwerthu cyn ymgymryd ag unrhyw un o’r mesurau hyn. 
+Os ydych yn denant, cyn gwneud unrhyw waith dylech edrych ar delerau’ch prydles a sicrhau cymeradwyaeth eich landlord os yw’r brydles yn dweud bod rhaid ichi ei chael neu os nad yw’r brydles yn darparu’n unswydd ar gyfer gwaith o’r fath.
+</p>
+<div style="page-break-after: avoid;">
+	<p class="title">5 Gwresogi dŵr solar</p>
+	<p>Bydd panel gwresogi dŵr solar, sydd fel arfer yn cael ei osod ar y to, yn defnyddio’r haul i ragboethi’r cyflenwad dŵr poeth. Bydd hyn yn gostwng y galw ar y system wresogi i ddarparu dŵr poeth yn arwyddocaol a chan hynny yn arbed tanwydd ac arian. Mae gan y Solar Trade Association wybodaeth gyfredol am osodwyr lleol ac unrhyw grant a all fod ar gael.</p>
+</div>
+<div></div>
+<div style="page-break-after: avoid;">
+	<p class="title">6 Inswleiddiad wal fewnol neu allanol</p>
+	<p>Mae inswleiddiad wal gadarn yn golygu ychwanegu haenau o inswleiddiad i arwyneb naill ai y tu mewn neu’r tu allan i waliau allanol, sydd yn gostwng colledion gwres ac sydd yn lleihau biliau tanwydd. Gan ei fod yn fwy drud nag inswleiddio waliau ceudod fe’i hargymhellir ar gyfer waliau heb geudod yn unig, neu lle na ellir llenwi ceudod am resymau technegol. Mae inswleiddiad mewnol, sydd yn cael ei adnabod fel ‘dry lining’ yn Saesneg, yn digwydd pan fydd haenen o inswleiddiad yn cael ei roi ar arwyneb mewnol waliau allanol; yr adeg orau i ddefnyddio’r dull yma yw pan fydd angen ail addurno a gall unigolyn medrus â diddordeb brwd mewn DIY ei osod. Golyga inswleiddiad wal gadarn allanol osod inswleiddiad a gorffeniad i atal tywydd ar y wal allanol. Gall hyn wella golwg y cartref yn enwedig lle mae’r gwaith brics neu rendro’n wael a bydd yn rhoi diogelwch tymor hir rhag y tywydd. Gellir cael gwybodaeth bellach gan y National Insulation Association (www.nationalinsulationassociation.org.uk). Dylid nodi y bydd caniatâd cynllunio yn ofynnol o bosib.</p>
+</div>
+<div></div>
+<div style="page-break-after: avoid;">
+	<p class="title">7 Bwyler cyddwyso nwy Band A</p>
+	<p>Bydd newid y system wresogi i ddefnyddio bwyler nwy prif gyflenwad sydd yn gwresogi gofod a dŵr yn arbed arian, gan fod defnyddio nwy prif gyflenwad dipyn yn rhatach na’r tanwydd sydd yn cael ei ddefnyddio ar hyn o bryd. Gall bwyler cyddwyso fod yn llawer mwy effeithlon na mathau eraill o fwyleri sydd yn golygu y bydd yn llosgi llai o danwydd i wresogi’r adeilad, ond gall fod rhai amgylchiadau eithriadol sydd yn gwneud hyn yn anymarferol. Mae angen draen ar fwyleri cyddwyso ar gyfer y cyddwysiad sydd yn cyfyngu ar eu lleoliad; cofiwch hyn wrth ystyried ail-ddylunio’r ystafell sydd yn cynnwys y bwyler presennol er efallai y byddwch yn cadw’r bwyler yma am y tro (er enghraifft wrth ail-wneud y gegin). Mae’r gwelliant yn fwyaf addas pan fo’r system wresogi bresennol angen ei hatgyweirio neu ei chyfnewid. Mae Rheoliadau Adeiladu yn berthnasol i’r gwaith hwn, felly dylid hysbysu adran rheoli adeiladu eich awdurdod lleol oni bai bod y sawl sydd yn gosod wedi ei gofrestru gyda chynllun person cymwys¹, ac o’r herwydd yn medru ardystio’r gwaith ei hunan er mwyn sicrhau ei fod yn cydymffurfio â’r Rheoliadau Adeiladu. Gofynnwch i beiriannydd gwresogi cymwysedig esbonio’r opsiynau i chi.</p>
+</div>
+<div></div>
+<div style="page-break-after: avoid;">
+	<p class="title">8 Paneli solar ffotofoltäig</p>
+	<p>Mae system solar PV yn un sydd yn trosi goleuni yn drydan drwy gyfrwng paneli wedi eu gosod ar y to heb unrhyw wastraff nag allyriadau. Caiff y trydan hwn ei ddefnyddio drwy’r cartref yn union yn yr un modd â thrydan sydd wedi ei brynu oddi wrth gyflenwr ynni. Mae gan y British Photovoltaic Association wybodaeth gyfredol ar osodwyr lleol sydd yn drydanwyr cymwysedig ac ar unrhyw grant sydd ar gael. Efallai bod cyfyngiadau cynllunio yn bodoli mewn rhai cymdogaethau a dylech wirio hyn gyda’ch awdurdod lleol. Mae Rheoliadau Adeiladu yn berthnasol i’r gwaith hwn, felly dylid hysbysu adran rheoli adeiladu eich awdurdod lleol oni bai bod y sawl sydd yn gosod wedi ennill cymwysterau priodol ac wedi ei gofrestru felly gyda chynllun person cymwys¹, ac o’r herwydd yn medru ardystio’r gwaith ei hunan er mwyn sicrhau ei fod yn cydymffurfio â’r Rheoliadau Adeiladu.</p>
+</div>
+<div></div>
+
+<div style="page-break-after: avoid">
+<table class="redBox" style="margin-top: 10pt">
+	<tr>
+		<td class="h2">Beth galla ei wneud heddiw?</td>
+	</tr>
+</table>
+<table>
+	<tr>
+		<td>
+		<p>Mae’r camau a fydd yn arbed arian ac yn lleihau effaith eich cartref ar yr amgylchedd yn cynnwys:</p>
+		<ul class="redLi">
+		
+		<li><div>Sicrhau eich bod yn deall yr annedd a sut mae’r systemau ynni ynddi wedi’u bwriadu i weithio er mwynsicrhau’r fantais fwyaf posibl o ran lleihau’r ynni sy’n cael ei ddefnyddio a’r allyriannau CO<sub>2</sub>.</div></li>
+		<li><div>Gwirio nad yw thermostat eich system gwresogi wedi’i osod yn rhy uchel (mewn cartref, awgrymir 21°C yn yrystafell fyw) a defnyddio’r amserwr er mwyn sicrhau mai dim ond pan fydd angen y byddwch yn gwresogi’radeilad.</div></li>
+		<li><div> Gwneud yn siŵr nad yw eich dŵr poeth wedi’i orboethi - fel arfer nid oes angen i thermostat silindr fod ynuwch na 60°C.</div></li>
+		<li><div>Diffodd goleuadau pan nad oes eu hangen, a pheidio gadael peiriannau/offer ar ‘standby’. Cofiwch beidio âgadael gwefrydd (ee ar gyfer ffôn symudol) ymlaen pan nad ydych yn ei ddefnyddio.</div></li>
+		<li><div>Cau’r llenni yn ystod y nos i leihau ar y gwres sy’n dianc drwy’r ffenestri.</div></li>
+		<li><div>Os nad ydych yn llenwi’r peiriant golchi, y sychwr neu’r peiriant golchi llestri, defnyddiwch y rhaglen hannerllwyth neu’r rhaglen ddarbodus.</div></li>
+		
+		</ul>
+		<p>Am gyngor ar sut i weithredu a dod i wybod am gynigion sydd ar gael i helpu gwneud eich cartref yn fwyeffeithlon o ran ynni, ffoniwch 0800 512 012 neu ewch i’r wefan www.energysavingtrust.org.uk.</p>
+		</td>
+	</tr>
+</table>
+</div>
+<div></div>
+
+
+</body>
+</html>

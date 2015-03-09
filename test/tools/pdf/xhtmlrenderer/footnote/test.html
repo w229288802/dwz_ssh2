@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>From footnotes to sidenotes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css" media="screen">
+@import "side.css";
+</style>
+<style type="text/css" media="print">
+@import "print.css";
+</style>
+</head>
+<body>
+<div>
+<h1>From footnotes to sidenotes</h1>
+<h2>Instant action</h2>
+
+<p>Just some lines of text for instant testing pleasure. If you click the links in these two paragraphs, a green information box should appear on the right side of your screen, that is, in browsers that use the <a href="#ftn1">Gecko</a> <span id="ftn1">[Gecko is a browser engine designed to support open Internet standards such as HTML 4.0, CSS 1/2 (and a bit of CSS3), the W3C Document Object Model, XML 1.0, RDF, and JavaScript.]</span> layout engine <ins>(+ Safari)</ins>.</p> 
+<p>"Why Gecko <ins>(+ Safari)</ins>?" you ask. "CSS3", I answer. The effects described in this tutorial only work in <a href="#ftn2">Mozilla</a> <span id="ftn2">[Mozilla is the name of a browser using the Gecko layout engine.]</span> or <a href="#ftn3">other Gecko enabled browsers</a> <span id="ftn3">[Other Gecko enabled browsers are e.g. Netscape Navigator, Mozilla Firebird, Galeon, Camino, etc.]</span> <ins>(+ Safari)</ins> as they completely rely on <a href="#ftn4">CSS3</a> <span id="ftn4">[CSS3 stands for Cascading Style Sheets level 3 and is still under development. It allows for strong visual control over elements on webpages.]</span> (pseudo-)selectors. I was not too nasty however - the page degrades nicely in Internet Explorer, Opera, etc.</p>
+
+<h2>OK, so what's this all about?</h2>
+<p><strong>Footnotes</strong>. It's about using footnotes on the web. Imagine you want to publish a paper online. Usually, the code you'll use for dealing with footnotes will look like this:</p>
+<p><code class="block">&lt;p&gt;This is an XHTML&lt;sup&gt;&lt;a href="#ftn1"&gt;1&lt;/a&gt;&lt;/sup&gt; example.&lt;/p&gt;<br/>
+&lt;p&gt;...(the rest of the text)...&lt;/p&gt;<br/>
+
+&lt;p id="ftn1"&gt;1. XHTML is a reformulation of HTML 4 as an XML 1.0 application.&lt;/p&gt;</code></p>
+<p>There are a few problems with this approach, though:</p>
+<ul>
+<li>First, <strong>technically</strong> it's <strong>quite a mess</strong>. Handcoding is OK, but not if you have to scroll up and down constantly to make those darn footnotes.</li>
+<li>From the viewpoint of <strong>usability</strong>, footnotes are also <strong>not a very good idea</strong>. The reader has to jump up and down in the text by means of links and the "Back"-button. Footnotes are an artifact from printing and one can question whether they really have to be placed in the footer of a webpage, just because "it has always been done like this".</li>
+
+<li>Third, this way of dealing with footnotes is <strong>semantically not 100% correct</strong>. Does the number (<sup>1</sup> in the example) define the word it is glued to? Or the whole sentence? And then also, isn't placing the footnotes all the way down the page more a matter of design than of semantics?</li>
+</ul>
+<p>Talking about semantics, let's have a look at how <strong><a href="#ftn5">DocBook</a></strong> <span id="ftn5">[DocBook provides a system for writing structured documents using SGML or XML.]</span> deals with footnotes:</p>
+<p><code class="block">&lt;para&gt;This is a DocBook&lt;footnote id="ftn1"&gt;&lt;para&gt;DocBook provides a system for writing structured documents using SGML or XML.&lt;/para&gt;&lt;/footnote&gt; example.&lt;/para&gt;</code></p>
+
+<p>Doesn't look bad, huh. Footnotes are placed inline, which looks semantically more correct (and coding it is much easier!). However, one still has to guess what the footnote is refering to. In this context, it is quite obvious that it's a note about the word DocBook, but there might be some confusion with longer sentences.</p>
+<p>OK, let's see if we can do some DocBook-like-footnote-thingy with <a href="#ftn6">XHTML</a> <span id="ftn6">[XHTML is a reformulation of HTML 4 as an XML 1.0 application.]</span>.</p>
+<h2>Show me some code</h2>
+<p>I came up with this <strong>XHTML</strong> interpretation of the DocBook example:</p>
+<p><code class="block">&lt;p&gt;This is an &lt;a href="#ftn1"&gt;XHTML&lt;/a&gt; &lt;span id="ftn1"&gt;[XHTML is a reformulation of HTML 4 as an XML 1.0 application.]&lt;/span&gt; example.&lt;/p&gt;</code></p>
+
+<p>So, what do we have here? I tried to put the footnote inline and, instead of glueing it to the previous word, I refered to it by means of a link. We're working with <a href="#ftn7">HyperText</a> <span id="ftn7">[HyperText is a system for displaying information that contains links to other related pieces of information.]</span> after all. And oh, the brackets are just for backwards compatibility in non-CSS3-aware browsers. More about that later.</p>
+<p>OK, now we have <strong>inline footnotes with hyperreferences</strong>. But how to display them? Inline display is not an ideal solution; what are the other possibilities?</p>
+<p>It's here <strong>CSS3</strong> comes in. I added this piece of code to my stylesheet:</p>
+<p><code class="pre">div {
+	padding-right: 30%;
+	}
+span[id^="ftn"] {
+	display: none;
+	}
+span[id^="ftn"]:target {
+	display: block;
+	position: fixed;
+	right: 0.6em;
+	top: 3.1em;
+	width: 25%;
+	}
+
+</code></p>
+<p>A short analysis. First, I added some 30% padding to the containing <code>div</code>, so as to create a sort of empty sidebar, in which the footnotes - sidenotes, in fact - will appear. Then, the CSS3 selectors. "Hide all the <code>span</code>s that have an <code>id</code> attribute that contains the letters 'ftn'", the first CSS3 selector says. The second one continues: "But show those <code>span</code>s as a <strong>fixed sidenote</strong> when their <code>id</code> is addressed, that is, when somebody clicks on the word they define."</p> 
+
+<p>That's it! It is just a pity the combination of <code>:target</code> and <code>element[attribute^="value"]</code> is only supported by Gecko browsers (<del>Safari understands <code>:target</code>, but offers no support for the other selector, as far as I know</del> <ins>Update: apparently, it works in Safari! Thanks Pixy!</ins>). So, other browsers have the footnotes/sidenotes displayed inline (in a light grey color and between brackets). Not the most ideal solution, but for the time being, we have no other choice.</p>
+<p>Suggestions, comments, additions, tweaks, ideas? Leave a note at <a href="http://www.web-graphics.com/mtarchive/000913.php" class="link">Web-Graphics</a>! And oh, use all this code as you like (and drop me a line if you do something interesting with it)!</p> 
+
+<p>Andreas Bovens 2003.</p>
+</div>
+</body>
+</html>

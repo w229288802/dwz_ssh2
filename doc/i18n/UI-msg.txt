@@ -1,0 +1,144 @@
+#header
+	
+	Home | Register | Log in | Control Panel | Log out | Help
+               首页 | 注册 | 登录 | 系统管理 | 帮助
+
+	Home | About | Useful Links | Help
+               首页 | 关于本系统 | 常用链接 | 帮助
+
+#container
+	home page sidebar
+		News
+                             新闻中心
+		Events
+                             公告板
+	
+	Register 注册
+
+			Surname
+                                            姓
+			First Name
+                                            名
+			Email
+                                           电邮
+	
+	Log in 登录
+		Log in iEnergy 登录iEnergy
+			Username 用户名
+			Password 密码
+		Forgot My Password 忘记密码
+			Username 用户名
+			Please enter your username to retrieve your password.
+                                           请输入您的用户名取回您的密码。
+			Submit 提交
+	
+	Control Panel 系统管理
+		System News 系统消息
+
+		Menu 系统菜单
+			* My Account 个人信息
+			* Energy Assessment 能效测评
+			* Report Management 报告管理
+			* Resource Centre 资源中心
+			* Change Password 修改密码
+	
+		My Account 个人信息
+			Contact Details 联系方式
+			Title 称呼
+			E-Mail 电邮
+			Surname 姓
+			First name 名
+			Date of Birth 生日
+			Button: Save | Cancel 保存 | 取消
+
+		Change Password 修改密码
+			Password 密码
+			New Password 新密码
+			Confirm Password 确认新密码
+			Button: Save | Cancel 保存| 取消
+
+		Energy Assessment 能效测评
+			RdSAP 9.83
+			Existing Dwelling Energy Assessment - Create/view/edit RdSAP 2008 compliant energy assessment 既有住宅能效测评 – 创建、查看、编辑能效测评报告
+
+		Report Management 报告管理
+			Export Property List - Export csv file 导出建筑列表
+			Export input data- Export all input data to CSV file 导出建筑原始数据
+
+		Resource Centre 资源中心
+			In order to streamline support requests and better serve you, we utilize a support ticket system. Every support request is assigned a unique ticket number which you can use to track the progress and responses online. For your reference we provide complete archives and history of all your support requests.
+                                           为方便提供技术支持，我们采用在线技术支持系统。所有的技术支持请求都会被分配一个唯一的序号。您可以使用序号在线跟踪您的技术支持请求处理情况。为便于您查询信息，我们可提供完整的技术支持服务记录。
+			Download iEnergy User Manual 下载iEnergy用户手册
+			Download building energy efficiency Survey Form 下载建筑能效测评表
+
+	Report List Page 报告列表
+		Matching Records Found: 45 符合条件记录：45
+		Search: Type, Region, Find What 搜索：类型、地区、查找内容
+		search result title: Select | UPRN | Property Address | Assessment Date | EI | SAP | Status 搜索结果：选择 | 建筑唯一序列号| 地址 | 测评日期 |排放等级 | 能效等级 | 报告状态
+		Button: Add New | Edit | Create EPC | Lodge EPC | Copy | Delete | Cancel
+                                            添加 | 编辑 | 创建报告 | 上传报告 | 复制 | 删除 | 取消
+		Stauts: In progress | Completed | Lodged
+                                          测评中 | 已完成 | 已上传
+		分页：	Per Page | First | Previous | Next | Last | Page 1 of 5
+                                            单页记录数量 | 首页 | 前页 | 下页 | 末页 | 第1页
+	
+		
+#footer
+	* Contact Us 联系我们
+	* Disclaimer 免责申明
+	* Privacy Policy 隐私保护
+
+提示信息
+	Confirmation 确认提示
+		Do you want to quit without saving your data? 您是否不保存数据并且退出？
+		Are you sure copy this item? 您确实要复制此项吗？
+		Are you sure remove? 您确定要删除吗？
+		
+	Information 信息
+
+	Successful 成功消息
+		Success 成功
+		Your report has been successfully lodged 您的报告已经成功上传
+		
+	Warning 警告
+
+	Error 错误
+		There are errors occurred. Please correct errors before proceeding. 
+有错误发生。在进入下一步前请先纠正错误。
+		Please select a report before proceeding. 
+                            在进入下一步前请先选择一份报告。
+		Session Timeout! Please re-sign in.
+会话超时，请重新登录。
+		The username or password entered was invalid. Please try again.
+用户名和密码无效。请重新输入。
+		This email has already been used by another account. Please use a different email.
+邮件地址已被使用。请使用其他邮件地址。
+		The Password entered was invalid. Please try again.
+密码错误。请重新输入。
+		The old password is invalid.
+旧密码错误。
+		The password is incorrect.
+密码错误。
+		Date of birth is invalid.
+无效生日。
+		Inspection Date is invalid.
+测评日期无效。
+		messages: {
+			required: "此信息为必填", 
+			remote: "Please fix this field.", 什么意思？
+			email: "请输入有效邮件地址",
+			url: "请输入有效链接",
+			date: "请输入有效日期",
+			dateISO: "请输入有效日期",
+			number: "请输入有效数字",
+			digits: "只可输入数字",
+			creditcard: "请输入有效信用卡号",
+			equalTo: "请在此输入相同数值",
+					maxlength: $.validator.format("请输入不超过 {0} 个字符"),
+			minlength: $.validator.format("请输入至少{0} 个字符"),
+			rangelength: $.validator.format("请输入{0} 到{1} 个字符"),
+			range: $.validator.format("请输入{0} 到 {1}之间的数值"),
+			max: $.validator.format("请输入小于或等于 {0}的值"),
+			min: $.validator.format("请输入大于或等于{0}的值")
+		}
+	

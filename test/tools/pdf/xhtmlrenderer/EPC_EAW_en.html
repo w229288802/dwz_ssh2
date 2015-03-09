@@ -1,0 +1,883 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PDF</title>
+<style>
+#footer {position: running(footer);}
+#footer-version {position: running(footer-version);}
+#footer-notebox {position: running(footer-notebox);}
+.version{page: version;}
+@page {
+	size: a4 portrait;
+	margin: 12mm 10mm;
+	padding: 0;
+	@bottom-left { content: element(footer) };
+}
+
+@page version{
+	@bottom-left{content: element(footer-version)}
+}
+
+/* footnote */
+.notebox {page: notebox;}
+@page notebox{
+	margin: 12mm 10mm 20mm 10mm;
+	@bottom-left{content: element(footer-notebox)}
+}
+
+span.pagenumber:before {
+	content: "Page " counter(page) " of " counter(pages);
+}
+
+html, body {
+font-family:Arial,sans-serif;font-size:10.8pt; line-height:100%;}
+body, input, img, p, td{ margin:0; padding:0;}
+table{ margin-bottom:3pt; width:100%;}
+.redBox{background-color: #B30337;color:#FFFFFF;}
+.h1{font-size:15.72pt; font-weight:bold;padding:5pt; line-height:16pt;}
+.h2{font-size:11.76pt; font-weight:bold;padding:5pt;line-height: 100%}
+.h3{font-weight:bold; margin-bottom:2pt; background-color:#0073BB;padding:5pt;color:#FFFFFF; font-size:11.76pt;}
+.h4{font-weight:bold; margin-bottom:2pt;padding:5pt; color:#FFFFFF; font-size:9.72pt;}
+.listBlue { border-left:1pt solid #211E73; border-top:1pt solid #211E73;}
+.listBlue td{border-bottom:1pt solid #211E73; border-right:1pt solid #211E73; padding:2pt; font-size:9.72pt;}
+.listBlue .onerow td{border-bottom:none;}
+.listBlue .border td{border-right: none; border-bottom: 1pt solid #211E73; height: 0; padding: 0; margin: 0}
+.list{ border-left:1pt solid #000; border-top:1pt solid #000;}
+.list td{border-bottom:1pt solid #000; border-right:1pt solid #000;}
+.list .th{ font-size:7.8pt; font-weight:bold; text-align:center;}
+.list td span{ font-size:6.84pt; float:left; margin-left:5pt;}
+.innerTable {margin: 0}
+.innerTable td{margin: 0; padding: 0; border: none;}
+.A, .B, .C, .D, .E, .F, .G{ position:relative; height:18pt; color:#fff; font-weight:bold; display:block; text-align:right; padding-right:5pt; font-size:15.72pt; line-height:18pt;margin:2pt;}
+img{ vertical-align:middle;}
+.small{ font-size:6.6pt; font-style:italic; margin: 0 2pt}
+.A .black, .B .black, .C .black, .D .black, .E .black, .F .black, .G .black{ font-weight:bold; position:absolute; z-index:1; color:#000;right:3pt; font-size:15.72pt;}
+.A .white, .B .white, .C .white, .D .white, .E .white, .F .white, .G .white{ font-weight:bold; position:absolute; z-index:2; cplor:#fff;right:3pt; font-size:15.72pt;}
+
+.smallBg{float:right; height:25pt;vertical-align:middle;}
+.smallBg p{font-size:8.76pt;text-align:right;}
+.list .bold{ font-weight:bold; font-size:13.68pt; margin:6pt 0 6pt 6pt; }
+.SAP{height:18pt; font-weight:bold;color:#fff; text-align:right; font-size:16pt; line-height:18pt; width:28pt; padding-right:4pt; position:absolute; top:0pt; left: 2pt; }
+.SAP_A{ background:url(images/A.bmp) no-repeat left;}
+.SAP_B{ background:url(images/B.bmp) no-repeat left;}
+.SAP_C{ background:url(images/C.bmp) no-repeat left;}
+.SAP_D{ background:url(images/D.bmp) no-repeat left;}
+.SAP_E{ background:url(images/E.bmp) no-repeat left;}
+.SAP_F{ background:url(images/F.bmp) no-repeat left;}
+.SAP_G{ background:url(images/G.bmp) no-repeat left;}
+.SAP .black{ font-weight:bold; position:absolute; z-index:1; color:#000;right:3pt;}
+.SAP .white{ font-weight:bold; position:absolute; z-index:2; cplor:#fff;right:3pt;}
+.EI{ height:18pt; color:#fff; text-align:right; font-weight:bold; font-size:16pt; line-height:18pt;width:28pt; padding-right:4pt; position:absolute; top:0pt; left: 2pt}
+.EI_A{ background:url(images/r_A.bmp) no-repeat left;}
+.EI_B{ background:url(images/r_B.bmp) no-repeat left;}
+.EI_C{ background:url(images/r_C.bmp) no-repeat left;}
+.EI_D{ background:url(images/r_D.bmp) no-repeat left;}
+.EI_E{ background:url(images/r_E.bmp) no-repeat left;}
+.EI_F{ background:url(images/r_F.bmp) no-repeat left;}
+.EI_G{ background:url(images/r_G.bmp) no-repeat left;}
+.EI .black{ font-weight:bold; position:absolute; z-index:1; color:#000;right:3pt;}
+.EI .white{ font-weight:bold; position:absolute; z-index:2; cplor:#fff;right:3pt;}
+.title{font-weight:bold; padding:4pt 0;}
+.A{ width:45.07pt; background-color:#007F3D;}
+.B{ width:63.73pt;background-color:#2C9F29}
+.C{ width:82.39pt;background-color:#9DCB3C}
+.D{ width:101.05pt;background-color:#FFF200}
+.E{ width:119.71pt;background-color:#F7AF1D}
+.F{ width:138.37pt;background-color:#ED6823}
+.G{ width:157.03pt;background-color:#E31D23}
+
+.right .A{ width:45.07pt; background-color:#CDE2F5;}
+.right .B{ width:63.73pt;background-color:#97c0ef}
+.right .C{ width:82.39pt;background-color:#73A2D6}
+.right .D{ width:101.05pt;background-color:#4E84C4}
+.right .E{ width:119.71pt;background-color:#A8A8A8}
+.right .F{ width:138.37pt;background-color:#868686}
+.right .G{ width:157.03pt;background-color:#686868}
+.paragraph{ padding:3pt 0; line-height: 100%;}
+.redLi{ color:#B30337;}
+.redLi div {color:#000000}
+.yellow td{ padding:0 3pt;}
+
+.colorA, .colorB, .colorC, .colorD, .colorE, .colorF, .colorG{height:20pt; line-height:20pt;}
+.colorA{background-color:#007F3D;}
+.colorB{background-color:#2C9F29;}
+.colorC{background-color:#9DCB3C;}
+.colorD{background-color:#FFF200;}
+.colorE{background-color:#F7AF1D;}
+.colorF{background-color:#ED6823;}
+.colorG{background-color:#E31D23;}
+
+.grayA, .grayB, .grayC, .grayD, .grayE, .grayF, .grayG{height:20pt; line-height:20pt;} 
+.grayA{background-color:#CDE2F5;}
+.grayB{background-color:#97C0EF;}
+.grayC{background-color:#73A2D6;}
+.grayD{background-color:#4E84C4;}
+.grayE{background-color:#A8A8A8;}
+.grayF{background-color:#868686; color: #fff}
+.grayG{background-color:#686868; color: #fff}
+
+sup,sub {height: 0;line-height: 1;vertical-align: baseline;_vertical-align: bottom;position: relative;}
+sup {bottom: 1ex;}
+sub {top: .5ex;}
+</style>
+
+</head>
+
+<body>
+<div id="footer">
+	<table width="100%">
+		<tr>
+			<td>PREVIEW – NOT FOR ISSUE</td>
+			<td align="right"><span class="pagenumber"/></td>
+		</tr>
+	</table>
+</div>
+<div id="footer-version">
+	<table width="100%">
+		<tr>
+			<td style="font-size: 8pt;font-style:italic;">iQ-Energy v1.0 (SAP 9.83)</td>
+			<td>PREVIEW – NOT FOR ISSUE</td>
+			<td align="right"><span class="pagenumber"/></td>
+		</tr>
+	</table>
+</div>
+<div id="footer-notebox">
+	<table width="100%">
+		<tr>
+			<td colspan="2">
+			<div style="font-size: 8.76pt;border-top:1pt solid #000;">
+				&#185; For information on approved competent persons schemes enter &#8216;existing competent person schemes&#8217; into an internet search engine or contact your local Energy Saving Trust advice centre on 0800 512 012.
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td>PREVIEW – NOT FOR ISSUE</td>
+			<td align="right"><span class="pagenumber"/></td>
+		</tr>
+	</table>
+</div>
+<table class="redBox">
+	<tr>
+		<td valign="top" class="h1"><p>Energy Performance Certificate</p></td>
+		<td class="h1" style="width:150pt">
+		<p align="center">PREVIEW</p><p align="center">NOT FOR ISSUE</p>
+		</td>
+		<td style="width:50pt"></td>
+		<td width="96"><img src="images/SAP_red.bmp" width="96"/></td>
+	</tr>
+</table>
+<table width="100%" cellspacing="0">
+	<tr>
+		<td style="padding:0" valign="top">
+			<table cellspacing="0" >
+			<tr><td>15, Berryfield Park</td></tr>
+			<tr><td></td></tr>
+			<tr><td></td></tr>
+			<tr><td>MELKSHAM</td></tr>
+			<tr><td>SN12 6ED</td></tr>
+			</table>
+		</td>
+		<td style="padding:0; width:11cm" valign="top">
+			<table cellspacing="0">
+			<tr>
+				<td style="width:4cm">Dwelling type:</td>
+				<td style="width:6.5cm">Semi-detached house</td>
+			</tr>
+			<tr>
+				<td>Date of assessment:</td>
+				<td>09 February 2010</td>
+			</tr>
+			<tr>
+				<td>Date of certificate:</td>
+				<td>20 February 2010</td>
+			</tr>
+			<tr>
+				<td>Reference number:</td>
+				<td>8040-6422-7780-1211-0906</td>
+			</tr>
+			<tr>
+				<td>Type of assessment:</td>
+				<td>RdSAP, existing dwelling</td>
+			</tr>
+			<tr>
+				<td>Total floor area:</td>
+				<td>80m&sup2;</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+	
+</table>
+<table>
+	<tr>
+		<td>This home’s performance is rated in terms of the energy use per square metre of floor area, energy efficiency based on fuel costs and environmental impact based on carbon dioxide (CO<sub>2</sub>) emissions.</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+	   <td class="h3">Energy Efficiency Rating</td>
+		<td style=" width:27.8pt">&nbsp;</td>
+		<td class="h3">Environmental Impact (CO<sub>2</sub>) Rating</td>
+	</tr>
+	<tr>
+	  <td width="47%">
+			<table class="list blank" cellspacing="0">
+				<tr>
+					<td>&nbsp;</td>
+					<td class="th" style="width:42pt">Current</td>
+					<td class="th" style="width:40pt">Potential</td>
+				</tr>
+				<tr>
+					<td><div class="small">Very energy efficient - lower running costs</div>
+					<div class="A"><span >(92 plus)</span>
+					<div class="white">A</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">A</div> <div class="black" style="top:-0.375pt; right:2.5pt">A</div> <div class="black" style="top:-0.25pt; right:2.5pt">A</div> <div class="black" style="top:-0.125pt; right:2.5pt">A</div> <div class="black" style="top:0pt; right:2.5pt">A</div> <div class="black" style="top:0.125pt; right:2.5pt">A</div> <div class="black" style="top:0.25pt; right:2.5pt">A</div> <div class="black" style="top:0.375pt; right:2.5pt">A</div> <div class="black" style="top:0.5pt; right:2.5pt">A</div> <div class="black" style="top:-0.5pt; right:3.5pt">A</div> <div class="black" style="top:-0.375pt; right:3.5pt">A</div> <div class="black" style="top:-0.25pt; right:3.5pt">A</div> <div class="black" style="top:-0.125pt; right:3.5pt">A</div> <div class="black" style="top:0pt; right:3.5pt">A</div> <div class="black" style="top:0.125pt; right:3.5pt">A</div> <div class="black" style="top:0.25pt; right:3.5pt">A</div> <div class="black" style="top:0.375pt; right:3.5pt">A</div> <div class="black" style="top:0.5pt; right:3.5pt">A</div> <div class="black" style="top:-0.5pt; right:2.5pt">A</div> <div class="black" style="top:-0.5pt; right:2.625pt">A</div> <div class="black" style="top:-0.5pt; right:2.75pt">A</div> <div class="black" style="top:-0.5pt; right:2.875pt">A</div> <div class="black" style="top:-0.5pt; right:3pt">A</div> <div class="black" style="top:-0.5pt; right:3.125pt">A</div> <div class="black" style="top:-0.5pt; right:3.25pt">A</div> <div class="black" style="top:-0.5pt; right:3.375pt">A</div> <div class="black" style="top:-0.5pt; right:3.5pt">A</div> <div class="black" style="top:0.5pt; right:2.5pt">A</div> <div class="black" style="top:0.5pt; right:2.625pt">A</div> <div class="black" style="top:0.5pt; right:2.75pt">A</div> <div class="black" style="top:0.5pt; right:2.875pt">A</div> <div class="black" style="top:0.5pt; right:3pt">A</div> <div class="black" style="top:0.5pt; right:3.125pt">A</div> <div class="black" style="top:0.5pt; right:3.25pt">A</div> <div class="black" style="top:0.5pt; right:3.375pt">A</div> <div class="black" style="top:0.5pt; right:3.5pt">A</div>
+					</div>
+					<div class="B"><span >(81-91)</span>
+					<div class="white">B</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">B</div> <div class="black" style="top:-0.375pt; right:2.5pt">B</div> <div class="black" style="top:-0.25pt; right:2.5pt">B</div> <div class="black" style="top:-0.125pt; right:2.5pt">B</div> <div class="black" style="top:0pt; right:2.5pt">B</div> <div class="black" style="top:0.125pt; right:2.5pt">B</div> <div class="black" style="top:0.25pt; right:2.5pt">B</div> <div class="black" style="top:0.375pt; right:2.5pt">B</div> <div class="black" style="top:0.5pt; right:2.5pt">B</div> <div class="black" style="top:-0.5pt; right:3.5pt">B</div> <div class="black" style="top:-0.375pt; right:3.5pt">B</div> <div class="black" style="top:-0.25pt; right:3.5pt">B</div> <div class="black" style="top:-0.125pt; right:3.5pt">B</div> <div class="black" style="top:0pt; right:3.5pt">B</div> <div class="black" style="top:0.125pt; right:3.5pt">B</div> <div class="black" style="top:0.25pt; right:3.5pt">B</div> <div class="black" style="top:0.375pt; right:3.5pt">B</div> <div class="black" style="top:0.5pt; right:3.5pt">B</div> <div class="black" style="top:-0.5pt; right:2.5pt">B</div> <div class="black" style="top:-0.5pt; right:2.625pt">B</div> <div class="black" style="top:-0.5pt; right:2.75pt">B</div> <div class="black" style="top:-0.5pt; right:2.875pt">B</div> <div class="black" style="top:-0.5pt; right:3pt">B</div> <div class="black" style="top:-0.5pt; right:3.125pt">B</div> <div class="black" style="top:-0.5pt; right:3.25pt">B</div> <div class="black" style="top:-0.5pt; right:3.375pt">B</div> <div class="black" style="top:-0.5pt; right:3.5pt">B</div> <div class="black" style="top:0.5pt; right:2.5pt">B</div> <div class="black" style="top:0.5pt; right:2.625pt">B</div> <div class="black" style="top:0.5pt; right:2.75pt">B</div> <div class="black" style="top:0.5pt; right:2.875pt">B</div> <div class="black" style="top:0.5pt; right:3pt">B</div> <div class="black" style="top:0.5pt; right:3.125pt">B</div> <div class="black" style="top:0.5pt; right:3.25pt">B</div> <div class="black" style="top:0.5pt; right:3.375pt">B</div> <div class="black" style="top:0.5pt; right:3.5pt">B</div>
+					</div>
+					<div class="C"><span style="color:#000;">(69-80)</span>
+					<div class="white">C</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">C</div> <div class="black" style="top:-0.375pt; right:2.5pt">C</div> <div class="black" style="top:-0.25pt; right:2.5pt">C</div> <div class="black" style="top:-0.125pt; right:2.5pt">C</div> <div class="black" style="top:0pt; right:2.5pt">C</div> <div class="black" style="top:0.125pt; right:2.5pt">C</div> <div class="black" style="top:0.25pt; right:2.5pt">C</div> <div class="black" style="top:0.375pt; right:2.5pt">C</div> <div class="black" style="top:0.5pt; right:2.5pt">C</div> <div class="black" style="top:-0.5pt; right:3.5pt">C</div> <div class="black" style="top:-0.375pt; right:3.5pt">C</div> <div class="black" style="top:-0.25pt; right:3.5pt">C</div> <div class="black" style="top:-0.125pt; right:3.5pt">C</div> <div class="black" style="top:0pt; right:3.5pt">C</div> <div class="black" style="top:0.125pt; right:3.5pt">C</div> <div class="black" style="top:0.25pt; right:3.5pt">C</div> <div class="black" style="top:0.375pt; right:3.5pt">C</div> <div class="black" style="top:0.5pt; right:3.5pt">C</div> <div class="black" style="top:-0.5pt; right:2.5pt">C</div> <div class="black" style="top:-0.5pt; right:2.625pt">C</div> <div class="black" style="top:-0.5pt; right:2.75pt">C</div> <div class="black" style="top:-0.5pt; right:2.875pt">C</div> <div class="black" style="top:-0.5pt; right:3pt">C</div> <div class="black" style="top:-0.5pt; right:3.125pt">C</div> <div class="black" style="top:-0.5pt; right:3.25pt">C</div> <div class="black" style="top:-0.5pt; right:3.375pt">C</div> <div class="black" style="top:-0.5pt; right:3.5pt">C</div> <div class="black" style="top:0.5pt; right:2.5pt">C</div> <div class="black" style="top:0.5pt; right:2.625pt">C</div> <div class="black" style="top:0.5pt; right:2.75pt">C</div> <div class="black" style="top:0.5pt; right:2.875pt">C</div> <div class="black" style="top:0.5pt; right:3pt">C</div> <div class="black" style="top:0.5pt; right:3.125pt">C</div> <div class="black" style="top:0.5pt; right:3.25pt">C</div> <div class="black" style="top:0.5pt; right:3.375pt">C</div> <div class="black" style="top:0.5pt; right:3.5pt">C</div>
+					</div>
+					<div class="D"><span style="color:#000;">(55-68)</span>
+					<div class="white">D</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">D</div> <div class="black" style="top:-0.375pt; right:2.5pt">D</div> <div class="black" style="top:-0.25pt; right:2.5pt">D</div> <div class="black" style="top:-0.125pt; right:2.5pt">D</div> <div class="black" style="top:0pt; right:2.5pt">D</div> <div class="black" style="top:0.125pt; right:2.5pt">D</div> <div class="black" style="top:0.25pt; right:2.5pt">D</div> <div class="black" style="top:0.375pt; right:2.5pt">D</div> <div class="black" style="top:0.5pt; right:2.5pt">D</div> <div class="black" style="top:-0.5pt; right:3.5pt">D</div> <div class="black" style="top:-0.375pt; right:3.5pt">D</div> <div class="black" style="top:-0.25pt; right:3.5pt">D</div> <div class="black" style="top:-0.125pt; right:3.5pt">D</div> <div class="black" style="top:0pt; right:3.5pt">D</div> <div class="black" style="top:0.125pt; right:3.5pt">D</div> <div class="black" style="top:0.25pt; right:3.5pt">D</div> <div class="black" style="top:0.375pt; right:3.5pt">D</div> <div class="black" style="top:0.5pt; right:3.5pt">D</div> <div class="black" style="top:-0.5pt; right:2.5pt">D</div> <div class="black" style="top:-0.5pt; right:2.625pt">D</div> <div class="black" style="top:-0.5pt; right:2.75pt">D</div> <div class="black" style="top:-0.5pt; right:2.875pt">D</div> <div class="black" style="top:-0.5pt; right:3pt">D</div> <div class="black" style="top:-0.5pt; right:3.125pt">D</div> <div class="black" style="top:-0.5pt; right:3.25pt">D</div> <div class="black" style="top:-0.5pt; right:3.375pt">D</div> <div class="black" style="top:-0.5pt; right:3.5pt">D</div> <div class="black" style="top:0.5pt; right:2.5pt">D</div> <div class="black" style="top:0.5pt; right:2.625pt">D</div> <div class="black" style="top:0.5pt; right:2.75pt">D</div> <div class="black" style="top:0.5pt; right:2.875pt">D</div> <div class="black" style="top:0.5pt; right:3pt">D</div> <div class="black" style="top:0.5pt; right:3.125pt">D</div> <div class="black" style="top:0.5pt; right:3.25pt">D</div> <div class="black" style="top:0.5pt; right:3.375pt">D</div> <div class="black" style="top:0.5pt; right:3.5pt">D</div>
+					</div>
+					<div class="E"><span style="color:#000;">(39-54)</span>
+					<div class="white">E</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">E</div> <div class="black" style="top:-0.375pt; right:2.5pt">E</div> <div class="black" style="top:-0.25pt; right:2.5pt">E</div> <div class="black" style="top:-0.125pt; right:2.5pt">E</div> <div class="black" style="top:0pt; right:2.5pt">E</div> <div class="black" style="top:0.125pt; right:2.5pt">E</div> <div class="black" style="top:0.25pt; right:2.5pt">E</div> <div class="black" style="top:0.375pt; right:2.5pt">E</div> <div class="black" style="top:0.5pt; right:2.5pt">E</div> <div class="black" style="top:-0.5pt; right:3.5pt">E</div> <div class="black" style="top:-0.375pt; right:3.5pt">E</div> <div class="black" style="top:-0.25pt; right:3.5pt">E</div> <div class="black" style="top:-0.125pt; right:3.5pt">E</div> <div class="black" style="top:0pt; right:3.5pt">E</div> <div class="black" style="top:0.125pt; right:3.5pt">E</div> <div class="black" style="top:0.25pt; right:3.5pt">E</div> <div class="black" style="top:0.375pt; right:3.5pt">E</div> <div class="black" style="top:0.5pt; right:3.5pt">E</div> <div class="black" style="top:-0.5pt; right:2.5pt">E</div> <div class="black" style="top:-0.5pt; right:2.625pt">E</div> <div class="black" style="top:-0.5pt; right:2.75pt">E</div> <div class="black" style="top:-0.5pt; right:2.875pt">E</div> <div class="black" style="top:-0.5pt; right:3pt">E</div> <div class="black" style="top:-0.5pt; right:3.125pt">E</div> <div class="black" style="top:-0.5pt; right:3.25pt">E</div> <div class="black" style="top:-0.5pt; right:3.375pt">E</div> <div class="black" style="top:-0.5pt; right:3.5pt">E</div> <div class="black" style="top:0.5pt; right:2.5pt">E</div> <div class="black" style="top:0.5pt; right:2.625pt">E</div> <div class="black" style="top:0.5pt; right:2.75pt">E</div> <div class="black" style="top:0.5pt; right:2.875pt">E</div> <div class="black" style="top:0.5pt; right:3pt">E</div> <div class="black" style="top:0.5pt; right:3.125pt">E</div> <div class="black" style="top:0.5pt; right:3.25pt">E</div> <div class="black" style="top:0.5pt; right:3.375pt">E</div> <div class="black" style="top:0.5pt; right:3.5pt">E</div>
+					</div>
+					<div class="F"><span style="color:#000;">(21-38)</span>
+					<div class="white">F</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">F</div> <div class="black" style="top:-0.375pt; right:2.5pt">F</div> <div class="black" style="top:-0.25pt; right:2.5pt">F</div> <div class="black" style="top:-0.125pt; right:2.5pt">F</div> <div class="black" style="top:0pt; right:2.5pt">F</div> <div class="black" style="top:0.125pt; right:2.5pt">F</div> <div class="black" style="top:0.25pt; right:2.5pt">F</div> <div class="black" style="top:0.375pt; right:2.5pt">F</div> <div class="black" style="top:0.5pt; right:2.5pt">F</div> <div class="black" style="top:-0.5pt; right:3.5pt">F</div> <div class="black" style="top:-0.375pt; right:3.5pt">F</div> <div class="black" style="top:-0.25pt; right:3.5pt">F</div> <div class="black" style="top:-0.125pt; right:3.5pt">F</div> <div class="black" style="top:0pt; right:3.5pt">F</div> <div class="black" style="top:0.125pt; right:3.5pt">F</div> <div class="black" style="top:0.25pt; right:3.5pt">F</div> <div class="black" style="top:0.375pt; right:3.5pt">F</div> <div class="black" style="top:0.5pt; right:3.5pt">F</div> <div class="black" style="top:-0.5pt; right:2.5pt">F</div> <div class="black" style="top:-0.5pt; right:2.625pt">F</div> <div class="black" style="top:-0.5pt; right:2.75pt">F</div> <div class="black" style="top:-0.5pt; right:2.875pt">F</div> <div class="black" style="top:-0.5pt; right:3pt">F</div> <div class="black" style="top:-0.5pt; right:3.125pt">F</div> <div class="black" style="top:-0.5pt; right:3.25pt">F</div> <div class="black" style="top:-0.5pt; right:3.375pt">F</div> <div class="black" style="top:-0.5pt; right:3.5pt">F</div> <div class="black" style="top:0.5pt; right:2.5pt">F</div> <div class="black" style="top:0.5pt; right:2.625pt">F</div> <div class="black" style="top:0.5pt; right:2.75pt">F</div> <div class="black" style="top:0.5pt; right:2.875pt">F</div> <div class="black" style="top:0.5pt; right:3pt">F</div> <div class="black" style="top:0.5pt; right:3.125pt">F</div> <div class="black" style="top:0.5pt; right:3.25pt">F</div> <div class="black" style="top:0.5pt; right:3.375pt">F</div> <div class="black" style="top:0.5pt; right:3.5pt">F</div>
+					</div>
+					<div class="G"><span style="color:#000;">(1-20)</span>
+					<div class="white">G</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">G</div> <div class="black" style="top:-0.375pt; right:2.5pt">G</div> <div class="black" style="top:-0.25pt; right:2.5pt">G</div> <div class="black" style="top:-0.125pt; right:2.5pt">G</div> <div class="black" style="top:0pt; right:2.5pt">G</div> <div class="black" style="top:0.125pt; right:2.5pt">G</div> <div class="black" style="top:0.25pt; right:2.5pt">G</div> <div class="black" style="top:0.375pt; right:2.5pt">G</div> <div class="black" style="top:0.5pt; right:2.5pt">G</div> <div class="black" style="top:-0.5pt; right:3.5pt">G</div> <div class="black" style="top:-0.375pt; right:3.5pt">G</div> <div class="black" style="top:-0.25pt; right:3.5pt">G</div> <div class="black" style="top:-0.125pt; right:3.5pt">G</div> <div class="black" style="top:0pt; right:3.5pt">G</div> <div class="black" style="top:0.125pt; right:3.5pt">G</div> <div class="black" style="top:0.25pt; right:3.5pt">G</div> <div class="black" style="top:0.375pt; right:3.5pt">G</div> <div class="black" style="top:0.5pt; right:3.5pt">G</div> <div class="black" style="top:-0.5pt; right:2.5pt">G</div> <div class="black" style="top:-0.5pt; right:2.625pt">G</div> <div class="black" style="top:-0.5pt; right:2.75pt">G</div> <div class="black" style="top:-0.5pt; right:2.875pt">G</div> <div class="black" style="top:-0.5pt; right:3pt">G</div> <div class="black" style="top:-0.5pt; right:3.125pt">G</div> <div class="black" style="top:-0.5pt; right:3.25pt">G</div> <div class="black" style="top:-0.5pt; right:3.375pt">G</div> <div class="black" style="top:-0.5pt; right:3.5pt">G</div> <div class="black" style="top:0.5pt; right:2.5pt">G</div> <div class="black" style="top:0.5pt; right:2.625pt">G</div> <div class="black" style="top:0.5pt; right:2.75pt">G</div> <div class="black" style="top:0.5pt; right:2.875pt">G</div> <div class="black" style="top:0.5pt; right:3pt">G</div> <div class="black" style="top:0.5pt; right:3.125pt">G</div> <div class="black" style="top:0.5pt; right:3.25pt">G</div> <div class="black" style="top:0.5pt; right:3.375pt">G</div> <div class="black" style="top:0.5pt; right:3.5pt">G</div>
+					</div>
+					<div class="small">Not energy efficient - higher running costs</div></td>
+					<td>
+					<div style="position:relative; height:130pt" >
+					<div class="SAP SAP_E" style="top:64.8pt">
+					<div class="white">46</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">46</div> <div class="black" style="top:-0.375pt; right:2.5pt">46</div> <div class="black" style="top:-0.25pt; right:2.5pt">46</div> <div class="black" style="top:-0.125pt; right:2.5pt">46</div> <div class="black" style="top:0pt; right:2.5pt">46</div> <div class="black" style="top:0.125pt; right:2.5pt">46</div> <div class="black" style="top:0.25pt; right:2.5pt">46</div> <div class="black" style="top:0.375pt; right:2.5pt">46</div> <div class="black" style="top:0.5pt; right:2.5pt">46</div> <div class="black" style="top:-0.5pt; right:3.5pt">46</div> <div class="black" style="top:-0.375pt; right:3.5pt">46</div> <div class="black" style="top:-0.25pt; right:3.5pt">46</div> <div class="black" style="top:-0.125pt; right:3.5pt">46</div> <div class="black" style="top:0pt; right:3.5pt">46</div> <div class="black" style="top:0.125pt; right:3.5pt">46</div> <div class="black" style="top:0.25pt; right:3.5pt">46</div> <div class="black" style="top:0.375pt; right:3.5pt">46</div> <div class="black" style="top:0.5pt; right:3.5pt">46</div> <div class="black" style="top:-0.5pt; right:2.5pt">46</div> <div class="black" style="top:-0.5pt; right:2.625pt">46</div> <div class="black" style="top:-0.5pt; right:2.75pt">46</div> <div class="black" style="top:-0.5pt; right:2.875pt">46</div> <div class="black" style="top:-0.5pt; right:3pt">46</div> <div class="black" style="top:-0.5pt; right:3.125pt">46</div> <div class="black" style="top:-0.5pt; right:3.25pt">46</div> <div class="black" style="top:-0.5pt; right:3.375pt">46</div> <div class="black" style="top:-0.5pt; right:3.5pt">46</div> <div class="black" style="top:0.5pt; right:2.5pt">46</div> <div class="black" style="top:0.5pt; right:2.625pt">46</div> <div class="black" style="top:0.5pt; right:2.75pt">46</div> <div class="black" style="top:0.5pt; right:2.875pt">46</div> <div class="black" style="top:0.5pt; right:3pt">46</div> <div class="black" style="top:0.5pt; right:3.125pt">46</div> <div class="black" style="top:0.5pt; right:3.25pt">46</div> <div class="black" style="top:0.5pt; right:3.375pt">46</div> <div class="black" style="top:0.5pt; right:3.5pt">46</div>
+					</div>
+					</div></td>
+					<td>
+					<div style="position:relative; height:130pt">
+						<div class="SAP SAP_E" style="top:60pt">
+			  			<div class="white">50</div>
+			  			 <div class="black" style="top:-0.5pt; right:2.5pt">50</div> <div class="black" style="top:-0.375pt; right:2.5pt">50</div> <div class="black" style="top:-0.25pt; right:2.5pt">50</div> <div class="black" style="top:-0.125pt; right:2.5pt">50</div> <div class="black" style="top:0pt; right:2.5pt">50</div> <div class="black" style="top:0.125pt; right:2.5pt">50</div> <div class="black" style="top:0.25pt; right:2.5pt">50</div> <div class="black" style="top:0.375pt; right:2.5pt">50</div> <div class="black" style="top:0.5pt; right:2.5pt">50</div> <div class="black" style="top:-0.5pt; right:3.5pt">50</div> <div class="black" style="top:-0.375pt; right:3.5pt">50</div> <div class="black" style="top:-0.25pt; right:3.5pt">50</div> <div class="black" style="top:-0.125pt; right:3.5pt">50</div> <div class="black" style="top:0pt; right:3.5pt">50</div> <div class="black" style="top:0.125pt; right:3.5pt">50</div> <div class="black" style="top:0.25pt; right:3.5pt">50</div> <div class="black" style="top:0.375pt; right:3.5pt">50</div> <div class="black" style="top:0.5pt; right:3.5pt">50</div> <div class="black" style="top:-0.5pt; right:2.5pt">50</div> <div class="black" style="top:-0.5pt; right:2.625pt">50</div> <div class="black" style="top:-0.5pt; right:2.75pt">50</div> <div class="black" style="top:-0.5pt; right:2.875pt">50</div> <div class="black" style="top:-0.5pt; right:3pt">50</div> <div class="black" style="top:-0.5pt; right:3.125pt">50</div> <div class="black" style="top:-0.5pt; right:3.25pt">50</div> <div class="black" style="top:-0.5pt; right:3.375pt">50</div> <div class="black" style="top:-0.5pt; right:3.5pt">50</div> <div class="black" style="top:0.5pt; right:2.5pt">50</div> <div class="black" style="top:0.5pt; right:2.625pt">50</div> <div class="black" style="top:0.5pt; right:2.75pt">50</div> <div class="black" style="top:0.5pt; right:2.875pt">50</div> <div class="black" style="top:0.5pt; right:3pt">50</div> <div class="black" style="top:0.5pt; right:3.125pt">50</div> <div class="black" style="top:0.5pt; right:3.25pt">50</div> <div class="black" style="top:0.5pt; right:3.375pt">50</div> <div class="black" style="top:0.5pt; right:3.5pt">50</div>
+			  			</div>
+		  			</div>
+				</td>
+				</tr>
+				<tr>
+					<td colspan="2" valign="middle" style="border-right:0"><span class="bold">England &amp; Wales </span><div class="smallBg"><p>EU Directive</p><p>2002/91/EC</p></div></td><td style="text-align:center;"><img height="28" width="40" src="images/EU.bmp" /></td>
+				</tr>
+		  </table>
+				<div>The energy efficiency rating is a measure of the overall efficiency of a home. The higher the rating the more energy efficient the home is and the lower the fuel bills are likely to be.</div>		</td>
+		<td></td>
+		<td width="47%">
+			<table class="list right" cellspacing="0">
+				<tr>
+					<td>&nbsp;</td>
+					<td class="th" style="width:42pt">Current</td>
+					<td class="th" style="width:40pt">Potential</td>
+				</tr>
+				<tr>
+					<td>
+					<div class="small">Very environmentally friendly - lower CO<sub>2</sub> emissions</div>
+					<div class="A"><span style="color:#000;">(92 plus)</span>
+					<div class="white">A</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">A</div> <div class="black" style="top:-0.375pt; right:2.5pt">A</div> <div class="black" style="top:-0.25pt; right:2.5pt">A</div> <div class="black" style="top:-0.125pt; right:2.5pt">A</div> <div class="black" style="top:0pt; right:2.5pt">A</div> <div class="black" style="top:0.125pt; right:2.5pt">A</div> <div class="black" style="top:0.25pt; right:2.5pt">A</div> <div class="black" style="top:0.375pt; right:2.5pt">A</div> <div class="black" style="top:0.5pt; right:2.5pt">A</div> <div class="black" style="top:-0.5pt; right:3.5pt">A</div> <div class="black" style="top:-0.375pt; right:3.5pt">A</div> <div class="black" style="top:-0.25pt; right:3.5pt">A</div> <div class="black" style="top:-0.125pt; right:3.5pt">A</div> <div class="black" style="top:0pt; right:3.5pt">A</div> <div class="black" style="top:0.125pt; right:3.5pt">A</div> <div class="black" style="top:0.25pt; right:3.5pt">A</div> <div class="black" style="top:0.375pt; right:3.5pt">A</div> <div class="black" style="top:0.5pt; right:3.5pt">A</div> <div class="black" style="top:-0.5pt; right:2.5pt">A</div> <div class="black" style="top:-0.5pt; right:2.625pt">A</div> <div class="black" style="top:-0.5pt; right:2.75pt">A</div> <div class="black" style="top:-0.5pt; right:2.875pt">A</div> <div class="black" style="top:-0.5pt; right:3pt">A</div> <div class="black" style="top:-0.5pt; right:3.125pt">A</div> <div class="black" style="top:-0.5pt; right:3.25pt">A</div> <div class="black" style="top:-0.5pt; right:3.375pt">A</div> <div class="black" style="top:-0.5pt; right:3.5pt">A</div> <div class="black" style="top:0.5pt; right:2.5pt">A</div> <div class="black" style="top:0.5pt; right:2.625pt">A</div> <div class="black" style="top:0.5pt; right:2.75pt">A</div> <div class="black" style="top:0.5pt; right:2.875pt">A</div> <div class="black" style="top:0.5pt; right:3pt">A</div> <div class="black" style="top:0.5pt; right:3.125pt">A</div> <div class="black" style="top:0.5pt; right:3.25pt">A</div> <div class="black" style="top:0.5pt; right:3.375pt">A</div> <div class="black" style="top:0.5pt; right:3.5pt">A</div>
+					</div>
+					<div class="B"><span style="color:#000;">(81-91)</span>
+					<div class="white">B</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">B</div> <div class="black" style="top:-0.375pt; right:2.5pt">B</div> <div class="black" style="top:-0.25pt; right:2.5pt">B</div> <div class="black" style="top:-0.125pt; right:2.5pt">B</div> <div class="black" style="top:0pt; right:2.5pt">B</div> <div class="black" style="top:0.125pt; right:2.5pt">B</div> <div class="black" style="top:0.25pt; right:2.5pt">B</div> <div class="black" style="top:0.375pt; right:2.5pt">B</div> <div class="black" style="top:0.5pt; right:2.5pt">B</div> <div class="black" style="top:-0.5pt; right:3.5pt">B</div> <div class="black" style="top:-0.375pt; right:3.5pt">B</div> <div class="black" style="top:-0.25pt; right:3.5pt">B</div> <div class="black" style="top:-0.125pt; right:3.5pt">B</div> <div class="black" style="top:0pt; right:3.5pt">B</div> <div class="black" style="top:0.125pt; right:3.5pt">B</div> <div class="black" style="top:0.25pt; right:3.5pt">B</div> <div class="black" style="top:0.375pt; right:3.5pt">B</div> <div class="black" style="top:0.5pt; right:3.5pt">B</div> <div class="black" style="top:-0.5pt; right:2.5pt">B</div> <div class="black" style="top:-0.5pt; right:2.625pt">B</div> <div class="black" style="top:-0.5pt; right:2.75pt">B</div> <div class="black" style="top:-0.5pt; right:2.875pt">B</div> <div class="black" style="top:-0.5pt; right:3pt">B</div> <div class="black" style="top:-0.5pt; right:3.125pt">B</div> <div class="black" style="top:-0.5pt; right:3.25pt">B</div> <div class="black" style="top:-0.5pt; right:3.375pt">B</div> <div class="black" style="top:-0.5pt; right:3.5pt">B</div> <div class="black" style="top:0.5pt; right:2.5pt">B</div> <div class="black" style="top:0.5pt; right:2.625pt">B</div> <div class="black" style="top:0.5pt; right:2.75pt">B</div> <div class="black" style="top:0.5pt; right:2.875pt">B</div> <div class="black" style="top:0.5pt; right:3pt">B</div> <div class="black" style="top:0.5pt; right:3.125pt">B</div> <div class="black" style="top:0.5pt; right:3.25pt">B</div> <div class="black" style="top:0.5pt; right:3.375pt">B</div> <div class="black" style="top:0.5pt; right:3.5pt">B</div>
+					</div>
+					<div class="C"><span style="color:#000;">(69-80)</span>
+					<div class="white">C</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">C</div> <div class="black" style="top:-0.375pt; right:2.5pt">C</div> <div class="black" style="top:-0.25pt; right:2.5pt">C</div> <div class="black" style="top:-0.125pt; right:2.5pt">C</div> <div class="black" style="top:0pt; right:2.5pt">C</div> <div class="black" style="top:0.125pt; right:2.5pt">C</div> <div class="black" style="top:0.25pt; right:2.5pt">C</div> <div class="black" style="top:0.375pt; right:2.5pt">C</div> <div class="black" style="top:0.5pt; right:2.5pt">C</div> <div class="black" style="top:-0.5pt; right:3.5pt">C</div> <div class="black" style="top:-0.375pt; right:3.5pt">C</div> <div class="black" style="top:-0.25pt; right:3.5pt">C</div> <div class="black" style="top:-0.125pt; right:3.5pt">C</div> <div class="black" style="top:0pt; right:3.5pt">C</div> <div class="black" style="top:0.125pt; right:3.5pt">C</div> <div class="black" style="top:0.25pt; right:3.5pt">C</div> <div class="black" style="top:0.375pt; right:3.5pt">C</div> <div class="black" style="top:0.5pt; right:3.5pt">C</div> <div class="black" style="top:-0.5pt; right:2.5pt">C</div> <div class="black" style="top:-0.5pt; right:2.625pt">C</div> <div class="black" style="top:-0.5pt; right:2.75pt">C</div> <div class="black" style="top:-0.5pt; right:2.875pt">C</div> <div class="black" style="top:-0.5pt; right:3pt">C</div> <div class="black" style="top:-0.5pt; right:3.125pt">C</div> <div class="black" style="top:-0.5pt; right:3.25pt">C</div> <div class="black" style="top:-0.5pt; right:3.375pt">C</div> <div class="black" style="top:-0.5pt; right:3.5pt">C</div> <div class="black" style="top:0.5pt; right:2.5pt">C</div> <div class="black" style="top:0.5pt; right:2.625pt">C</div> <div class="black" style="top:0.5pt; right:2.75pt">C</div> <div class="black" style="top:0.5pt; right:2.875pt">C</div> <div class="black" style="top:0.5pt; right:3pt">C</div> <div class="black" style="top:0.5pt; right:3.125pt">C</div> <div class="black" style="top:0.5pt; right:3.25pt">C</div> <div class="black" style="top:0.5pt; right:3.375pt">C</div> <div class="black" style="top:0.5pt; right:3.5pt">C</div>
+					</div>
+					<div class="D"><span style="color:#000;">(55-68)</span>
+					<div class="white">D</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">D</div> <div class="black" style="top:-0.375pt; right:2.5pt">D</div> <div class="black" style="top:-0.25pt; right:2.5pt">D</div> <div class="black" style="top:-0.125pt; right:2.5pt">D</div> <div class="black" style="top:0pt; right:2.5pt">D</div> <div class="black" style="top:0.125pt; right:2.5pt">D</div> <div class="black" style="top:0.25pt; right:2.5pt">D</div> <div class="black" style="top:0.375pt; right:2.5pt">D</div> <div class="black" style="top:0.5pt; right:2.5pt">D</div> <div class="black" style="top:-0.5pt; right:3.5pt">D</div> <div class="black" style="top:-0.375pt; right:3.5pt">D</div> <div class="black" style="top:-0.25pt; right:3.5pt">D</div> <div class="black" style="top:-0.125pt; right:3.5pt">D</div> <div class="black" style="top:0pt; right:3.5pt">D</div> <div class="black" style="top:0.125pt; right:3.5pt">D</div> <div class="black" style="top:0.25pt; right:3.5pt">D</div> <div class="black" style="top:0.375pt; right:3.5pt">D</div> <div class="black" style="top:0.5pt; right:3.5pt">D</div> <div class="black" style="top:-0.5pt; right:2.5pt">D</div> <div class="black" style="top:-0.5pt; right:2.625pt">D</div> <div class="black" style="top:-0.5pt; right:2.75pt">D</div> <div class="black" style="top:-0.5pt; right:2.875pt">D</div> <div class="black" style="top:-0.5pt; right:3pt">D</div> <div class="black" style="top:-0.5pt; right:3.125pt">D</div> <div class="black" style="top:-0.5pt; right:3.25pt">D</div> <div class="black" style="top:-0.5pt; right:3.375pt">D</div> <div class="black" style="top:-0.5pt; right:3.5pt">D</div> <div class="black" style="top:0.5pt; right:2.5pt">D</div> <div class="black" style="top:0.5pt; right:2.625pt">D</div> <div class="black" style="top:0.5pt; right:2.75pt">D</div> <div class="black" style="top:0.5pt; right:2.875pt">D</div> <div class="black" style="top:0.5pt; right:3pt">D</div> <div class="black" style="top:0.5pt; right:3.125pt">D</div> <div class="black" style="top:0.5pt; right:3.25pt">D</div> <div class="black" style="top:0.5pt; right:3.375pt">D</div> <div class="black" style="top:0.5pt; right:3.5pt">D</div>
+					</div>
+					<div class="E"><span style="color:#000;">(39-54)</span>
+					<div class="white">E</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">E</div> <div class="black" style="top:-0.375pt; right:2.5pt">E</div> <div class="black" style="top:-0.25pt; right:2.5pt">E</div> <div class="black" style="top:-0.125pt; right:2.5pt">E</div> <div class="black" style="top:0pt; right:2.5pt">E</div> <div class="black" style="top:0.125pt; right:2.5pt">E</div> <div class="black" style="top:0.25pt; right:2.5pt">E</div> <div class="black" style="top:0.375pt; right:2.5pt">E</div> <div class="black" style="top:0.5pt; right:2.5pt">E</div> <div class="black" style="top:-0.5pt; right:3.5pt">E</div> <div class="black" style="top:-0.375pt; right:3.5pt">E</div> <div class="black" style="top:-0.25pt; right:3.5pt">E</div> <div class="black" style="top:-0.125pt; right:3.5pt">E</div> <div class="black" style="top:0pt; right:3.5pt">E</div> <div class="black" style="top:0.125pt; right:3.5pt">E</div> <div class="black" style="top:0.25pt; right:3.5pt">E</div> <div class="black" style="top:0.375pt; right:3.5pt">E</div> <div class="black" style="top:0.5pt; right:3.5pt">E</div> <div class="black" style="top:-0.5pt; right:2.5pt">E</div> <div class="black" style="top:-0.5pt; right:2.625pt">E</div> <div class="black" style="top:-0.5pt; right:2.75pt">E</div> <div class="black" style="top:-0.5pt; right:2.875pt">E</div> <div class="black" style="top:-0.5pt; right:3pt">E</div> <div class="black" style="top:-0.5pt; right:3.125pt">E</div> <div class="black" style="top:-0.5pt; right:3.25pt">E</div> <div class="black" style="top:-0.5pt; right:3.375pt">E</div> <div class="black" style="top:-0.5pt; right:3.5pt">E</div> <div class="black" style="top:0.5pt; right:2.5pt">E</div> <div class="black" style="top:0.5pt; right:2.625pt">E</div> <div class="black" style="top:0.5pt; right:2.75pt">E</div> <div class="black" style="top:0.5pt; right:2.875pt">E</div> <div class="black" style="top:0.5pt; right:3pt">E</div> <div class="black" style="top:0.5pt; right:3.125pt">E</div> <div class="black" style="top:0.5pt; right:3.25pt">E</div> <div class="black" style="top:0.5pt; right:3.375pt">E</div> <div class="black" style="top:0.5pt; right:3.5pt">E</div>
+					</div>
+					<div class="F"><span style="color:#fff;">(21-38)</span>
+					<div class="white">F</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">F</div> <div class="black" style="top:-0.375pt; right:2.5pt">F</div> <div class="black" style="top:-0.25pt; right:2.5pt">F</div> <div class="black" style="top:-0.125pt; right:2.5pt">F</div> <div class="black" style="top:0pt; right:2.5pt">F</div> <div class="black" style="top:0.125pt; right:2.5pt">F</div> <div class="black" style="top:0.25pt; right:2.5pt">F</div> <div class="black" style="top:0.375pt; right:2.5pt">F</div> <div class="black" style="top:0.5pt; right:2.5pt">F</div> <div class="black" style="top:-0.5pt; right:3.5pt">F</div> <div class="black" style="top:-0.375pt; right:3.5pt">F</div> <div class="black" style="top:-0.25pt; right:3.5pt">F</div> <div class="black" style="top:-0.125pt; right:3.5pt">F</div> <div class="black" style="top:0pt; right:3.5pt">F</div> <div class="black" style="top:0.125pt; right:3.5pt">F</div> <div class="black" style="top:0.25pt; right:3.5pt">F</div> <div class="black" style="top:0.375pt; right:3.5pt">F</div> <div class="black" style="top:0.5pt; right:3.5pt">F</div> <div class="black" style="top:-0.5pt; right:2.5pt">F</div> <div class="black" style="top:-0.5pt; right:2.625pt">F</div> <div class="black" style="top:-0.5pt; right:2.75pt">F</div> <div class="black" style="top:-0.5pt; right:2.875pt">F</div> <div class="black" style="top:-0.5pt; right:3pt">F</div> <div class="black" style="top:-0.5pt; right:3.125pt">F</div> <div class="black" style="top:-0.5pt; right:3.25pt">F</div> <div class="black" style="top:-0.5pt; right:3.375pt">F</div> <div class="black" style="top:-0.5pt; right:3.5pt">F</div> <div class="black" style="top:0.5pt; right:2.5pt">F</div> <div class="black" style="top:0.5pt; right:2.625pt">F</div> <div class="black" style="top:0.5pt; right:2.75pt">F</div> <div class="black" style="top:0.5pt; right:2.875pt">F</div> <div class="black" style="top:0.5pt; right:3pt">F</div> <div class="black" style="top:0.5pt; right:3.125pt">F</div> <div class="black" style="top:0.5pt; right:3.25pt">F</div> <div class="black" style="top:0.5pt; right:3.375pt">F</div> <div class="black" style="top:0.5pt; right:3.5pt">F</div>
+					</div>
+					<div class="G"><span style="color:#fff;">(1-20)</span>
+					<div class="white">G</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">G</div> <div class="black" style="top:-0.375pt; right:2.5pt">G</div> <div class="black" style="top:-0.25pt; right:2.5pt">G</div> <div class="black" style="top:-0.125pt; right:2.5pt">G</div> <div class="black" style="top:0pt; right:2.5pt">G</div> <div class="black" style="top:0.125pt; right:2.5pt">G</div> <div class="black" style="top:0.25pt; right:2.5pt">G</div> <div class="black" style="top:0.375pt; right:2.5pt">G</div> <div class="black" style="top:0.5pt; right:2.5pt">G</div> <div class="black" style="top:-0.5pt; right:3.5pt">G</div> <div class="black" style="top:-0.375pt; right:3.5pt">G</div> <div class="black" style="top:-0.25pt; right:3.5pt">G</div> <div class="black" style="top:-0.125pt; right:3.5pt">G</div> <div class="black" style="top:0pt; right:3.5pt">G</div> <div class="black" style="top:0.125pt; right:3.5pt">G</div> <div class="black" style="top:0.25pt; right:3.5pt">G</div> <div class="black" style="top:0.375pt; right:3.5pt">G</div> <div class="black" style="top:0.5pt; right:3.5pt">G</div> <div class="black" style="top:-0.5pt; right:2.5pt">G</div> <div class="black" style="top:-0.5pt; right:2.625pt">G</div> <div class="black" style="top:-0.5pt; right:2.75pt">G</div> <div class="black" style="top:-0.5pt; right:2.875pt">G</div> <div class="black" style="top:-0.5pt; right:3pt">G</div> <div class="black" style="top:-0.5pt; right:3.125pt">G</div> <div class="black" style="top:-0.5pt; right:3.25pt">G</div> <div class="black" style="top:-0.5pt; right:3.375pt">G</div> <div class="black" style="top:-0.5pt; right:3.5pt">G</div> <div class="black" style="top:0.5pt; right:2.5pt">G</div> <div class="black" style="top:0.5pt; right:2.625pt">G</div> <div class="black" style="top:0.5pt; right:2.75pt">G</div> <div class="black" style="top:0.5pt; right:2.875pt">G</div> <div class="black" style="top:0.5pt; right:3pt">G</div> <div class="black" style="top:0.5pt; right:3.125pt">G</div> <div class="black" style="top:0.5pt; right:3.25pt">G</div> <div class="black" style="top:0.5pt; right:3.375pt">G</div> <div class="black" style="top:0.5pt; right:3.5pt">G</div>
+					</div>
+					<div class="small">Not environmentally friendly-higher CO<sub>2</sub> emissions</div></td>
+					<td><div style="position:relative; height:130pt">
+					<div class="EI EI_E" style="top:69.6pt">
+					<div class="white">42</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">42</div> <div class="black" style="top:-0.375pt; right:2.5pt">42</div> <div class="black" style="top:-0.25pt; right:2.5pt">42</div> <div class="black" style="top:-0.125pt; right:2.5pt">42</div> <div class="black" style="top:0pt; right:2.5pt">42</div> <div class="black" style="top:0.125pt; right:2.5pt">42</div> <div class="black" style="top:0.25pt; right:2.5pt">42</div> <div class="black" style="top:0.375pt; right:2.5pt">42</div> <div class="black" style="top:0.5pt; right:2.5pt">42</div> <div class="black" style="top:-0.5pt; right:3.5pt">42</div> <div class="black" style="top:-0.375pt; right:3.5pt">42</div> <div class="black" style="top:-0.25pt; right:3.5pt">42</div> <div class="black" style="top:-0.125pt; right:3.5pt">42</div> <div class="black" style="top:0pt; right:3.5pt">42</div> <div class="black" style="top:0.125pt; right:3.5pt">42</div> <div class="black" style="top:0.25pt; right:3.5pt">42</div> <div class="black" style="top:0.375pt; right:3.5pt">42</div> <div class="black" style="top:0.5pt; right:3.5pt">42</div> <div class="black" style="top:-0.5pt; right:2.5pt">42</div> <div class="black" style="top:-0.5pt; right:2.625pt">42</div> <div class="black" style="top:-0.5pt; right:2.75pt">42</div> <div class="black" style="top:-0.5pt; right:2.875pt">42</div> <div class="black" style="top:-0.5pt; right:3pt">42</div> <div class="black" style="top:-0.5pt; right:3.125pt">42</div> <div class="black" style="top:-0.5pt; right:3.25pt">42</div> <div class="black" style="top:-0.5pt; right:3.375pt">42</div> <div class="black" style="top:-0.5pt; right:3.5pt">42</div> <div class="black" style="top:0.5pt; right:2.5pt">42</div> <div class="black" style="top:0.5pt; right:2.625pt">42</div> <div class="black" style="top:0.5pt; right:2.75pt">42</div> <div class="black" style="top:0.5pt; right:2.875pt">42</div> <div class="black" style="top:0.5pt; right:3pt">42</div> <div class="black" style="top:0.5pt; right:3.125pt">42</div> <div class="black" style="top:0.5pt; right:3.25pt">42</div> <div class="black" style="top:0.5pt; right:3.375pt">42</div> <div class="black" style="top:0.5pt; right:3.5pt">42</div>
+					</div></div></td>
+					<td>
+					<div style="position:relative; height:130pt">
+					<div class="EI EI_E" style="top:66pt">
+					<div class="white">45</div>
+					 <div class="black" style="top:-0.5pt; right:2.5pt">45</div> <div class="black" style="top:-0.375pt; right:2.5pt">45</div> <div class="black" style="top:-0.25pt; right:2.5pt">45</div> <div class="black" style="top:-0.125pt; right:2.5pt">45</div> <div class="black" style="top:0pt; right:2.5pt">45</div> <div class="black" style="top:0.125pt; right:2.5pt">45</div> <div class="black" style="top:0.25pt; right:2.5pt">45</div> <div class="black" style="top:0.375pt; right:2.5pt">45</div> <div class="black" style="top:0.5pt; right:2.5pt">45</div> <div class="black" style="top:-0.5pt; right:3.5pt">45</div> <div class="black" style="top:-0.375pt; right:3.5pt">45</div> <div class="black" style="top:-0.25pt; right:3.5pt">45</div> <div class="black" style="top:-0.125pt; right:3.5pt">45</div> <div class="black" style="top:0pt; right:3.5pt">45</div> <div class="black" style="top:0.125pt; right:3.5pt">45</div> <div class="black" style="top:0.25pt; right:3.5pt">45</div> <div class="black" style="top:0.375pt; right:3.5pt">45</div> <div class="black" style="top:0.5pt; right:3.5pt">45</div> <div class="black" style="top:-0.5pt; right:2.5pt">45</div> <div class="black" style="top:-0.5pt; right:2.625pt">45</div> <div class="black" style="top:-0.5pt; right:2.75pt">45</div> <div class="black" style="top:-0.5pt; right:2.875pt">45</div> <div class="black" style="top:-0.5pt; right:3pt">45</div> <div class="black" style="top:-0.5pt; right:3.125pt">45</div> <div class="black" style="top:-0.5pt; right:3.25pt">45</div> <div class="black" style="top:-0.5pt; right:3.375pt">45</div> <div class="black" style="top:-0.5pt; right:3.5pt">45</div> <div class="black" style="top:0.5pt; right:2.5pt">45</div> <div class="black" style="top:0.5pt; right:2.625pt">45</div> <div class="black" style="top:0.5pt; right:2.75pt">45</div> <div class="black" style="top:0.5pt; right:2.875pt">45</div> <div class="black" style="top:0.5pt; right:3pt">45</div> <div class="black" style="top:0.5pt; right:3.125pt">45</div> <div class="black" style="top:0.5pt; right:3.25pt">45</div> <div class="black" style="top:0.5pt; right:3.375pt">45</div> <div class="black" style="top:0.5pt; right:3.5pt">45</div>
+					</div></div></td>
+				</tr>
+				<tr>
+					<td colspan="2" valign="middle" style=" border-right:0"><span class="bold">England &amp; Wales</span><div class="smallBg"> <p >EU Directive</p>  <p>2002/91/EC</p> </div></td><td style="text-align:center;"><img height="28" width="40" src="images/EU.bmp" /></td>
+				</tr>
+		  </table>
+		<div>The environmental impact rating is a measure of a home’s impact on the environment in terms of carbon dioxide (CO<sub>2</sub>) emissions. The higher the rating the less impact it has on the environment.</div>	  </td>
+	</tr>
+</table>
+<table width="100%" class="redBox">
+	<tr>
+		<td  class="h2">Estimated energy use, carbon dioxide (CO<sub>2</sub>) emissions and fuel costs of this home</td>
+	</tr>
+</table>
+<table class="listBlue" cellspacing="0" width="100%">
+	<tr>
+		<td bgcolor="#DAE4EF">&nbsp;</td>
+		<td bgcolor="#DAE4EF" align="center">Current</td>
+		<td bgcolor="#DAE4EF" align="center">Potential</td>
+	</tr>
+	<tr>
+		<td>Energy use</td>
+		<td align="center">431 kWh/m&sup2; per year</td>
+		<td align="center">403 kWh/m&sup2; per year</td>
+	</tr>
+	<tr>
+		<td>Carbon dioxide emissions</td>
+		<td align="center">5.8 tonnes per year</td>
+		<td align="center">5.4 tonnes per year</td>
+	</tr>
+	<tr>
+		<td>Lighting</td>
+		<td align="center">&pound;83 per year</td>
+		<td align="center">&pound;41 per year</td>
+	</tr>
+	<tr>
+		<td>Heating</td>
+		<td align="center">&pound;787 per year</td>
+		<td align="center">&pound;826 per year</td>
+	</tr>
+	<tr>
+		<td>Hot water</td>
+		<td align="center">&pound;223 per year</td>
+		<td align="center">&pound;151 per year</td>
+	</tr>
+</table>
+<table style="font-size:10.44pt">
+	<tr>
+		<td>
+		<p class="paragraph">The figures in the table above have been provided to enable prospective buyers and tenants to compare the fuel costs and carbon emissions of one home with another. To enable this comparison the figures have been calculated using standardised running conditions (heating periods, room temperatures, etc.) that are the same for all homes, consequently they are unlikely to match an occupier's actual fuel bills and carbon emissions in practice. The figures do not include the impacts of the fuels used for cooking or running appliances, such as TV, fridge etc.; nor do they reflect the costs associated with service, maintenance or safety inspections. Always check the certificate date because fuel prices can change over time and energy saving recommendations will evolve.</p>
+		<p class="paragraph">To see how this home can achieve its potential rating please see the recommended measures.</p>
+		</td>
+	</tr>
+</table>
+<table width="100%" class="redBox yellow">
+	<tr>
+		<td width="10%"><img src="images/eer_red.bmp" width="90"/></td>
+		<td width="90%" class="h4">
+		<p class="paragraph">Remember to look for the energy saving recommended logo when buying energy-efficient products. It’s a quick and easy way to identify the most energy-efficient products on the market.</p>
+		<p class="paragraph">This EPC and recommendations report may be given to the Energy Saving Trust to provide you with information on improving your dwelling’s energy performance.</p>
+	  </td>
+	</tr>
+</table>
+
+<div style="page-break-after:always"></div>
+<div class="version">
+	<table width="100%" class="redBox">
+		<tr>
+			<td class="h2">About this document
+			</td>
+		</tr>
+	</table>
+	<table width="100%">
+		<tr>
+			<td>The Energy Performance Certificate for this dwelling was produced following an energy assessment undertaken
+by a qualified assessor, accredited by Quidos, to a scheme authorised by the Government. This
+certificate was produced using the RdSAP 2005 assessment methodology and has been produced under the
+Energy Performance of Buildings (Certificates and Inspections) (England and Wales) Regulations 2007 as
+amended. A copy of the certificate has been lodged on a national register.
+			</td>
+		</tr>
+	</table>
+	<table width="100%">
+		<tr>
+			<td style="width:6.3cm">Assessor’s accreditation number:</td>
+			<td>QUID201022</td>
+		</tr>
+		<tr>
+			<td>Assessor’s name:</td>
+			<td>David Bennett</td>
+		</tr>
+		<tr>
+			<td>Company name/trading name:</td>
+			<td>Energy Performance Company</td>
+		</tr>
+		<tr>
+			<td>Address:</td>
+			<td>56 Folly Lane, Shaw Hill, Shaw, Melksham, Wiltshire</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>SN12 8HB</td>
+		</tr>
+		<tr>
+			<td>Phone number:</td>
+			<td>(0)1225 704 688</td>
+		</tr>
+		<tr>
+			<td>Fax number:</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>E-mail address:</td>
+			<td>david@energyperformanceco2.co.uk </td>
+		</tr>
+		<tr>
+			<td>Related party disclosure:</td>
+			<td>No related party</td>
+		</tr>
+	</table>
+	<table width="100%" class="redBox">
+		<tr>
+			<td class="h2">If you have a complaint or wish to confirm that the certificate is genuine
+			</td>
+		</tr>
+	</table>
+	<table width="100%">
+		<tr>
+			<td>Details of the assessor and the relevant accreditation scheme are as above. You can get contact details of the
+accreditation scheme from their website at www.quidos.co.uk together with details of their procedures
+for confirming authenticity of a certificate and for making a complaint.
+			</td>
+		</tr>
+	</table>
+	<table width="100%" class="redBox">
+		<tr>
+			<td class="h2">About the building’s performance ratings
+			</td>
+		</tr>
+	</table>
+	
+<p class="paragraph">The ratings on the certificate provide a measure of the building’s overall energy efficiency and its environmental
+impact, calculated in accordance with a national methodology that takes into account factors such as insulation,
+heating and hot water systems, ventilation and fuels used. The average Energy Efficiency Rating for a dwelling
+in England and Wales is band E (rating 46).</p>
+<p class="paragraph">Not all buildings are used in the same way, so energy ratings use ‘standard occupancy’ assumptions which may
+be different from the specific way you use your home. Different methods of calculation are used for homes and
+for other buildings. Details can be found at www.communities.gov.uk/epbd.</p>
+<p class="paragraph">Buildings that are more energy efficient use less energy, save money and help protect the environment. A
+building with a rating of 100 would cost almost nothing to heat and light and would cause almost no carbon
+emissions. The potential ratings on the certificate describe how close this building could get to 100 if all the cost
+effective recommended improvements were implemented.</p>
+
+	<table width="100%" class="redBox">
+		<tr>
+			<td class="h2">About the impact of buildings on the environment
+			</td>
+		</tr>
+	</table>
+<p class="paragraph">One of the biggest contributors to global warming is carbon dioxide. The way we use energy in buildings causes
+emissions of carbon. The energy we use for heating, lighting and power in homes produces over a quarter of
+the UK’s carbon dioxide emissions and other buildings produce a further one-sixth.</p>
+<p class="paragraph">The average household causes about 6 tonnes of carbon dioxide every year. Adopting the recommendations in
+this report can reduce emissions and protect the environment. You could reduce emissions even more by
+switching to renewable energy sources. In addition there are many simple everyday measures that will save
+money, improve comfort and reduce the impact on the environment. Some examples are given at the end of
+this report.</p>
+
+	<table class="list" width="100%" cellspacing="0">
+		<tr>
+		<td style="padding:5px;">
+		<p style="text-align:center;"><img src="images/DG_Logo.jpg" width="220" /></p>
+		<p style="text-align:center; margin: 10pt 0; font-weight:bold;">Click <font style="color:blue;">www.epcadviser.direct.gov.uk</font> our online tool which uses information from this EPC to show you how to save money on your fuel bills.</p>
+		<p style="text-align:center; margin: 10pt 0;">Further information about Energy Performance Certificates can be found under Frequently Asked Questions at www.epcregister.com</p>
+		</td>
+		</tr>
+	</table>
+</div>
+<div style="page-break-after:always"></div>
+
+<table class="redBox">
+	<tr>
+		<td valign="top" style=" height:40pt; font-size:14.64pt; padding:5px;"><p>Recommended measures to improve this home’s energy performance</p></td>
+	</tr>
+</table>
+<table width="100%" cellspacing="0">
+	<tr>
+		<td style="padding:0" valign="top">
+			<table cellspacing="0" >
+			<tr><td>15, Berryfield Park</td></tr>
+			<tr><td></td></tr>
+			<tr><td></td></tr>
+			<tr><td>MELKSHAM</td></tr>
+			<tr><td>SN12 6ED</td></tr>
+			</table>
+		</td>
+		<td style="padding:0; width:10.5cm" valign="top">
+			<table cellspacing="0">
+			<tr>
+				<td style="width:4cm">Date of certificate:</td>
+				<td style="width:6.5cm">20 February 2010</td>
+			</tr>
+			<tr>
+				<td>Reference number:</td>
+				<td>8040-6422-7780-1211-0906</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+	
+</table>
+<table width="100%" class="redBox">
+	<tr>
+		<td class="h2">Summary of this home’s energy performance related features</td>
+	</tr>
+</table>
+<table>
+	<tr>
+		<td>The table below gives an assessment of the key individual elements that have an impact on this home’s energy
+and environmental performance. Each element is assessed by the national calculation methodology against the
+following scale: Very poor / Poor / Average / Good / Very good. The assessment does not take into
+consideration the physical condition of any element. ‘Assumed’ means that the insulation could not be
+inspected and an assumption has been made in the methodology based on age and type of construction.
+		</td>
+	</tr>
+</table>
+<table  class="listBlue" cellspacing="0" style=" margin-bottom:0">
+<tr class="onerow">
+<td rowspan="3" bgcolor="#DAE4EF" style="width:3.2cm">Element</td>
+<td rowspan="3" bgcolor="#DAE4EF">Description</td>
+<td colspan="2" bgcolor="#DAE4EF" align="center">Current performance</td>
+</tr>
+<tr class="border"><td colspan="2"></td></tr>
+<tr class="onerow">
+<td bgcolor="#DAE4EF" align="center" style="width:3cm">Energy Efficiency</td>
+<td bgcolor="#DAE4EF" align="center" style="width:3cm">Environmental</td>
+</tr>
+
+<tr class="border"><td colspan="4"></td></tr>
+<tr class="onerow">
+	<td valign="top">Walls</td>
+	<td valign="top">Cavity wall, filled cavity</td>
+	<td align="center" valign="top">Good</td>
+	<td align="center" valign="top">Good</td>
+</tr>
+<tr class="border"><td colspan="4"></td></tr>
+<tr class="onerow">
+	<td valign="top">Roof</td>
+	<td valign="top">Pitched, 150 mm loft insulation</td>
+	<td align="center" valign="top">Good</td>
+	<td align="center" valign="top">Good</td>
+</tr>
+<tr class="border"><td colspan="4"></td></tr>
+<tr class="onerow">
+	<td valign="top">Floor</td>
+	<td valign="top">Solid, no insulation (assumed)</td>
+	<td align="center" valign="top">-</td>
+	<td align="center" valign="top">-</td>
+</tr>
+<tr class="border"><td colspan="4"></td></tr>
+<tr class="onerow">
+	<td valign="top">Windows</td>
+	<td valign="top">Fully double glazed</td>
+	<td align="center" valign="top">Average</td>
+	<td align="center" valign="top">Average</td>
+</tr>
+<tr class="border"><td colspan="4"></td></tr>
+<tr class="onerow">
+	<td valign="top">Main heating</td>
+	<td valign="top">Boiler and radiators, mains gas</td>
+	<td align="center" valign="top">Average</td>
+	<td align="center" valign="top">Good</td>
+</tr>
+<tr class="border"><td colspan="4"></td></tr>
+<tr class="onerow">
+	<td valign="top">Main heating control</td>
+	<td valign="top">Programmer, room thermostat and TRVs</td>
+	<td align="center" valign="top">Good</td>
+	<td align="center" valign="top">Good</td>
+</tr>
+<tr class="border"><td colspan="4"></td></tr>
+<tr class="onerow">
+	<td valign="top">Secondary heating</td>
+	<td valign="top">None</td>
+	<td align="center" valign="top">-</td>
+	<td align="center" valign="top">-</td>
+</tr>
+<tr class="border"><td colspan="4"></td></tr>
+<tr class="onerow">
+	<td valign="top">Hot water</td>
+	<td valign="top">From main system</td>
+	<td align="center" valign="top">Average</td>
+	<td align="center" valign="top">Good</td>
+</tr>
+<tr class="border"><td colspan="4"></td></tr>
+<tr class="onerow">
+	<td valign="top">Lighting</td>
+	<td valign="top">No low energy lighting</td>
+	<td align="center" valign="top">Very Poor</td>
+	<td align="center" valign="top">Very Poor</td>
+</tr>
+<tr class="border"><td colspan="4"></td></tr>
+</table>
+<table cellspacing="0" class="yellow" style="font-size:11.76pt;">
+<tr class="colorE">
+<td colspan="2">Current energy efficiency rating</td>
+<td style="width:3cm" align="center">E 46</td>
+<td style="width:3cm"></td>
+</tr>
+<tr class="grayE">
+<td colspan="2">Current environmental impact (CO<sub>2</sub>) rating</td>
+<td></td>
+<td align="center">E 42</td>
+</tr>
+</table>
+
+
+<table class="redBox" style="margin-top: 10pt">
+	<tr>
+		<td class="h2">Low and zero carbon energy sources</td>
+	</tr>
+</table>
+
+<p class="paragraph">None</p>
+
+<div style="page-break-after:always"></div>
+
+<table class="redBox">
+	<tr><td class="h2">Recommendations</td></tr>
+</table>
+
+	<p class="paragraph">The measures below are cost effective. The performance ratings after improvement listed below are cumulative, that is they assume the improvements have been installed in the order that they appear in the table.</p>
+	
+	<table class="listBlue" cellspacing="0" style="margin-bottom:0">
+		<tr>
+			<td rowspan="2" bgcolor="#DAE4EF"><strong>Lower cost measures (up to ￡500)</strong></td>
+			<td rowspan="2" bgcolor="#DAE4EF" align="center" style="width: 100pt">Typical savings per year</td>
+			<td colspan="2" bgcolor="#DAE4EF" align="center">Performance ratings after improvement</td>
+		</tr>
+		<tr>
+			<td bgcolor="#DAE4EF" align="center" style="width: 100pt">Energy efficiency</td>
+			<td bgcolor="#DAE4EF" align="center" style="width: 100pt">Environmental impact</td>
+		</tr>
+		<tr>
+			<td>
+				<table class="innerTable">
+				<tr>
+					<td style="width: 10pt; text-align: right; vertical-align:top; padding-right: 3pt;">1</td>
+					<td>Increase hot water cylinder insulation</td>
+				</tr>
+				</table>
+			</td>
+			<td align="center">￡45</td>
+			<td align="center">E 48</td>
+			<td align="center">E 44</td>
+		</tr>
+		<tr>
+			<td>
+				<table class="innerTable">
+				<tr>
+					<td style="width: 10pt; text-align: right; vertical-align:top; padding-right: 3pt;">2</td>
+					<td>Low energy lighting for all fixed outlets</td>
+				</tr>
+				</table>
+			</td>
+			<td align="center">￡30</td>
+			<td align="center">E 50</td>
+			<td align="center">E 45</td>
+		</tr>
+		<tr>
+		<td>
+			<div align="right" style="padding-right:5pt;">
+			Total
+			</div>
+		</td>
+		<td align="center">￡75</td>
+		<td></td>
+		<td></td>
+		</tr>
+		
+	</table>
+	<table cellspacing="0" class="yellow" style="font-size:11.76pt;">
+	<tr class="colorE">
+	<td colspan="2">Potential energy efficiency rating</td>
+	<td style="width: 100pt" align="center">E 50</td>
+	<td style="width: 100pt" align="center"></td>
+	</tr>
+	<tr class="grayE">
+	<td colspan="2">Potential environmental impact (CO<sub>2</sub>) rating</td>
+	<td></td>
+	<td align="center">E 45</td>
+	</tr>
+	</table>
+
+<table class="redBox" style="margin-top: 10pt">
+	<tr><td class="h2">Further measures to achieve even higher standards</td></tr>
+</table>
+	<p class="paragraph">The further measures listed below should be considered in addition to those already specified if aiming for the highest possible standards for this home. 
+	However you should check the conditions in any covenants, planning conditions, warranties or sale contracts.</p>
+	<table class="listBlue" cellspacing="0" style="margin-bottom:0">
+		<tr>
+		<td>
+			<table class="innerTable">
+			<tr>
+				<td style="width: 10pt; text-align: right; vertical-align:top; padding-right: 3pt;">3</td>
+				<td>Solar water heating</td>
+			</tr>
+			</table>
+		</td>
+		<td align="center" style="width: 100pt">£37</td>
+		<td align="center" style="width: 100pt">E 52</td>
+		<td align="center" style="width: 100pt">E 47</td>
+		</tr>
+		<tr>
+		<td>
+			<table class="innerTable">
+			<tr>
+				<td style="width: 10pt; text-align: right; vertical-align:top; padding-right: 3pt;">4</td>
+				<td>Solar photovoltaic panels, 2.5 kWp</td>
+			</tr>
+			</table>
+		</td>
+		<td align="center" style="width: 100pt">£171</td>
+		<td align="center" style="width: 100pt">D 63</td>
+		<td align="center" style="width: 100pt">D 55</td>
+		</tr>
+	</table>
+	<table cellspacing="0" class="yellow" style="font-size:11.76pt;">
+	<tr class="colorD">
+	<td colspan="2">Enhanced energy efficiency rating</td>
+	<td align="center" style="width: 100pt">D 63</td>
+	<td align="center" style="width: 100pt"></td>
+	</tr>
+	<tr class="grayD">
+	<td colspan="2">Enhanced environmental impact (CO<sub>2</sub>) rating</td>
+	<td></td>
+	<td align="center">D 55</td>
+	</tr>
+	</table>
+
+<p class="paragraph">Improvements to the energy efficiency and environmental impact ratings will usually be in step with each other.
+However, they can sometimes diverge because reduced energy costs are not always accompanied by a
+reduction in carbon dioxide (CO<sub>2</sub>) emissions.</p>
+
+<div style="page-break-after:always"></div>
+
+<div class="notebox">
+	
+	<table class="redBox">
+		<tr>
+			<td class="h2">About the cost effective measures to improve this home’s performance ratings</td>
+		</tr>
+	</table>
+	
+	<p class="paragraph">If you are a tenant, before undertaking any work you should check the terms of your lease and obtain approval
+	from your landlord if the lease either requires it, or makes no express provision for such work.</p>
+	
+	<p class="title">Lower cost measures (typically up to £500 each)</p>
+	<p>These measures are relatively inexpensive to install and are worth tackling first. Some of them may be installed
+	as DIY projects. DIY is not always straightforward, and sometimes there are health and safety risks, so take
+	advice before carrying out DIY improvements.</p>
+	<div style="page-break-after: avoid;">
+		<p class="title">1 Hot water cylinder insulation</p>
+		<p>Increasing the thickness of existing insulation around the hot water cylinder will help to maintain the water at the required temperature; this will reduce the amount of energy used and lower fuel bills. An additional cylinder jacket or other suitable insulation layer can be used. The insulation should be fitted over any thermostat clamped to the cylinder. Hot water pipes from the hot water cylinder should also be insulated, using pre-formed pipe insulation of up to 50 mm thickness, or to suit the space available, for as far as they can be accessed to reduce losses in summer. All these materials can be purchased from DIY stores and installed by a competent DIY enthusiast.</p>
+	</div>
+	<div></div>
+	<div style="page-break-after: avoid;">
+		<p class="title">2 Low energy lighting</p>
+		<p>Replacement of traditional light bulbs with energy saving recommended ones will reduce lighting costs over the lifetime of the bulb, and they last up to 12 times longer than ordinary light bulbs. Also consider selecting low energy light fittings when redecorating; contact the Lighting Association for your nearest stockist of Domestic Energy Efficient Lighting Scheme fittings.</p>
+	</div>
+	<div></div>
+	
+			
+	<table class="redBox" style="margin-top: 10pt">
+		<tr>
+			<td class="h2">About the further measures to achieve even higher standards</td>
+		</tr>
+	</table>
+	<p class="paragraph">
+	Further measures that could deliver even higher standards for this home. 
+	You should check the conditions in any covenants, planning conditions, 
+	warranties or sale contracts before undertaking any of these measures. 
+	If you are a tenant, before undertaking any work you should check the terms of your lease and obtain approval from your landlord if the lease either requires it, 
+	or makes no express provision for such work.
+	</p>
+	<div style="page-break-after: avoid;">
+		<p class="title">3 Solar water heating</p>
+		<p>A solar water heating panel, usually fixed to the roof, uses the sun to pre-heat the hot water supply. This will significantly reduce the demand on the heating system to provide hot water and hence save fuel and money. The Solar Trade Association has up-to-date information on local installers and any grant that may be available. <br /></p>
+	</div>
+	<div></div>
+	<div style="page-break-after: avoid;">
+		<p class="title">4 Solar photovoltaic (PV) panels</p>
+		<p>A solar PV system is one which converts light directly into electricity via panels placed on the roof with no waste and no emissions. This electricity is used throughout the home in the same way as the electricity purchased from an energy supplier. The British Photovoltaic Association has up-to-date information on local installers who are qualified electricians and on any grant that may be available. Planning restrictions may apply in certain neighbourhoods and you should check this with the local authority. Building Regulations apply to this work, so your local authority building control department should be informed, unless the installer is appropriately qualified and registered as such with a competent persons scheme¹, and can therefore self-certify the work for Building Regulation compliance.</p>
+	</div>
+	<div></div>
+	<div style="page-break-after: avoid;">
+		<p class="title">5 TEST</p>
+		<p>A solar water heating panel, usually fixed to the roof, uses the sun to pre-heat the hot water supply. This will significantly reduce the demand on the heating system to provide hot water and hence save fuel and money. The Solar Trade Association has up-to-date information on local installers and any grant that may be available. <br /></p>
+	</div>
+	<div></div>
+	<div style="page-break-after: avoid;">
+		<p class="title">TEST 6</p>
+		<p>A solar PV system is one which converts light directly into electricity via panels placed on the roof with no waste and no emissions. This electricity is used throughout the home in the same way as the electricity purchased from an energy supplier. The British Photovoltaic Association has up-to-date information on local installers who are qualified electricians and on any grant that may be available. Planning restrictions may apply in certain neighbourhoods and you should check this with the local authority. Building Regulations apply to this work, so your local authority building control department should be informed, unless the installer is appropriately qualified and registered as such with a competent persons scheme¹, and can therefore self-certify the work for Building Regulation compliance.</p>
+	</div>
+	<div></div>
+	<div style="page-break-after: avoid;">
+		<p class="title">TEST 7</p>
+		<p>A solar PV system is one which converts light directly into electricity via panels placed on the roof with no waste and no emissions. This electricity is used throughout the home in the same way as the electricity purchased from an energy supplier. The British Photovoltaic Association has up-to-date information on local installers who are qualified electricians and on any grant that may be available. Planning restrictions may apply in certain neighbourhoods and you should check this with the local authority. Building Regulations apply to this work, so your local authority building control department should be informed, unless the installer is appropriately qualified and registered as such with a competent persons scheme¹, and can therefore self-certify the work for Building Regulation compliance.</p>
+	</div>
+	<div></div>
+	<p>&nbsp;</p>
+
+
+	<div style="page-break-after: avoid">
+	<table class="redBox">
+		<tr>
+			<td class="h2">What can I do today?</td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td>
+			<p>Actions that will save money and reduce the impact of your home on the environment include:</p>
+			<ul class="redLi">
+			
+			<li><div>Ensure that you understand the dwelling and how its energy systems are intended to work so as to obtain
+	the maximum benefit in terms of reducing energy use and CO<sub>2</sub> emissions.</div></li>
+			<li><div>Check that your heating system thermostat is not set too high (in a home, 21°C in the living room is
+	suggested) and use the timer to ensure you only heat the building when necessary.</div></li>
+			<li><div>Make sure your hot water is not too hot - a cylinder thermostat need not normally be higher than 60°C.</div></li>
+			<li><div>Turn off lights when not needed and do not leave appliances on standby. Remember not to leave chargers
+	(e.g. for mobile phones) turned on when you are not using them.</div></li>
+			<li><div>Close your curtains at night to reduce heat escaping through the windows.</div></li>
+			<li><div>If you’re not filling up the washing machine, tumble dryer or dishwasher, use the half-load or economy
+	programme.</div></li>
+			
+			</ul>
+			<p>For advice on how to take action and to find out about offers available to help make your home more energy
+	efficient, call 0800 512 012 or visit www.energysavingtrust.org.uk.</p>
+			<p>&nbsp;</p>
+			</td>
+		</tr>
+	</table>
+	</div>
+	<div></div>
+</div>
+	
+
+</body>
+</html>

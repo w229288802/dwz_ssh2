@@ -1,0 +1,77 @@
+﻿系统目录结构算法
+
+	con_file中存放相对路径path: /yyyy/MM/dd/i
+	i:	当天目录编号 1到n
+	count:	当天上传文件总数, 默认0. 每天第一次使用时初始化到内存中
+	unit:	每个目录最大文件数, 等于500, 每个目录下最多存放500个文件
+	i = count / unit + 1
+	
+	url = "/content"+path;
+	
+	ContentManagerImpl类中加入: 
+		import org.apache.commons.lang.time.DateUtils
+		private static int _dayFileCount = -1;
+		private static Date _fileCountTime = null;
+		
+		private int getDayFileCount(Date now){
+			if (_dayFileCount < 0 || _fileCountTime == null
+					|| !DateUtils.isSameDay(_fileCountTime, now)) {
+				Date startDate = DateUtils.truncate(now, Calendar.DAY_OF_MONTH);
+				Date endDate = DateUtils.round(now, Calendar.DAY_OF_MONTH);
+	
+				Collection<Number> nums = conFileDao.findBetweenDateFileCount(
+						startDate, endDate);
+				if (nums != null && nums.size() > 0)
+					_dayFileCount = nums.iterator().next().intValue();
+				else _dayFileCount = 0;
+				
+				_fileCountTime = now;
+			}
+			
+			return _dayFileCount;
+		}
+
+系统目录结构
+	/		content根目录		uri: /content [可配制]
+	/S		小图片根目录
+	/M		中图片根目录
+	
+	示例: 2010/01/13 上传一个图片,并resize 2张小图.
+		原图:	/2010/01/13/1/86400000sj.jpg
+		中图:	/M/2010/01/13/1/86400000sj.jpg
+		小图:	/S/2010/01/13/1/86400000sj.jpg
+	文件名生成规则, uuid太长, timestamp可能会重名. 
+		每天有 3600000 * 24 = 86400000 ms
+		计算相对于0点的毫秒数 + 随机数
+		Date dayStart = DateUtils.truncate(now, Calendar.DAY_OF_MONTH);
+		String fileName = (now.getTime()-dayStart.getTime())+StringUtils.generateRandomString(2);
+		
+虚拟目录
+	表结构: ID, NAME, PARENT_ID, LFT, RGT, USER_ID
+	数据库树结构
+		详细设计参照文档: "数据库树结构.txt"
+		http://dev.mysql.com/tech-resources/articles/hierarchical-data.html
+		
+切图工具
+	http://odyniec.net/projects/imgareaselect/
+	http://www.webmotionuk.co.uk/jquery/image_upload_crop.php
+	http://deepliquid.com/projects/Jcrop/demos.php
+	http://tympanus.net/crop1.1/
+	
+Resize image sample code:
+	ArrayList<Image> images = new ArrayList<Image>();
+	Image thbimage = new Image(origUrl);
+	thbimage.setType(ResizeType.S);
+	thbimage.setWidth(100);
+	thbimage.setHeight(100);
+	images.add(thbimage);
+	
+	Image image = new Image(origUrl);
+	image.setType(ResizeType.M);
+	image.setWidth(250);
+	image.setHeight(250);
+	images.add(image);
+	
+	manager.drawImage(images.toArray(new Image[images.size()]));
+					
+	

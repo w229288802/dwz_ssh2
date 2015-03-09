@@ -1,0 +1,98 @@
+Ajax请求session超时处理流程（DWZ-Java）
+
+-------------------------------------------------------------------
+
+DWZ-Java框架Ajax请求session超时处理思路：
+	1）SessionValidateFilter统一验证session是否超时
+	2）SessionValidateFilter中判断请求是否为ajax请求
+	3）ajax请求session超时返回一个json {"statusCode":"301", "message":"Session Timeout! Please re-sign in!"}
+	4）dwz js框架根据statusCode==301,处理是跳转到登陆页面或者弹出登录dialog
+
+-------------------------------------------------------------------
+
+java服务器端处理：
+	SessionValidateFilter中修改：
+	if ("XMLHttpRequest".equalsIgnoreCase(request.getHeader("X-Requested-With")) || request.getParameter("ajax") != null) {
+		PrintWriter out = response.getWriter();
+		out.println("{\"statusCode\":\"301\", \"message\":\"Session Timeout! Please re-sign in!\"}");
+	} else {
+		response.sendRedirect(response.encodeRedirectURL(this.loginUrl + java.net.URLEncoder.encode(backToUrl, "UTF-8")));
+	}
+
+-------------------------------------------------------------------
+
+js客户端处理：
+
+session超时跳转到登陆页面还是弹出登录dialog，在DWZ UI初始化时设置：
+<script type="text/javascript">
+$(function(){
+	DWZ.init("dwz.frag.xml", {
+//		loginUrl:"loginsub.html", loginTitle:"登录",	// 弹出登录对话框
+		loginUrl:"login.html",	// 跳到登录页面
+		statusCode:{ok:200, error:300, timeout:301}, //【可选】
+		pageInfo:{pageNum:"pageNum", numPerPage:"numPerPage", orderField:"orderField", orderDirection:"orderDirection"}, //【可选】
+		debug:false,	// 调试模式 【true|false】
+		callback:function(){
+			initEnv();
+			$("#themeList").theme({themeBase:"themes"});
+		}
+	});
+});
+</script>
+
+
+ajax load页面碎片处理：
+
+	ajax请求统一使用dwz的loadUrl()方法，不能使用jquery自带的load()．
+	当客户端调用loadUrl()并且session超时了，跳转到登陆页面或者弹出登录dialog。
+	session超时弹出登录dialog注意事项：
+		用一个带屏蔽层的dialog覆盖的整个浏览器．这时浏览器窗口内容不能变，只是上面加了一个登录框和一个背景层。
+		当用户输入username and password登录成功后，去掉登录框和背景层．这时用户可以继续操作．
+		登录失败alert出错信息，浏览器窗口内容还是不变．
+	参考dwz.core.js代码片段
+	loadUrl: function(url,data,callback){
+		var $this = $(this);
+		
+		$.ajax({
+			type: 'POST',
+			url: url,
+			cache: false,
+			data: data,
+			success: function(response){
+				var json = DWZ.jsonEval(response);
+				if (json.statusCode==DWZ.statusCode.timeout){
+					alertMsg.error(DWZ.msg("sessionTimout"), {okCall:function(){
+						DWZ.loadLogin();
+					}});
+				} if (json.statusCode==DWZ.statusCode.error){
+					if (json.message) alertMsg.error(json.message);
+				} else {
+					$this.html(response).initUI();
+					if ($.isFunction(callback)) callback(response);
+				}
+			},
+			error: DWZ.ajaxError
+		});
+	}
+
+
+ajax post 表单数据处理：
+	
+	当客户端ajax提交表单超原理同ajax load
+	参考dwz.core.js代码片段
+	ajaxDone:function (json){
+		if(json.statusCode == DWZ.statusCode.error) {
+			if(json.message && alertMsg) alertMsg.error(json.message);
+		} else if (json.statusCode == DWZ.statusCode.timeout) {
+			if(json.message && alertMsg) alertMsg.error(json.message, {okCall:DWZ.loadLogin});
+			else DWZ.loadLogin();
+		} else {
+			if(json.message && alertMsg) alertMsg.correct(json.message);
+		};
+	}
+	
+-------------------------------------------------------------------
+
+注意事项：
+	ajax请求session超时服务器端返回一个json就可以了，其他的就交给dwz js框架来处理，服务器端只要做到ajax请求session超时返回如下json就可以了:
+	{"statusCode":"301", "message":"Session Timeout! Please re-sign in!"}

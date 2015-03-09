@@ -1,0 +1,70 @@
+
+注意事项
+	业务逻辑都从BusinessFactory开始,先取取到某个BusinessObjectManager,再由BusinessObjectManager来操作业务对象.
+	Manager接口都继承 BusinessObjectManager
+	Manager实现类都继承 AbstractBusinessObjectManager
+	
+	BO接口都继承 BusinessObject
+	BO实现类都继承 AbstractBusinessObject
+
+	Configuration是一个配制信息的封装,支持xml和properties文件.
+	需要给系统增加一个配制文件时,只需在 /WEB-INF/home/etc/conf/app-config.xml中加入路径即可,无需再写java代码去读配制文件了.
+	
+数据库命名
+	模块名缩写加上’_’再加表名;
+	字段名大写
+
+模块名缩写
+	sys		system
+	com		common
+	con		content
+	inf		news
+
+	
+dao命名
+	insert
+	update
+	delete
+	findByPrimaryKey
+	findAll
+
+	find
+	updateAll
+	deleteAll
+	find*PageBreak
+
+	Hibernate映射文件中 query格式： 包名＋类名＋方法名
+
+Manager (Service) 命名
+	add
+	edit
+	remove
+	get
+	list
+	search
+
+Action 命名
+	userAction 
+		add
+		edit
+		insert
+		update
+		delete
+
+	newsAction 
+		add
+		edit
+		insert
+		update
+		delete
+
+接口命名 默认是接口
+实现类命名 Impl结尾
+抽象类命名 Abstract开头
+		
+异常 
+	Unchecked Exception	和业务无关都用这类异常
+	Checked Exception	分主事件流和n个分支流程的处理
+	
+常量 final + enum
+	enum 可以定义key--value方式，还可以用在switch中。

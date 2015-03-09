@@ -1,0 +1,155 @@
+#page
+
+#header
+	#logo
+	#sm (servicemenu)
+		.regsiter
+		.login
+	
+
+#nav
+	.menu
+		.subMenu
+	.search
+	.sreachbtn(搜索按钮).sreachinput（搜索输入框）
+		
+
+#container
+	
+	.bread
+	
+	[#areaSidebar]
+	#sidebar
+		.title
+		.service
+		.news
+			.newslist
+			.piclist
+		.hot
+		.msg(提示信息)
+		.download
+
+
+		.tab
+		.list
+		.accordion
+			
+	[#areaBanner]
+	#content
+		.contentMain
+		.input
+		.select
+		.note
+		.summary 
+		.column
+	
+	
+
+#footer
+	.areaFooter
+	.footerBottom
+
+	.partner
+	.copyRight
+	.friendLink
+
+
+--------------------------------
+#page		(w:960px)
+
+#logo		(w:250px H:60px)
+
+#areaHeader	(W:468px H:60px)
+
+#areaSidebar	(W:200px H:auto)
+
+#areaBanner	(W:760px H:auto)
+
+.areaFooter	(W:auto  H:auto)
+--------------------------------
+
+hlcf
+hcrf
+hlcrf
+hcf
+
+主键命名：
+
+.box
+	.boxHeader
+	.boxBody
+	.boxFooter
+
+.tab
+	.tabHeader
+		.tabHeaderContent
+	.tabContent
+	.tabFooter
+		.tabFooterContent
+
+
+.panel
+
+	.panelHeader
+		.panelHeaderContent
+	.panelBody
+	.panelFooter
+		.panelFooterContent
+
+.dialog
+	.dialogHeader
+	.dialogContent
+	.dialogFooter
+
+table
+	.caption
+	.tableList
+	.pageList
+		.Previous
+		.next
+
+
+
+product list css className
+  $("listViewButton").className = "listViewButton selected";
+  $("gridViewButton").className = "gridViewButton";
+  $("textViewButton").className = "textViewButton";
+
+ -------------------------------
+
+页面碎片命名：
+存放在fragment
+
+/
+	featureProdList (Feature Products list)
+	signInForm
+	signUpForm
+
+/catalog
+	catInfo	(category name, image, description)
+	subCatList (sub category list)
+	resultView (products list)
+	advanceSearchForm (Advance Search)
+
+/customer/account
+	accountInfo (billingForm)
+	billingInfo (Billing Information)
+	shippingInfo (Shipping Information)
+	orderList (Order History)
+	orderDetail (Order Detail)
+
+	billingForm
+	shippingForm
+	editAccountForm (Edit Information)
+	changePasswdForm (Change your password)
+	forgetPasswdForm (Forget your password) 
+
+/customer/shoppingcart
+	shoppingCart (Shopping Cart)
+
+/transaction/order	
+	billingForm
+	shippingForm
+	shippingMethods (Shipping Methods)
+	cartItems (Purchase Items)
+	paymentForm (Payment Information)

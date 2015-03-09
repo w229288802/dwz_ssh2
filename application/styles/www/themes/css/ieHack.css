@@ -1,0 +1,35 @@
+
+/* Widget */
+
+/* Dialog */
+.dialogHd, .dialogHCt, .dialogFt, .dialogFCt { _background-image:url(../default/images/dialogX.gif);}
+.dialogCt { _background-image:url(../default/images/dialogYL.gif);}
+.dialogCCt { _background-image:url(../default/images/dialogYR.gif);}
+
+/* Picture */
+.picture { *display:block; *font-size:134px;}
+
+	/* Shopping Cart Info */
+	.cartInfo .picture { *font-size:44px;}
+	
+	/* Category Page */
+		/* Item Picture Size */
+		.smallPic .picture { *font-size:91px;}
+		.mediumPic .picture { *font-size:144px;}
+		.largePic .picture {*font-size:208px;}
+		
+		/* Grid View */
+		.widgetList .gridView li { *float:left; *overflow:hidden;}
+		.widgetList .gridView .smallPic li {  *width:20%; *height:260px;}
+		.widgetList .gridView .mediumPic li { *width:25%; *height:310px;}
+		.widgetList .gridView .largePic li { *width:33.3%; *height:360px;}
+
+
+	/* Item Page */
+	.itemInfo .picture { *font-size:268px;}
+	.itemInfo .thumbList .picture { *font-size:44px;}
+	.itemInfo .itemPricingInfo { _height:357px; *top:2px;}
+
+/* Shopping Cart Panel */
+.cartInfo .cartPanel { *right:-3px;}
+.cartPanel .couponCode .couponHandle input { margin:2px 1px 0 0; *margin:1px;}

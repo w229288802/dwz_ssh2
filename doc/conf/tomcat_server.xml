@@ -1,0 +1,18 @@
+<!-- 数据源方式配置 -->
+<Host name="www.dwz4j.dev" appBase="" unpackWARs="true" autoDeploy="false" xmlValidation="false" xmlNamespaceAware="false">
+	<Context docBase="d:/workspace/dwz/dwz4j/application" reloadable="false" path="" privileged="true">
+		<Resource
+			name="jdbc/app"
+			type="javax.sql.DataSource"
+			driverClassName="com.mysql.jdbc.Driver"
+			url="jdbc:mysql://localhost/dwz4j"
+			username="root"
+			password=""
+			maxIdle="30"
+			maxWait="10000"
+			maxActive="100"
+			validationQuery="select 1;"/>
+		<WatchedResource>WEB-INF/web.xml</WatchedResource>
+	</Context>
+</Host>
+
